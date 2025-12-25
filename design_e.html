@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAJ /// RAW</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: #0000ff;
+            /* Primary Blue */
+            --border: 3px solid #000000;
+            --font-display: 'Anton', sans-serif;
+            --font-body: 'Courier Prime', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            overflow-x: hidden;
+            border: var(--border);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Layout Utilities */
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: var(--font-display);
+            font-size: 12vw;
+            line-height: 0.8;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            word-break: break-all;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            text-transform: uppercase;
+            border-bottom: var(--border);
+            padding: 1rem;
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        /* Marquee */
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            border-bottom: var(--border);
+            white-space: nowrap;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Nav */
+        nav {
+            border-bottom: var(--border);
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+            padding: 1.5rem;
+            text-align: center;
+            border-right: var(--border);
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .nav-item:last-child {
+            border-right: none;
+        }
+
+        .nav-item:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 2rem;
+            border-bottom: var(--border);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .big-btn {
+            display: inline-block;
+            background: var(--text);
+            color: var(--bg);
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: 0.2s;
+        }
+
+        .big-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: rotate(-2deg);
+        }
+
+        /* Grid Section */
+        .brutal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .grid-item {
+            border-right: var(--border);
+            border-bottom: var(--border);
+            padding: 2rem;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.2s;
+        }
+
+        .grid-item:nth-child(even) {
+            border-right: none;
+        }
+
+        .grid-item:hover {
+            background: #eee;
+        }
+
+        .grid-item h3 {
+            font-size: 3rem;
+            font-family: var(--font-display);
+            line-height: 0.9;
+        }
+
+        .tag {
+            background: var(--text);
+            color: var(--bg);
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            background: var(--text);
+            color: var(--bg);
+            text-align: center;
+        }
+
+        .giant-link {
+            font-family: var(--font-display);
+            font-size: 6vw;
+            color: var(--bg);
+            text-decoration: underline;
+        }
+
+        .giant-link:hover {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .brutal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-item:nth-child(odd) {
+                border-right: none;
+            }
+
+            h1 {
+                font-size: 18vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            AVAILABLE FOR NEW ROLES /// SHIPPING FAST /// FOUNDING ENGINEER /// BASED IN HYDERABAD /// UK ORIENTED ///
+            AVAILABLE FOR NEW ROLES /// SHIPPING FAST /// FOUNDING ENGINEER /// BASED IN HYDERABAD /// UK ORIENTED ///
+        </div>
+    </div>
+
+    <nav>
+        <a href="#work" class="nav-item">WORK</a>
+        <a href="#about" class="nav-item">ABOUT</a>
+        <a href="#contact" class="nav-item">CONTACT</a>
+    </nav>
+
+    <header class="hero">
+        <div>
+            <span class="uppercase">Bharadwaj Palakurthy</span>
+        </div>
+        <h1>FOUNDING<br>PRODUCT<br>ENGINEER</h1>
+        <div>
+            <p style="max-width: 500px; font-weight: bold; margin-bottom: 2rem;">
+                I BUILD SYSTEMS FOR STARTUPS. NO FLUFF. NO OVER-ENGINEERING. JUST SHIPPING.
+            </p>
+            <a href="#contact" class="big-btn">HIRE ME NOW</a>
+        </div>
+    </header>
+
+    <h2>SELECTED_WORKS</h2>
+
+    <section class="brutal-grid" id="work">
+
+        <article class="grid-item">
+            <div>
+                <span class="uppercase">Current // DeFi</span>
+                <div style="margin-top:1rem;">
+                    <span class="tag">REACT</span> <span class="tag">NEXT.JS</span>
+                </div>
+            </div>
+            <h3>THEO PROTOCOL</h3>
+        </article>
+
+        <article class="grid-item">
+            <div>
+                <span class="uppercase">2022-2024</span>
+                <div style="margin-top:1rem;">
+                    <span class="tag">FOUNDING ENG</span> <span class="tag">WEB3</span>
+                </div>
+            </div>
+            <h3>PLEX / CANTO</h3>
+        </article>
+
+        <article class="grid-item">
+            <div>
+                <span class="uppercase">HARDWARE</span>
+                <div style="margin-top:1rem;">
+                    <span class="tag">UNITY</span> <span class="tag">C#</span>
+                </div>
+            </div>
+            <h3>MR KIOSKS</h3>
+        </article>
+
+        <article class="grid-item" style="background: var(--accent); color: white;">
+            <div>
+                <span class="uppercase">LEGACY</span>
+            </div>
+            <h3>GAME DEV</h3>
+        </article>
+
+    </section>
+
+    <section id="about" style="padding: 4rem 2rem; border-bottom: var(--border);">
+        <p style="font-size: 2rem; max-width: 1200px; line-height: 1.2; font-weight: bold;">
+            "I'M THE KIND OF ENGINEER WHO DELIVERS. MY CAREER HASN'T FOLLOWED A STRAIGHT PATH — IT'S BEEN BUILT BY
+            SHIPPING REAL PRODUCTS."
+        </p>
+    </section>
+
+    <footer id="contact">
+        <p class="uppercase" style="margin-bottom: 2rem;">READY TO START?</p>
+        <a href="mailto:hello@waj.dev" class="giant-link">HELLO@WAJ.DEV</a>
+    </footer>
+
+</body>
+
+</html>

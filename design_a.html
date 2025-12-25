@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waj | Founding Frontend & Product Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0f;
+            --surface-2: #121215;
+            --text-main: #e0e0e0;
+            --text-dim: #808080;
+            --accent: #ccff00;
+            --line: #222222;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .mono { font-family: var(--font-mono); }
+        .accent { color: var(--accent); }
+        .dim { color: var(--text-dim); }
+        
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* Grid Lines Background */
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background-image: 
+                linear-gradient(var(--line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo::before {
+            content: "::";
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 5rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            border: 1px solid var(--line);
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            margin-bottom: 2rem;
+            background: rgba(204, 255, 0, 0.05);
+        }
+
+        .status-dot {
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+        }
+
+        /* Work Section */
+        .work {
+            padding: 8rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 2rem;
+            border: 1px solid var(--line);
+            padding: 2rem;
+            background: var(--surface);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .project-meta {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--line);
+            color: var(--text-dim);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+            margin: 4rem 0;
+        }
+
+        .stat-item {
+            background: var(--bg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .stat-val {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* About & Skills */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 8rem 0;
+        }
+
+        .info-col h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .skill-list li {
+            border-bottom: 1px solid var(--line);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+        }
+        
+        .skill-list li span:last-child {
+            color: var(--text-dim);
+        }
+
+        /* Timeline */
+        .timeline {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            gap: 2rem;
+            padding: 3rem 0;
+            border-left: 1px solid var(--line);
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 3.5rem;
+            width: 9px;
+            height: 9px;
+            background: var(--bg);
+            border: 1px solid var(--accent);
+        }
+
+        .timeline-role {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Footer */
+        .contact-section {
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .cta-big {
+            font-size: 5vw;
+            line-height: 1;
+            margin-bottom: 2rem;
+            display: block;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .cta-big:hover {
+            color: var(--accent);
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 2rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .project-card, .about-grid, .stats-grid, .timeline-item {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+
+    <nav>
+        <div class="nav-logo">WAJ.DEV</div>
+        <div class="nav-links">
+            <a href="#work">WORK</a>
+            <a href="#about">ABOUT</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HERO -->
+        <section class="hero">
+            <div data-aos="fade-up">
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    AVAILABLE FOR NEW ROLES
+                </div>
+                <h1>Founding Frontend <br><span class="dim">& Product Engineer</span></h1>
+                <p>I build and ship production-ready products for startups — fast. Core strengths in rapid delivery, design systems, and real-world execution.</p>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-val">15+</span>
+                <span class="stat-label">YEARS EXP</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">$160M+</span>
+                <span class="stat-label">TVL SECURED</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">4</span>
+                <span class="stat-label">MAJOR VERSIONS</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">0</span>
+                <span class="stat-label">HANDOFF FRICTION</span>
+            </div>
+        </div>
+
+        <!-- WORK -->
+        <section id="work" class="work">
+            <div class="section-header">
+                <span class="section-title">// SELECTED WORK</span>
+            </div>
+
+            <div class="project-grid">
+                <!-- PROJECT 1 -->
+                <article class="project-card">
+                    <div class="project-visual" style="background: #111; height: 100%; min-height: 200px; order: 2;"></div>
+                    <div class="project-info" style="order: 1;">
+                        <span class="project-meta">CURRENT · 2024-PRESENT</span>
+                        <h3>Theo</h3>
+                        <p class="dim">Sole frontend engineer for a live DeFi platform with $161M+ TVL. Defined architecture, performance standards, and analytics dashboarding.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">DeFi</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 2 -->
+                <article class="project-card">
+                    <div class="project-visual" style="background: #111; height: 100%; min-height: 200px; order: 2;"></div>
+                    <div class="project-info" style="order: 1;">
+                        <span class="project-meta">FOUNDING ENGINEER · 2022-2024</span>
+                        <h3>Plex / Canto</h3>
+                        <p class="dim">Sole frontend owner. Evolved from a cyberpunk terminal UI (V1) to a Windows 95 masterpiece (V3). Consolidated 9 apps into one.</p>
+                        <div class="project-tags">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Design Systems</span>
+                            <span class="tag">Web3</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 3 -->
+                <article class="project-card">
+                    <div class="project-visual" style="background: #111; height: 100%; min-height: 200px; order: 2;"></div>
+                    <div class="project-info" style="order: 1;">
+                        <span class="project-meta">HARDWARE/IOT · 2020-2022</span>
+                        <h3>Mixed Reality Kiosks</h3>
+                        <p class="dim">Built production unity apps for physical touch kiosks. Validated real hardware constraints, payments, and remote diagnostics.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Hardware</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about-grid">
+            <div class="info-col">
+                <span class="section-title">// PHILOSOPHY</span>
+                <h2>I don't over-engineer. I ship.</h2>
+                <p class="dim" style="margin-bottom:1rem;">My career hasn't followed a straight academic path. It's been built by shipping real products, solving real problems, and taking full ownership.</p>
+                <p class="dim">I work best in small teams where speed, ownership, and trust matter. I prioritize execution over perfection.</p>
+            </div>
+            <div class="info-col">
+                 <span class="section-title">// TOOLKIT</span>
+                 <ul class="skill-list">
+                     <li><span>Frontend</span> <span>React, Next.js, Tailwind</span></li>
+                     <li><span>Design</span> <span>Figma, shadcn, Design Systems</span></li>
+                     <li><span>Backend</span> <span>Node, Stripe, Cloudflare</span></li>
+                     <li><span>Game Dev</span> <span>Unity, C#, Blender</span></li>
+                 </ul>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="timeline">
+            <div class="section-header">
+                <span class="section-title">// TRAJECTORY</span>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-date">2024 — PRESENT</span>
+                <div>
+                    <h3 class="timeline-role">Sole Frontend Engineer @ Theo</h3>
+                    <p class="dim">Managing user-facing UI for $160M+ TVL DeFi platform. UK/Remote.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">2022 — 2024</span>
+                <div>
+                    <h3 class="timeline-role">Founding Frontend Lead @ Plex</h3>
+                    <p class="dim">Built Canto network interfaces. 1,100+ commits, 4 major versions.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">2020 — 2022</span>
+                <div>
+                    <h3 class="timeline-role">Engineer @ MR Startup</h3>
+                    <p class="dim">Public-facing interactive kiosks, Unity, Hardware integration.</p>
+                </div>
+            </div>
+
+             <div class="timeline-item">
+                <span class="timeline-date">2013 — 2019</span>
+                <div>
+                    <h3 class="timeline-role">Game Developer</h3>
+                    <p class="dim">Published 8-10 mobile games. Learned systems thinking.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact-section">
+            <p class="mono accent">READY TO SHIP?</p>
+            <a href="mailto:hello@waj.dev" class="cta-big">Let's build somewhat <br>great together.</a>
+            <div style="margin-top: 2rem;">
+                <p class="dim">Hyderabad, India (UK-Oriented) · Remote First</p>
+            </div>
+        </section>
+
+        <footer>
+            <span>© 2025 WAJ.DEV</span>
+            <span>SYSTEM_READY</span>
+        </footer>
+    </div>
+
+    <script>
+        // Simple Interaction Observer for reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

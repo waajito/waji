@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waj | Manifesto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0f;
+            --text-main: #e0e0e0;
+            --text-dim: #808080;
+            --accent: #ccff00;
+            --line: #222222;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            height: 100vh;
+            overflow: hidden;
+            /* Main body no scroll */
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .dim {
+            color: var(--text-dim);
+        }
+
+        /* The Main Split */
+        .split-layout {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* LEFT PANEL (Fixed) */
+        .side-panel {
+            width: 40%;
+            padding: 4rem;
+            border-right: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            background: var(--bg);
+            z-index: 2;
+        }
+
+        .side-panel h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .role-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--bg);
+            background: var(--accent);
+            padding: 0.25rem 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .bio-brief {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 400px;
+        }
+
+        .contact-mini {
+            margin-top: auto;
+        }
+
+        .email-link {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 0.5rem;
+        }
+
+        .email-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* RIGHT PANEL (Scroll) */
+        .content-panel {
+            width: 60%;
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .scroll-content {
+            padding: 4rem;
+            padding-bottom: 8rem;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            margin-bottom: 2rem;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 10;
+        }
+
+        /* Work Items */
+        .project-item {
+            margin-bottom: 6rem;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-year {
+            font-family: var(--font-mono);
+            color: var(--text-dim);
+        }
+
+        .project-desc {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .tech-list {
+            display: flex;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .split-layout {
+                flex-direction: column;
+                overflow: auto;
+                height: auto;
+            }
+
+            .side-panel,
+            .content-panel {
+                width: 100%;
+                height: auto;
+                border-right: none;
+            }
+
+            .side-panel {
+                padding: 3rem 2rem;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .content-panel {
+                overflow: visible;
+            }
+
+            .scroll-content {
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="split-layout">
+        <!-- FIXED LEFT -->
+        <aside class="side-panel">
+            <div>
+                <span class="role-tag">FOUNDING ENGINEER</span>
+                <h1>BHARADWAJ<br>PALAKURTHY</h1>
+                <p class="bio-brief">
+                    I build and ship production-ready products for startups — fast. <br><br>
+                    Specializing in zero-to-zero DeFi architectures and high-stakes user experiences.
+                </p>
+            </div>
+
+            <div class="contact-mini">
+                <div
+                    style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem;">
+                    AVAILABLE FOR NEW ROLES
+                </div>
+                <a href="mailto:hello@waj.dev" class="email-link">hello@waj.dev</a>
+            </div>
+        </aside>
+
+        <!-- SCROLLING RIGHT -->
+        <main class="content-panel">
+            <div class="scroll-content">
+
+                <span class="section-label">01 // SELECT WORK</span>
+
+                <article class="project-item">
+                    <div class="project-head">
+                        <h2 class="project-title">THEO</h2>
+                        <span class="project-year">2024</span>
+                    </div>
+                    <p class="project-desc">
+                        Sole frontend engineer for a live DeFi platform with $161M+ TVL.
+                        I own the entire user-facing stack, from architecture to analytics.
+                    </p>
+                    <div class="tech-list">
+                        <span>REACT</span>
+                        <span>NEXT.JS</span>
+                        <span>WEB3</span>
+                    </div>
+                </article>
+
+                <article class="project-item">
+                    <div class="project-head">
+                        <h2 class="project-title">PLEX / CANTO</h2>
+                        <span class="project-year">2022 — 2024</span>
+                    </div>
+                    <p class="project-desc">
+                        Founding Engineer. Built the entire Canto ecosystem.
+                        Transformed a complex 9-app ecosystem into a unified "Windows 95" style masterpiece.
+                    </p>
+                    <div class="tech-list">
+                        <span>TYPESCRIPT</span>
+                        <span>DESIGN SYSTEM</span>
+                    </div>
+                </article>
+
+                <article class="project-item">
+                    <div class="project-head">
+                        <h2 class="project-title">MR KIOSKS</h2>
+                        <span class="project-year">2020 — 2022</span>
+                    </div>
+                    <p class="project-desc">
+                        Hardware-software integration for public mixed reality kiosks.
+                        Unity-based production apps handling real payments and users.
+                    </p>
+                    <div class="tech-list">
+                        <span>UNITY</span>
+                        <span>HARDWARE</span>
+                    </div>
+                </article>
+
+                <div style="margin-top: 6rem;"></div>
+                <span class="section-label">02 // PHILOSOPHY</span>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 2rem;">
+                        "I don't over-engineer. I ship."
+                    </h3>
+                    <p class="dim" style="font-size: 1.1rem; max-width: 600px; margin-bottom: 2rem;">
+                        My career hasn't followed a straight academic path. It's been built by shipping real products,
+                        solving real problems, and taking full ownership.
+                    </p>
+
+                    <div class="tech-list" style="flex-wrap: wrap;">
+                        <span>REACT</span>
+                        <span>TAILWIND</span>
+                        <span>FIGMA</span>
+                        <span>NODE</span>
+                        <span>POSTHOG</span>
+                        <span>STRIPE</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
