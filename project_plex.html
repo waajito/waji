@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waj | Plex Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* SHARED SYSTEM CORE STYLES */
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0f;
+            --text-main: #e0e0e0;
+            --text-dim: #808080;
+            --accent: #ccff00;
+            --line: #222222;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .dim {
+            color: var(--text-dim);
+        }
+
+        /* GRID BG */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: bold;
+        }
+
+        /* Content */
+        h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1;
+            margin: 1rem 0 2rem 0;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        h3 {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .meta-item strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .meta-item span {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .img-block {
+            width: 100%;
+            height: 400px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            border: 1px solid var(--line);
+            color: #555;
+            font-family: var(--font-mono);
+        }
+
+        .back-link {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo"><- WAJ.DEV</a>
+                    <span class="mono dim">CASE STUDY :: 001</span>
+        </nav>
+
+        <span class="mono accent">FOUNDING ENGINEER</span>
+        <h1>PLEX / CANTO</h1>
+        <p class="dim" style="font-size: 1.4rem;">
+            Designing and developing an entire layer-1 blockchain ecosystem. <br>
+            From Cyberpunk terminals to a Windows 95 operating system.
+        </p>
+
+        <div class="meta-grid">
+            <div class="meta-item"><span>TIMELINE</span><strong>2022 — 2024</strong></div>
+            <div class="meta-item"><span>ROLE</span><strong>SOLE FRONTEND</strong></div>
+            <div class="meta-item"><span>STACK</span><strong>NEXT.JS / WEB3</strong></div>
+        </div>
+
+        <div class="img-block">[HERO_IMAGE_PLEX_V3]</div>
+
+        <p>
+            I joined Plex as a founding engineer and became the sole frontend owner for Canto.
+            What started as "build a lending interface" turned into 2.5 years of designing and developing an entire DeFi
+            ecosystem.
+            I owned everything user-facing: architecture, components, animations, performance, and the design direction.
+        </p>
+
+        <h2>V1 — THE CYBERPUNK ERA</h2>
+        <p>
+            May – September 2022. We launched with nine separate applications—lending, staking, governance, DEX—each on
+            its own subdomain.
+            The aesthetic was aggressive: Neon scanlines, typing animations, glitch effects.
+        </p>
+        <div class="img-block" style="height: 300px;">[V1_TERMINAL_SCREENSHOT]</div>
+        <p>
+            <strong>The Problem:</strong> Users had to reconnect their wallets on every subdomain. Beautiful code,
+            terrible UX.
+        </p>
+
+        <h2>V2 — CONSOLIDATION</h2>
+        <p>
+            I tore everything down and rebuilt from scratch. I consolidated nine apps into one unified platform where
+            users never lose context.
+            This led to a <strong>300% increase in mobile usage</strong> and zero wallet disconnection complaints.
+        </p>
+
+        <h2>V3 — THE MASTERPIECE</h2>
+        <p>
+            The final version. We adopted a <strong>Windows 95 aesthetic</strong>. Not just for nostalgia—but because it
+            felt functional yet delightful.
+        </p>
+        <h3>Technical Wins</h3>
+        <p>
+            > Migrated to Next.js for SSR.<br>
+            > Full TypeScript adoption.<br>
+            > 95% Test Coverage.<br>
+            > 40% Faster load times.
+        </p>
+
+        <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); text-align: center;">
+            <a href="index.html" class="mono accent" style="font-size: 1.2rem; text-decoration: underline;">RETURN TO
+                HOME</a>
+        </div>
+
+    </div>
+</body>
+
+</html>

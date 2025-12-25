@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waj | MR Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* SHARED SYSTEM CORE STYLES */
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0f;
+            --text-main: #e0e0e0;
+            --text-dim: #808080;
+            --accent: #ccff00;
+            --line: #222222;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .dim {
+            color: var(--text-dim);
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: bold;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1;
+            margin: 1rem 0 2rem 0;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .meta-item strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .meta-item span {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .img-block {
+            width: 100%;
+            height: 400px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            border: 1px solid var(--line);
+            color: #555;
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo"><- WAJ.DEV</a>
+                    <span class="mono dim">CASE STUDY :: 003</span>
+        </nav>
+
+        <span class="mono accent">HARDWARE STARTUP</span>
+        <h1>MIXED REALITY KIOSKS</h1>
+        <p class="dim" style="font-size: 1.4rem;">
+            Building the bridge between digital content and physical spaces.
+        </p>
+
+        <div class="meta-grid">
+            <div class="meta-item"><span>TIMELINE</span><strong>2020 — 2022</strong></div>
+            <div class="meta-item"><span>ROLE</span><strong>SOFTWARE ENGINEER</strong></div>
+            <div class="meta-item"><span>STACK</span><strong>UNITY / C#</strong></div>
+        </div>
+
+        <div class="img-block">[HARDWARE_SETUP_PHOTO]</div>
+
+        <h2>THE PROTOTYPE</h2>
+        <p>
+            I worked at a stealth mixed-reality startup building public-facing interactive kiosks.
+            This wasn't a demo. It was real hardware in real locations with real users.
+        </p>
+
+        <h2>WHAT I OWNED</h2>
+        <p>
+            <strong>> Unity Application:</strong> Built the core production application handling touch inputs,
+            animations, and state.
+        </p>
+        <p>
+            <strong>> Hardware Integration:</strong> Integrated DSLR cameras for photo capture and IR touch panels to
+            turn standard 4K TVs into giant touchscreens.
+        </p>
+        <p>
+            <strong>> Payments:</strong> Implemented Stripe payment flows directly into the kiosk interface.
+        </p>
+
+        <h2>WHY IT MATTERED</h2>
+        <p>
+            Software failures here meant physical failures. I learned how to build resilient systems that could recover
+            from hardware disconnects, network outages, and user error without a technician on site.
+        </p>
+
+        <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); text-align: center;">
+            <a href="index.html" class="mono accent" style="font-size: 1.2rem; text-decoration: underline;">RETURN TO
+                HOME</a>
+        </div>
+
+    </div>
+</body>
+
+</html>
