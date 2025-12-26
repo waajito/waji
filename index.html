@@ -72,21 +72,19 @@
             transition: 0.3s;
         }
 
-        /* GRID BG */
-        .grid-bg {
-            position: fixed;
+        /* CANVAS BG */
+        #bg-canvas {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background-image:
-                linear-gradient(var(--line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--line) 1px, transparent 1px);
-            background-size: 80px 80px;
-            opacity: 0.1;
-            z-index: 0;
-            pointer-events: none;
+            height: 100%;
+            z-index: -1;
         }
+
+        /* GRID BG - Legacy Removed
+        .grid-bg { ... } 
+        */
 
         /* NAV */
         nav {
@@ -129,12 +127,14 @@
 
         /* HERO (Design A - Reverted) */
         .hero {
+            position: relative;
             min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-top: 5rem;
             border-bottom: 1px solid var(--line);
+            overflow: hidden;
         }
 
         .status-badge {
@@ -418,8 +418,6 @@
 
 <body>
 
-    <div class="grid-bg"></div>
-
     <nav>
         <div class="nav-logo">WAJ.DEV</div>
         <div class="nav-links">
@@ -429,22 +427,23 @@
         </div>
     </nav>
 
-    <div class="container">
-
-        <!-- HERO (Reverted to Design A) -->
-        <section class="hero">
-            <div data-gsap="fade-up">
-                <div class="status-badge">
-                    <div class="status-dot"></div>
-                    AVAILABLE FOR NEW ROLES
-                </div>
-                <h1>Frontend <br><span class="dim">& Product Engineer</span></h1>
-                <p style="max-width: 600px; font-size: 1.25rem; color: var(--text-dim); margin-top: 2rem;">
-                    I build and ship production-ready products for startups — fast. <br>
-                    Core strengths in rapid delivery, design systems, and real-world execution.
-                </p>
+    <!-- HERO (Moved OUTSIDE container for full width canvas) -->
+    <section class="hero">
+        <canvas id="bg-canvas"></canvas>
+        <div class="container hero-text-container" data-gsap="fade-up">
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                AVAILABLE FOR NEW ROLES
             </div>
-        </section>
+            <h1>Frontend <br><span class="dim">& Product Engineer</span></h1>
+            <p style="max-width: 600px; font-size: 1.25rem; color: var(--text-dim); margin-top: 2rem;">
+                I build and ship production-ready products for startups — fast. <br>
+                Core strengths in rapid delivery, design systems, and real-world execution.
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
 
         <!-- WORK BENTO GRID (Kept) -->
         <section id="work">
@@ -701,6 +700,117 @@
                 }
             });
         });
+
+        // --- GEOMETRIC WAVE CANVAS START ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        const heroSection = document.querySelector('.hero');
+        const heroText = document.querySelector('.hero-text-container'); // Track text container
+
+        let width, height;
+        let particles = [];
+        const gap = 40;
+        let rows, cols;
+        let mouse = { x: -1000, y: -1000 };
+        let time = 0;
+        let isHoveringText = false; // Flag for text hover
+        let hoverVal = 0; // Smoothed value (0.0 to 1.0)
+
+        function initCanvas() {
+            width = canvas.width = heroSection.offsetWidth; // Now full width
+            height = canvas.height = heroSection.offsetHeight;
+
+            particles = [];
+            cols = Math.ceil(width / gap);
+            rows = Math.ceil(height / gap);
+
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    particles.push({
+                        x: i * gap + (gap / 2),
+                        y: j * gap + (gap / 2),
+                        baseX: i * gap + (gap / 2),
+                        baseY: j * gap + (gap / 2),
+                        size: 2
+                    });
+                }
+            }
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('load', initCanvas);
+        initCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        // Detect hover over specific text elements (tight fit)
+        const textElements = document.querySelectorAll('.hero-text-container .status-badge, .hero-text-container h1, .hero-text-container p');
+        textElements.forEach(el => {
+            el.addEventListener('mouseenter', () => isHoveringText = true);
+            el.addEventListener('mouseleave', () => isHoveringText = false);
+        });
+
+        function lerp(start, end, t) {
+            return start * (1 - t) + end * t;
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            time += 0.02;
+
+            // Smooth Interpolation with Easing
+            // Target is 1 if hovering, 0 if not
+            const targetHover = isHoveringText ? 1 : 0;
+            hoverVal += (targetHover - hoverVal) * 0.05;
+
+            // 1. Dynamic Radius: 75px (Default) -> 150px (Text Hover)
+            const currentMaxDist = lerp(75, 150, hoverVal);
+
+            // 2. Dynamic Color: #ccff00 (Lime) -> #333333 (Darker)
+            const r = Math.round(lerp(204, 51, hoverVal));
+            const g = Math.round(lerp(255, 51, hoverVal));
+            const b = Math.round(lerp(0, 51, hoverVal));
+            const highlightColor = `rgb(${r}, ${g}, ${b})`;
+
+            particles.forEach((p, i) => {
+                const waveOffset = Math.sin(p.x * 0.01 + time) * 10
+                    + Math.sin(p.y * 0.01 + time) * 10;
+
+                let mouseEffect = 0;
+
+                // Calculate Dist
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < currentMaxDist) {
+                    // Smooth falloff based on dynamic radius
+                    mouseEffect = (currentMaxDist - dist) / 5;
+                }
+
+                const currentY = p.baseY + waveOffset - mouseEffect;
+
+                ctx.beginPath();
+                // Scale effect
+                const scale = 1 + (mouseEffect / 10);
+                const size = p.size * scale;
+
+                // Color Logic
+                if (mouseEffect > 2) ctx.fillStyle = highlightColor;
+                else ctx.fillStyle = '#222';
+
+                ctx.arc(p.x, currentY, size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+        // --- GEOMETRIC WAVE CANVAS END ---
 
     </script>
 </body>
