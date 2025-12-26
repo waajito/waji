@@ -364,6 +364,40 @@
             }
         }
 
+        /* About & Skills (From Design A) */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 8rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .info-col h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .skill-list li {
+            border-bottom: 1px solid var(--line);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+        }
+
+        .skill-list li span:last-child {
+            color: var(--text-dim);
+        }
+
         @media (max-width: 900px) {
             .bento-grid {
                 grid-template-columns: 1fr;
@@ -372,6 +406,11 @@
             .card-lg,
             .card-md {
                 grid-column: span 1;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
             }
         }
     </style>
@@ -399,7 +438,7 @@
                     <div class="status-dot"></div>
                     AVAILABLE FOR NEW ROLES
                 </div>
-                <h1>Founding Frontend <br><span class="dim">& Product Engineer</span></h1>
+                <h1>Frontend <br><span class="dim">& Product Engineer</span></h1>
                 <p style="max-width: 600px; font-size: 1.25rem; color: var(--text-dim); margin-top: 2rem;">
                     I build and ship production-ready products for startups — fast. <br>
                     Core strengths in rapid delivery, design systems, and real-world execution.
@@ -440,7 +479,7 @@
                     </div>
                     <div>
                         <span class="card-meta">2020 — 2022</span>
-                        <h3 class="card-title">MR Kiosks</h3>
+                        <h3 class="card-title">Selfie Star</h3>
                         <p class="dim">Public touch-screen interfaces. Real hardware integration.</p>
                         <div class="card-tags">
                             <span class="tag">UNITY</span>
@@ -490,11 +529,13 @@
                     </div>
                     <div>
                         <span class="card-meta">SIDE QUEST</span>
-                        <h3 class="card-title">Game UI Kit</h3>
-                        <p class="dim">A reusable UI system for Unity mobile games.</p>
+                        <h3 class="card-title">Nuggets</h3>
+                        <p class="dim">A 60 words or less mobile app, built using flutter for cross-platform
+                            development.</p>
                         <div class="card-tags">
-                            <span class="tag">UNITY</span>
-                            <span class="tag">ASSET STORE</span>
+                            <span class="tag">FLUTTER</span>
+                            <span class="tag">MOBILE</span>
+                            <span class="tag">GETX</span>
                         </div>
                     </div>
                 </article>
@@ -506,15 +547,39 @@
                         [LEGACY_GAMES]
                     </div>
                     <div>
-                        <span class="card-meta">2013 — 2019</span>
+                        <span class="card-meta">2017 — 2019</span>
                         <h3 class="card-title">Game Dev</h3>
                         <p class="dim">Published 10+ mobile titles. Where I learned systems.</p>
                         <div class="card-tags">
                             <span class="tag">LEGACY</span>
+                            <span class="tag">UNITY</span>
+                            <span class="tag">MOBILE</span>
                         </div>
                     </div>
                 </article>
 
+            </div>
+        </section>
+
+        <!-- ABOUT (From Design A) -->
+        <section id="about" class="about-grid">
+            <div class="info-col">
+                <span class="section-title" style="display:block; margin-bottom: 2rem;">// PHILOSOPHY</span>
+                <h2>I don't over-engineer. I ship.</h2>
+                <p class="dim" style="margin-bottom:1rem; font-size: 1.1rem;">My career hasn't followed a straight
+                    academic path. It's been built by shipping real products, solving real problems, and taking full
+                    ownership.</p>
+                <p class="dim" style="font-size: 1.1rem;">I work best in small teams where speed, ownership, and trust
+                    matter. I prioritize execution over perfection.</p>
+            </div>
+            <div class="info-col">
+                <span class="section-title" style="display:block; margin-bottom: 2rem;">// TOOLKIT</span>
+                <ul class="skill-list">
+                    <li><span>Frontend</span> <span>React, Next.js, Tailwind</span></li>
+                    <li><span>Design</span> <span>Figma, shadcn, Design Systems</span></li>
+                    <li><span>Backend</span> <span>Node, Stripe, Cloudflare</span></li>
+                    <li><span>Game Dev</span> <span>Unity, C#, Blender</span></li>
+                </ul>
             </div>
         </section>
 
@@ -532,7 +597,7 @@
                 <div class="t-item">
                     <div class="t-dot"></div>
                     <span class="t-date">2024 — PRESENT</span>
-                    <h3 class="t-role">Sole Frontend Engineer @ Theo</h3>
+                    <h3 class="t-role">Founding Engineer @ Theo</h3>
                     <p class="t-desc">Owning the entire user-facing stack for a $160M+ Protocol. UK/Remote.</p>
                 </div>
 
@@ -546,14 +611,14 @@
                 <div class="t-item">
                     <div class="t-dot"></div>
                     <span class="t-date">2020 — 2022</span>
-                    <h3 class="t-role">Engineer @ MR Startup</h3>
+                    <h3 class="t-role">Full Stack Engineer @ SelfieStar </h3>
                     <p class="t-desc">Validating hardware-software bridges with Unity and Payment Systems.</p>
                 </div>
 
                 <div class="t-item">
                     <div class="t-dot"></div>
-                    <span class="t-date">2013 — 2019</span>
-                    <h3 class="t-role">Independent Game Dev</h3>
+                    <span class="t-date">2017 — 2020</span>
+                    <h3 class="t-role">Freelancing & Game Development </h3>
                     <p class="t-desc">Learning the hard way. Building, shipping, and debugging live games.</p>
                 </div>
             </div>
