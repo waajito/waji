@@ -145,7 +145,58 @@
             color: #555;
             font-family: var(--font-mono);
         }
+
+        /* GERMS ICONS SECTION */
+        .germs-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .germ-icon {
+            width: 80px;
+            height: 80px;
+            /* Border/Background removed for clean icons, or kept if transparent PNGs need it. 
+               Assuming they are icons, let's keep it minimal or remove bg if not needed. 
+               User asked for "icons", likely PNGs. I'll keep the sizing. */
+            object-fit: contain;
+            /* If they are rectangular/odd shapes, contain keeps aspect ratio */
+        }
+
+        /* MARQUEE SECTION */
+        .marquee-section {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            overflow: hidden;
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 4rem;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 2rem;
+            width: fit-content;
+        }
+
+        .screenshot-card {
+            width: 260px;
+            height: 460px;
+            background: #111;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 8px;
+            /* Slight roundness for mobile feel */
+        }
     </style>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
@@ -168,24 +219,170 @@
             <div class="meta-item"><span>STACK</span><strong>UNITY / BLENDER</strong></div>
         </div>
 
-        <div class="img-block">[GAME_SCREENSHOTS_COLLAGE]</div>
+        <div class="img-block" style="display:none;">[GAME_SCREENSHOTS_COLLAGE]</div>
 
-        <h2>EARLY FOUNDATIONS</h2>
+        <!-- 1. GERMS ICONS (Randomized Scale) -->
+        <div class="germs-grid">
+            <img src="public/icons/image1.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image2.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image3.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image4.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image5.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image6.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image7.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image8.png" class="germ-icon" alt="Tech Icon">
+            <img src="public/icons/image9.png" class="germ-icon" alt="Tech Icon">
+        </div>
+
+        <!-- 2. SCREENSHOT MARQUEE (Velocity Reactive) -->
+        <div class="marquee-section">
+            <div class="marquee-content">
+                <img src="public/sceenshots/screenshot01.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot02.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot03.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot04.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot05.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot06.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot07.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot08.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot09.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot10.jpg" class="screenshot-card" alt="Game Screenshot">
+            </div>
+        </div>
+
+        <h2>THE ILLUSION</h2>
         <p>
-            Before I entered the world of startups and fintech, I built games.
-            I completed schooling and explored multiple academic paths, but my true education happened in Unity and C#.
-        </p>
-        <p>
-            I built and published <strong>8–10 mobile games</strong> on the Play Store and App Store.
+            When I first got into game development, I didn’t have a plan. I had a belief — a slightly delusional one —
+            that software developers were modern-day magicians. You thought of something, and with enough effort, it
+            existed on a screen.
+            Around 2014, that belief pushed me to stop consuming games and start trying to build one.
         </p>
 
-        <h2>LESSONS IN SYSTEMS</h2>
+        <h2>BREAKING THE SPELL</h2>
         <p>
-            Game development gave me a systems-level way of thinking that still shapes how I build products today.
-            When you build a game, you deal with complex state management, physics loops, and performance constraints on
-            low-end devices.
-            These constraints breed creativity.
+            What I didn’t understand at the time was that games are systems, not screens. The first thing that broke
+            that illusion for me was physics. A jump wasn’t just a jump — it was velocity, gravity, frame timing, and
+            collision resolution all fighting each other.
+            I didn’t even have the language for these problems yet. I just knew that something always felt off.
         </p>
+
+        <h2>THE FIRST SHIP</h2>
+        <p>
+            After months of half-finished prototypes, I finally shipped my first game, <strong>Pocket Hopper</strong>.
+            From the outside, it looked simple. Underneath, it was held together by brittle logic and hard-coded values.
+            Seeing it live on the Play Store felt unreal. And almost immediately, uncomfortable. The controls weren’t
+            tight. The feedback wasn’t clear. The game worked, but it didn’t flow.
+        </p>
+
+        <h2>THE SHIFT TO SYSTEMS</h2>
+        <p>
+            That dissatisfaction pushed me forward. With every new project, I became more intentional. I started
+            thinking in terms of systems instead of features — separating game state from presentation, letting
+            animations respond to logic instead of driving it.
+            I learned that “polish” wasn’t visual flair; it was consistency. Predictable physics. Clear hit detection.
+        </p>
+        <p>
+            My next published game, <strong>Exile</strong>, reflected that shift. The codebase was cleaner. The
+            mechanics were more deliberate. It still wasn’t perfect, but it was stable — and stability is underrated
+            when you’re building alone.
+        </p>
+
+        <h2>THE HIDDEN LESSONS</h2>
+        <p>
+            Behind those releases sat a long list of unfinished projects. Some collapsed under scope. Others exposed
+            limitations in my understanding.
+            Without realizing it, game development was shaping how I thought as an engineer. Games punish inefficiency
+            immediately. You can’t ignore performance when every frame counts. You can’t hand-wave UX when a delay of
+            100 milliseconds makes something feel broken.
+        </p>
+
+        <h2>THE TAKEOUT</h2>
+        <p>
+            Eventually, I stepped away from making games full-time to apply those instincts elsewhere. But the habits
+            stuck. Even now, when I build software, I think in terms of responsiveness, state, and flow.
+            Pocket Hopper wasn’t a hit. Exile didn’t go viral. None of my games made headlines.
+            But they taught me how real-time systems behave, how small technical decisions affect user experience, and
+            how to build things that feel right — not just things that compile.
+        </p>
+        <p class="accent">
+            And once you’ve learned that through games, every other kind of software feels a little more honest.
+        </p>
+
+        <!-- SCRIPT FOR ANIMATIONS -->
+        <script>
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 1. GERMS PULSE ANIMATION
+            // Randomizes scale slightly to create a "living/breathing" cluster effect
+            const icons = document.querySelectorAll('.germ-icon');
+            icons.forEach(icon => {
+                gsap.to(icon, {
+                    scale: "random(0.9, 1.1)", // Subtle pulsing range
+                    rotation: "random(-5, 5)",
+                    duration: "random(1, 2)",
+                    ease: "sine.inOut",
+                    repeat: -1,
+                    yoyo: true,
+                    delay: "random(0, 1)"
+                });
+            });
+
+            // 2. MARQUEE WITH VELOCITY REACTION (Optimized)
+            // Uses GSAP Ticker + Modulo for perfect infinite looping
+
+            const marqueeSection = document.querySelector('.marquee-section');
+            const marqueeContent = document.querySelector('.marquee-content');
+
+            // Wait for images to load to get correct widths
+            window.addEventListener('load', () => {
+                const originalContent = marqueeContent.innerHTML;
+                // Clone content twice to ensure we fill wide screens & have buffer
+                marqueeContent.innerHTML = originalContent + originalContent + originalContent;
+
+                const cards = marqueeContent.querySelectorAll('.screenshot-card');
+                const gap = 32; // 2rem gap from CSS
+                // Calculate single set width (approx)
+                // Better: Get total scrollWidth and divide by 3
+                const totalScrollWidth = marqueeContent.scrollWidth;
+                const singleSetWidth = totalScrollWidth / 3;
+
+                let xPos = 0;
+                let scrollVelocity = 0;
+                const baseSpeed = 0.5; // Slightly slower base speed for smoothness
+
+                gsap.ticker.add(() => {
+                    // Update Position
+                    // Move left by (base + velocity)
+                    xPos -= (baseSpeed + scrollVelocity);
+
+                    // Wrap logic using modulo behavior
+                    // If xPos < -singleSetWidth, add singleSetWidth to reset without visual jump
+                    if (xPos <= -singleSetWidth) {
+                        xPos += singleSetWidth;
+                    }
+                    // If xPos > 0 (scrolling up fast), subtract to wrap other way
+                    if (xPos > 0) {
+                        xPos -= singleSetWidth;
+                    }
+
+                    // Apply transform
+                    gsap.set(marqueeContent, { x: xPos, force3D: true });
+
+                    // Decay velocity
+                    scrollVelocity *= 0.95;
+                });
+
+                // Velocity Trigger
+                ScrollTrigger.create({
+                    onUpdate: (self) => {
+                        // self.getVelocity() returns pixels/second
+                        // We scale it down to affect our per-frame movement
+                        const vel = self.getVelocity() / 300;
+                        scrollVelocity += vel * -1; // Invert to match scroll direction if desired, or keep as is
+                    }
+                });
+            });
+        </script>
 
         <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); text-align: center;">
             <a href="index.html" class="mono accent" style="font-size: 1.2rem; text-decoration: underline;">RETURN TO
