@@ -145,6 +145,53 @@
             color: #555;
             font-family: var(--font-mono);
         }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin: 4rem 0;
+            padding: 2rem;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        @media (min-width: 768px) {
+            .specs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .spec-category h3 {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1rem;
+            margin: 0 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .spec-category li {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .spec-category li::before {
+            content: "+";
+            position: absolute;
+            left: 0;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+        }
     </style>
 </head>
 
@@ -173,61 +220,154 @@
         <div class="img-block">[KIOSK_HARDWARE_SETUP]</div>
 
         <p>
-            A few years ago, I worked on a project that still comes back to me—not because it was wildly successful, but
-            because of how much it demanded from me.
-            The company was Arcrome Technologies. Their idea was <strong>SelfieStar</strong>: a kiosk application for
-            movie theatres where people could interact with their favorite stars.
+            A few years ago, I worked on a project that still comes back to me every now and then—not because it was
+            wildly successful, but because of how much it demanded from me, both technically and personally.
+        </p>
+        <p>
+            The company was called <strong>Arcrome Technologies</strong>. It was started by three founders from an
+            architecture background. They had spent years designing physical spaces, and now they wanted to build a
+            product for the general public—something interactive, visual, and immersive. Their idea was a kiosk
+            application, the kind you’d place in movie theatres or malls, where people could walk up, touch the screen,
+            and have an experience rather than just complete a task.
         </p>
 
-        <h2>THE CONCEPT</h2>
+        <h2>THE VISION</h2>
         <p>
-            The core idea was simple on paper: A large touch-screen kiosk. A "Let’s Start" button. A slick animation.
-            You swipe to pick a movie, pay via card or cash, and then take pictures with celebrities from that movie.
-            But simplicity on paper often hides complexity underneath.
+            The core idea was simple on paper. A large touch-screen kiosk. A “Let’s Start” button. A slick animation
+            that pulls you into a movie-selection screen. You swipe left or right, pick a movie, choose how to
+            pay—prepaid or cash—and then take pictures with celebrities from that movie.
+        </p>
+        <p>
+            But simplicity on paper often hides complexity underneath. Once a user selected a movie, the payment flow
+            kicked in. For prepaid users, there was a card-swiping unit attached to the kiosk. For cash payments, a
+            nearby worker would collect the money and enter a unique code into the system. Every worker had their own
+            code, which meant the system could track exactly how much cash each person was responsible for at the end of
+            the day. It was a small detail, but one that mattered a lot in a real-world setup.
+        </p>
+        <p>
+            After payment, the experience shifted gears. A countdown began. An animation played. The screen told users
+            exactly where to stand, with markings on the ground to guide them. Then came the magic: a pre-recorded video
+            of celebrities—shot earlier on a green screen—played on the display. At the same time, the kiosk captured
+            live images of the user and composited them together in real time.
         </p>
 
-        <h2>THE COMPLEXITY</h2>
+        <h2>THE HARDWARE REALITY</h2>
         <p>
-            This wasn't just software. It was physics, optics, and user perception.
-            We had to handle <strong>payments</strong> (card swiping + manual cash codes), <strong>guidance</strong>
-            (telling users exactly where to stand), and <strong>lighting</strong> match-ups.
-            The founders weren't tech-savvy, so they relied on me to define what was technically possible.
+            To make that illusion believable, everything had to line up. The lighting used when the celebrity video was
+            recorded had to be recreated precisely inside the kiosk. Even small mismatches would break the illusion
+            instantly. This wasn’t just software—it was physics, optics, and user perception all colliding at once.
+        </p>
+        <p>
+            That entire system landed on my plate. The founders weren’t particularly tech-savvy, and they were upfront
+            about it. They relied on me not just to build the software, but to define what was technically possible in
+            the first place. They showed me an early version of the UI and asked a simple question: Is this feasible? I
+            asked for wireframes. They gave me rough sketches. I took those and redesigned the UI from scratch—keeping
+            their vision intact, but grounding it in reality.
         </p>
 
-        <h2>THE TECH STACK</h2>
+        <h2>THE BUILD</h2>
         <p>
-            I chose <strong>Unity</strong> as the foundation. It gave us real-time rendering, animation control, and
-            hardware flexibility.
-            To build the "touch" system, we paired a <strong>55-inch TV</strong> with a <strong>55-inch IR touch
-                frame</strong> connected to a PC.
-            We added a DSLR camera for high-quality capture. It was a massive, custom-built hardware beast.
+            This product needed payment integration, live camera feeds, real-time chroma keying, server-driven content,
+            and smooth animations, all running continuously in public spaces. That immediately meant we needed serious
+            hardware.
+        </p>
+        <p>
+            After evaluating the constraints, I made a call: <strong>Unity</strong> would be the foundation. It gave us
+            real-time rendering, animation control, shader access, and hardware flexibility—all under one roof.
+        </p>
+        <p>
+            To turn the kiosk into a true touch system, we paired a <strong>55-inch TV</strong> with a <strong>55-inch
+                IR touch frame</strong> and connected it to a PC. We added a DSLR camera for image quality. Every piece
+            of hardware had to be selected, tested, and integrated carefully.
         </p>
 
-        <h2>THE EXECUTION</h2>
+        <h2>BACKEND & INFRASTRUCTURE</h2>
         <p>
-            I wasn't just coding; I was troubleshooting hardware and designing flows.
-            I built the UI with **DOTween** for cinematic transitions—standout elements like a massive "S" animation
-            that filled the screen.
-            For the backend, we used <strong>Strapi (Headless CMS)</strong> on AWS.
-            <strong>The Caching System:</strong> Video files were gigabytes in size. I designed a system where kiosks
-            would download content during boot-up or maintenance windows to avoid streaming issues.
+            We built the backend using <strong>Strapi</strong>, a CMS that let us model collections like movies,
+            metadata, and assets cleanly. All of it was hosted on <strong>AWS</strong>, with videos stored separately.
+            One major challenge was video delivery. These were high-quality files—gigabytes in size. Streaming them
+            constantly was unrealistic. So I designed a caching system: videos would download when the kiosk booted up,
+            after every 24 hours, or when a nearby worker manually triggered an update. During this time, the kiosk
+            would enter maintenance mode and show a progress bar.
         </p>
 
         <h2>THE MAGIC: REAL-TIME COMPOSITING</h2>
         <p>
-            The heart of the experience. I wrote a custom shader to perform <strong>chroma keying in real-time</strong>.
-            We took pre-recorded celebrity footage (green screen) and the live camera feed, layering them together to
-            create the illusion that the user was standing right next to the star.
-            Tweaking thresholds and lighting spills until it looked real.
+            I wrote a <strong>custom shader</strong> to perform chroma keying in real time, removing the green
+            background from the celebrity footage cleanly. The live camera feed was then layered behind it, creating the
+            illusion of presence. It took countless iterations—tweaking thresholds, lighting, color spill—but
+            eventually, it worked.
         </p>
         <div class="img-block">[CHROMA_KEY_COMPOSITING_DEMO]</div>
 
+        <h2>TECHNICAL ARCHITECTURE</h2>
+        <div class="specs-grid">
+            <div class="spec-category">
+                <h3>Frontend / App</h3>
+                <ul>
+                    <li>Unity (Core Framework)</li>
+                    <li>DOTween (UI Animations)</li>
+                    <li>Custom Chroma Key Shaders</li>
+                    <li>Render Textures (Compositing)</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Hardware</h3>
+                <ul>
+                    <li>High-Performance Windows PC</li>
+                    <li>55" Display + IR Touch Frame</li>
+                    <li>DSLR Camera Integration</li>
+                    <li>Card Swipe & Payment Units</li>
+                    <li>Custom Wooden Enclosure</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Backend</h3>
+                <ul>
+                    <li>Strapi (Headless CMS)</li>
+                    <li>Custom Content Delivery API</li>
+                    <li>Geo-based Targeting (City/Mall)</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Infrastructure</h3>
+                <ul>
+                    <li>AWS (Hosting & Storage)</li>
+                    <li>Local Caching System</li>
+                    <li>Maintenance Mode Logic</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Payments</h3>
+                <ul>
+                    <li>Stripe (Prepaid)</li>
+                    <li>Manual Cash Codes</li>
+                    <li>Worker Accountability Tracking</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Media</h3>
+                <ul>
+                    <li>Green Screen Production</li>
+                    <li>Calibration & Lighting Match</li>
+                    <li>Real-time Live Compositing</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>THE PITCH & THE PIVOT</h2>
+        <p>
+            The prototype eventually made its way into real conversations with investors. People were interested—but
+            interest came with conditions. "What else can it do?"
+            Some wanted social sharing. Others wanted analytics dashboards. The goalposts kept moving.
+        </p>
+
         <h2>THE LESSON</h2>
         <p>
-            The prototype worked. We pitched to investors. But the goalposts kept moving ("What else can it do?").
-            The project eventually reached a quiet conclusion, but it taught me more than many successes did.
-            It forced me to think end-to-end—hardware, software, users, and reality. It reminded me that building
-            something real is messy, but valuable.
+            Building something real in the physical world requires alignment, timing, and restraint as much as
+            engineering. Sometimes the hardest part isn’t building the thing—it’s deciding when enough is enough.
+            That project taught me more than many “successful” ones ever did. It forced me to think end-to-end—hardware,
+            software, users, constraints, and reality. That doesn’t make it a failure. It just makes it a chapter.
         </p>
 
         <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); text-align: center;">
