@@ -157,42 +157,77 @@
         </nav>
 
         <span class="mono accent">HARDWARE STARTUP</span>
-        <h1>MIXED REALITY KIOSKS</h1>
+        <span class="mono accent">HARDWARE STARTUP</span>
+        <h1>SELFIESTAR</h1>
         <p class="dim" style="font-size: 1.4rem;">
-            Building the bridge between digital content and physical spaces.
+            Building the bridge between digital content and physical spaces. <br>
+            A story of hardware, software, and the "illusion" of reality.
         </p>
 
         <div class="meta-grid">
             <div class="meta-item"><span>TIMELINE</span><strong>2020 — 2022</strong></div>
-            <div class="meta-item"><span>ROLE</span><strong>SOFTWARE ENGINEER</strong></div>
-            <div class="meta-item"><span>STACK</span><strong>UNITY / C#</strong></div>
+            <div class="meta-item"><span>ROLE</span><strong>LEAD ENGINEER</strong></div>
+            <div class="meta-item"><span>STACK</span><strong>UNITY / HARDWARE</strong></div>
         </div>
 
-        <div class="img-block">[HARDWARE_SETUP_PHOTO]</div>
+        <div class="img-block">[KIOSK_HARDWARE_SETUP]</div>
 
-        <h2>THE PROTOTYPE</h2>
         <p>
-            I worked at a stealth mixed-reality startup building public-facing interactive kiosks.
-            This wasn't a demo. It was real hardware in real locations with real users.
-        </p>
-
-        <h2>WHAT I OWNED</h2>
-        <p>
-            <strong>> Unity Application:</strong> Built the core production application handling touch inputs,
-            animations, and state.
-        </p>
-        <p>
-            <strong>> Hardware Integration:</strong> Integrated DSLR cameras for photo capture and IR touch panels to
-            turn standard 4K TVs into giant touchscreens.
-        </p>
-        <p>
-            <strong>> Payments:</strong> Implemented Stripe payment flows directly into the kiosk interface.
+            A few years ago, I worked on a project that still comes back to me—not because it was wildly successful, but
+            because of how much it demanded from me.
+            The company was Arcrome Technologies. Their idea was <strong>SelfieStar</strong>: a kiosk application for
+            movie theatres where people could interact with their favorite stars.
         </p>
 
-        <h2>WHY IT MATTERED</h2>
+        <h2>THE CONCEPT</h2>
         <p>
-            Software failures here meant physical failures. I learned how to build resilient systems that could recover
-            from hardware disconnects, network outages, and user error without a technician on site.
+            The core idea was simple on paper: A large touch-screen kiosk. A "Let’s Start" button. A slick animation.
+            You swipe to pick a movie, pay via card or cash, and then take pictures with celebrities from that movie.
+            But simplicity on paper often hides complexity underneath.
+        </p>
+
+        <h2>THE COMPLEXITY</h2>
+        <p>
+            This wasn't just software. It was physics, optics, and user perception.
+            We had to handle <strong>payments</strong> (card swiping + manual cash codes), <strong>guidance</strong>
+            (telling users exactly where to stand), and <strong>lighting</strong> match-ups.
+            The founders weren't tech-savvy, so they relied on me to define what was technically possible.
+        </p>
+
+        <h2>THE TECH STACK</h2>
+        <p>
+            I chose <strong>Unity</strong> as the foundation. It gave us real-time rendering, animation control, and
+            hardware flexibility.
+            To build the "touch" system, we paired a <strong>55-inch TV</strong> with a <strong>55-inch IR touch
+                frame</strong> connected to a PC.
+            We added a DSLR camera for high-quality capture. It was a massive, custom-built hardware beast.
+        </p>
+
+        <h2>THE EXECUTION</h2>
+        <p>
+            I wasn't just coding; I was troubleshooting hardware and designing flows.
+            I built the UI with **DOTween** for cinematic transitions—standout elements like a massive "S" animation
+            that filled the screen.
+            For the backend, we used <strong>Strapi (Headless CMS)</strong> on AWS.
+            <strong>The Caching System:</strong> Video files were gigabytes in size. I designed a system where kiosks
+            would download content during boot-up or maintenance windows to avoid streaming issues.
+        </p>
+
+        <h2>THE MAGIC: REAL-TIME COMPOSITING</h2>
+        <p>
+            The heart of the experience. I wrote a custom shader to perform <strong>chroma keying in real-time</strong>.
+            We took pre-recorded celebrity footage (green screen) and the live camera feed, layering them together to
+            create the illusion that the user was standing right next to the star.
+            Tweaking thresholds and lighting spills until it looked real.
+        </p>
+        <div class="img-block">[CHROMA_KEY_COMPOSITING_DEMO]</div>
+
+        <h2>THE LESSON</h2>
+        <p>
+            The prototype worked. We pitched to investors. But the goalposts kept moving ("What else can it do?").
+            The project eventually reached a quiet conclusion, but it taught me more than many successes did.
+            It forced me to think end-to-end—hardware, software, users, and reality. It reminded me that building
+            something real is messy, but valuable.
         </p>
 
         <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); text-align: center;">
