@@ -193,6 +193,16 @@
             border-radius: 8px;
             /* Slight roundness for mobile feel */
         }
+
+        .title-card {
+            width: 350px;
+            height: 200px;
+            background: #111;
+            border: 1px solid var(--line);
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 8px;
+        }
     </style>
     <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -234,21 +244,6 @@
             <img src="public/icons/image9.png" class="germ-icon" alt="Tech Icon">
         </div>
 
-        <!-- 2. SCREENSHOT MARQUEE (Velocity Reactive) -->
-        <div class="marquee-section">
-            <div class="marquee-content">
-                <img src="public/sceenshots/screenshot01.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot02.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot03.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot04.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot05.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot06.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot07.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot08.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot09.jpg" class="screenshot-card" alt="Game Screenshot">
-                <img src="public/sceenshots/screenshot10.jpg" class="screenshot-card" alt="Game Screenshot">
-            </div>
-        </div>
 
         <h2>THE ILLUSION</h2>
         <p>
@@ -273,6 +268,19 @@
             Seeing it live on the Play Store felt unreal. And almost immediately, uncomfortable. The controls weren’t
             tight. The feedback wasn’t clear. The game worked, but it didn’t flow.
         </p>
+
+
+        <!-- 3. TITLES MARQUEE -->
+        <div class="marquee-section marquee-titles" style="margin-top: 6rem;">
+            <div class="marquee-content">
+                <img src="public/titles/title01.jpg" class="title-card" alt="Game Title">
+                <img src="public/titles/title02.jpg" class="title-card" alt="Game Title">
+                <img src="public/titles/title03.jpg" class="title-card" alt="Game Title">
+                <img src="public/titles/title04.jpg" class="title-card" alt="Game Title">
+                <img src="public/titles/title05.jpg" class="title-card" alt="Game Title">
+                <img src="public/titles/title06.jpg" class="title-card" alt="Game Title">
+            </div>
+        </div>
 
         <h2>THE SHIFT TO SYSTEMS</h2>
         <p>
@@ -308,12 +316,27 @@
             And once you’ve learned that through games, every other kind of software feels a little more honest.
         </p>
 
+        <!-- 2. SCREENSHOT MARQUEE (Velocity Reactive) -->
+        <div class="marquee-section marquee-screenshots">
+            <div class="marquee-content">
+                <img src="public/sceenshots/screenshot01.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot02.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot03.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot04.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot05.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot06.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot07.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot08.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot09.jpg" class="screenshot-card" alt="Game Screenshot">
+                <img src="public/sceenshots/screenshot10.jpg" class="screenshot-card" alt="Game Screenshot">
+            </div>
+        </div>
+
         <!-- SCRIPT FOR ANIMATIONS -->
         <script>
             gsap.registerPlugin(ScrollTrigger);
 
             // 1. GERMS PULSE ANIMATION
-            // Randomizes scale slightly to create a "living/breathing" cluster effect
             const icons = document.querySelectorAll('.germ-icon');
             icons.forEach(icon => {
                 gsap.to(icon, {
@@ -327,60 +350,63 @@
                 });
             });
 
-            // 2. MARQUEE WITH VELOCITY REACTION (Optimized)
-            // Uses GSAP Ticker + Modulo for perfect infinite looping
+            // 2. GENERIC MARQUEE LOGIC
+            // Handles both vertical screenshots and horizontal titles
+            function initMarquee(selector, baseSpeed = 0.5) {
+                const section = document.querySelector(selector);
+                if (!section) return;
 
-            const marqueeSection = document.querySelector('.marquee-section');
-            const marqueeContent = document.querySelector('.marquee-content');
+                const content = section.querySelector('.marquee-content');
 
-            // Wait for images to load to get correct widths
+                // Wait for images to load (simplified by window load in this context, 
+                // but checking here ensures we run logic after DOM is ready)
+                const originalContent = content.innerHTML;
+                // Clone 3 times for safety (Original + 3 clones = 4x width)
+                content.innerHTML = originalContent + originalContent + originalContent + originalContent;
+
+                // We need to calculate width after layout
+                requestAnimationFrame(() => {
+                    const totalScrollWidth = content.scrollWidth;
+                    const singleSetWidth = totalScrollWidth / 4;
+
+                    let xPos = 0;
+                    let scrollVelocity = 0;
+
+                    gsap.ticker.add(() => {
+                        // Update Position
+                        xPos -= (baseSpeed + scrollVelocity);
+
+                        // Wrap logic
+                        if (xPos <= -singleSetWidth) {
+                            xPos += singleSetWidth;
+                        }
+                        if (xPos > 0) {
+                            xPos -= singleSetWidth;
+                        }
+
+                        // Apply transform
+                        gsap.set(content, { x: xPos, force3D: true });
+
+                        // Decay velocity
+                        scrollVelocity *= 0.95;
+                    });
+
+                    // Velocity Trigger
+                    ScrollTrigger.create({
+                        onUpdate: (self) => {
+                            // REDUCED SENSITIVITY: 
+                            // Was / 300, now / 2000 for much subtler effect
+                            const vel = self.getVelocity() / 2000;
+                            scrollVelocity += vel * -1;
+                        }
+                    });
+                });
+            }
+
+            // Init both marquees on load
             window.addEventListener('load', () => {
-                const originalContent = marqueeContent.innerHTML;
-                // Clone content twice to ensure we fill wide screens & have buffer
-                marqueeContent.innerHTML = originalContent + originalContent + originalContent;
-
-                const cards = marqueeContent.querySelectorAll('.screenshot-card');
-                const gap = 32; // 2rem gap from CSS
-                // Calculate single set width (approx)
-                // Better: Get total scrollWidth and divide by 3
-                const totalScrollWidth = marqueeContent.scrollWidth;
-                const singleSetWidth = totalScrollWidth / 3;
-
-                let xPos = 0;
-                let scrollVelocity = 0;
-                const baseSpeed = 0.5; // Slightly slower base speed for smoothness
-
-                gsap.ticker.add(() => {
-                    // Update Position
-                    // Move left by (base + velocity)
-                    xPos -= (baseSpeed + scrollVelocity);
-
-                    // Wrap logic using modulo behavior
-                    // If xPos < -singleSetWidth, add singleSetWidth to reset without visual jump
-                    if (xPos <= -singleSetWidth) {
-                        xPos += singleSetWidth;
-                    }
-                    // If xPos > 0 (scrolling up fast), subtract to wrap other way
-                    if (xPos > 0) {
-                        xPos -= singleSetWidth;
-                    }
-
-                    // Apply transform
-                    gsap.set(marqueeContent, { x: xPos, force3D: true });
-
-                    // Decay velocity
-                    scrollVelocity *= 0.95;
-                });
-
-                // Velocity Trigger
-                ScrollTrigger.create({
-                    onUpdate: (self) => {
-                        // self.getVelocity() returns pixels/second
-                        // We scale it down to affect our per-frame movement
-                        const vel = self.getVelocity() / 300;
-                        scrollVelocity += vel * -1; // Invert to match scroll direction if desired, or keep as is
-                    }
-                });
+                initMarquee('.marquee-screenshots', 0.5);
+                initMarquee('.marquee-titles', 0.4);
             });
         </script>
 
