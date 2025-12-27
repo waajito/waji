@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waj | Nuggets Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* SHARED SYSTEM CORE STYLES */
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0f;
+            --text-main: #e0e0e0;
+            --text-dim: #808080;
+            --accent: #ccff00;
+            --line: #222222;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .dim {
+            color: var(--text-dim);
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: bold;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1;
+            margin: 1rem 0 2rem 0;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-top: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .meta-item strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .meta-item span {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .img-block {
+            width: 100%;
+            height: 400px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+            border: 1px solid var(--line);
+            color: #555;
+            font-family: var(--font-mono);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin: 4rem 0;
+            padding: 2rem;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        @media (min-width: 768px) {
+            .specs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .spec-category h3 {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1rem;
+            margin: 0 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .spec-category li {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .spec-category li::before {
+            content: "+";
+            position: absolute;
+            left: 0;
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo"><- WAJ.DEV</a>
+                    <span class="mono dim">CASE STUDY :: 004</span>
+        </nav>
+
+        <span class="mono accent">MOBILE APP</span>
+        <h1>NUGGETS</h1>
+        <p class="dim" style="font-size: 1.4rem;">
+            A simple news app that took years to finish. <br>
+            A journey of mental models and offline-first architecture.
+        </p>
+
+        <div class="meta-grid">
+            <div class="meta-item"><span>YEAR</span><strong>2024</strong></div>
+            <div class="meta-item"><span>ROLE</span><strong>SOLO DEV</strong></div>
+            <div class="meta-item"><span>STACK</span><strong>FLUTTER / GETX</strong></div>
+        </div>
+
+        <div class="img-block">[APP_SCREENSHOT_MOCKUP]</div>
+
+        <p>
+            This project didn’t start with a breakthrough moment. It started with hesitation.
+            I first attempted this app in 2019, when Flutter was still finding its footing. I experimented, learned just
+            enough to realize how much I didn’t know—and then I stopped.
+            I repeated that cycle more than once.
+        </p>
+        <p>
+            At the time, I assumed the problem was Flutter. In reality, the problem was my own transition. I was coming
+            from a game development background (OOP, explicit lifecycles) and Android (imperative UI).
+            Flutter asked for something different: a declarative approach where UI is a function of state. That mental
+            shift took years to settle.
+        </p>
+
+        <h2>WHEN IT CLICKED</h2>
+        <p>
+            When I returned to Flutter later, the declarative approach no longer felt foreign. It felt intentional.
+            Layout, spacing, gestures—everything followed the same compositional rules.
+            That was the moment the original idea resurfaced: build a news app. Not because it was unique, but because
+            it was demanding in the right ways.
+        </p>
+
+        <h2>THE CHALLENGE</h2>
+        <p>
+            A news app appears simple on the surface, but it forces difficult technical decisions immediately.
+            Network reliability, caching, pagination, notifications, read states—features that separate a "demo" from a
+            "product".
+            The result was <strong>Nuggets</strong>: a summarized news application designed to be fast, minimal, and
+            resilient.
+        </p>
+
+        <h2>OFFLINE FIRST</h2>
+        <p>
+            One of the most important decisions was adopting an <strong>offline-first approach</strong> via
+            <strong>ObjectBox</strong>.
+            On launch, the app checks connectivity. If offline, cached content displays immediately. The network is
+            treated as an enhancement, not a dependency.
+            This single decision significantly improved perceived performance.
+        </p>
+
+        <h2>PERCEIVED RESPONSIVENESS</h2>
+        <p>
+            Images are central to news but are performance liabilities.
+            I combined aggressive caching with <strong>BlurHash</strong> placeholders. While images load, users see a
+            meaningful blurry preview rather than a blank container, reducing visual jank.
+            Users can also toggle between high-quality images and data-saving thumbnails.
+        </p>
+
+        <h2>TECHNICAL ARCHITECTURE</h2>
+        <div class="specs-grid">
+            <div class="spec-category">
+                <h3>Core Stack</h3>
+                <ul>
+                    <li>Flutter (UI Framework)</li>
+                    <li>GetX (State Management & Dependency Injection)</li>
+                    <li>Dart (Language)</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Data & Storage</h3>
+                <ul>
+                    <li>ObjectBox (NoSQL Local Database)</li>
+                    <li>Offline-First Architecture</li>
+                    <li>Efficient Pagination Logic</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Performance</h3>
+                <ul>
+                    <li>BlurHash (Image Placeholders)</li>
+                    <li>CachedNetworkImage (Asset Caching)</li>
+                    <li>Jank-Free Scrolling</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Network & Notifications</h3>
+                <ul>
+                    <li>Firebase Cloud Messaging (FCM)</li>
+                    <li>Foreground/Background Handling</li>
+                    <li>Retry Logic for Unstable Connections</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>UX Details</h3>
+                <ul>
+                    <li>Read/Unread Tracking</li>
+                    <li>Bookmark Persistence</li>
+                    <li>Theme Switching (Zero Artifacts)</li>
+                </ul>
+            </div>
+            <div class="spec-category">
+                <h3>Architecture Pattern</h3>
+                <ul>
+                    <li>Modular Feature Structure</li>
+                    <li>Controller-View Separation</li>
+                    <li>Reactive State Management</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>THE LESSON</h2>
+        <p>
+            This app wasn’t built to chase metrics. It was built to close a gap in understanding.
+            It reinforced that frameworks are rarely the real obstacle—mental models are. It showed me the value of
+            patience, restraint, and choosing problems that force you to confront fundamentals.
+            Some projects don’t wait for motivation. They wait for readiness.
+        </p>
+
+        <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--line); text-align: center;">
+            <a href="index.html" class="mono accent" style="font-size: 1.2rem; text-decoration: underline;">RETURN TO
+                HOME</a>
+        </div>
+
+    </div>
+</body>
+
+</html>
