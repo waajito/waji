@@ -395,8 +395,8 @@
                     ScrollTrigger.create({
                         onUpdate: (self) => {
                             // REDUCED SENSITIVITY: 
-                            // Was / 300, now / 2000 for much subtler effect
-                            const vel = self.getVelocity() / 2000;
+                            // Was / 2000, now / 5000 for extremely subtle effect
+                            const vel = self.getVelocity() / 5000;
                             scrollVelocity += vel * -1;
                         }
                     });
