@@ -336,19 +336,23 @@
         <script>
             gsap.registerPlugin(ScrollTrigger);
 
-            // 1. GERMS PULSE ANIMATION
+            // 1. GERMS PULSE ANIMATION (Logic only, trigger moved to onLoad)
             const icons = document.querySelectorAll('.germ-icon');
-            icons.forEach(icon => {
-                gsap.to(icon, {
-                    scale: "random(0.9, 1.1)", // Subtle pulsing range
-                    rotation: "random(-5, 5)",
-                    duration: "random(1, 2)",
-                    ease: "sine.inOut",
-                    repeat: -1,
-                    yoyo: true,
-                    delay: "random(0, 1)"
+
+            // Continuous Organic Pulse (Starts after intro)
+            function startPulseLoop() {
+                icons.forEach(icon => {
+                    gsap.to(icon, {
+                        scale: "random(0.9, 1.1)",
+                        rotation: "random(-5, 5)",
+                        duration: "random(1, 2)",
+                        ease: "sine.inOut",
+                        repeat: -1,
+                        yoyo: true,
+                        delay: "random(0, 1)"
+                    });
                 });
-            });
+            }
 
             // 2. GENERIC MARQUEE LOGIC
             // Handles both vertical screenshots and horizontal titles
@@ -405,8 +409,26 @@
 
             // Init both marquees on load
             window.addEventListener('load', () => {
+                // Marquees
                 initMarquee('.marquee-screenshots', 0.5);
                 initMarquee('.marquee-titles', 0.4);
+
+                // Icons Pop-in (Batched Random: 3 at a time)
+                const shuffled = gsap.utils.shuffle([...icons]);
+                const tl = gsap.timeline({ onComplete: startPulseLoop });
+
+                // Process in chunks of 3
+                for (let i = 0; i < shuffled.length; i += 3) {
+                    const batch = shuffled.slice(i, i + 3);
+                    tl.from(batch, {
+                        duration: 1.2,
+                        scale: 0,
+                        opacity: 0,
+                        ease: "elastic.out(1, 0.5)"
+                    }, i * 0.1); // Stagger batches overlappingly (0, 0.3, 0.6...) 
+                    // i*0.1 might be too fast if i increments by 3. 
+                    // i=0 -> t=0. i=3 -> t=0.3. i=6 -> t=0.6. Perfect.
+                }
             });
         </script>
 
