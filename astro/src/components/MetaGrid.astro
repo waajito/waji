@@ -1,0 +1,9 @@
+---
+const { items } = Astro.props;
+---
+
+<div class="meta-grid">
+    {items.map(item => (
+        <div class="meta-item"><span>{item.label}</span><strong>{item.value}</strong></div>
+    ))}
+</div>

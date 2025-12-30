@@ -1,0 +1,17 @@
+---
+const { size = 'card-md', href, title, desc, tags = [], year, meta, visualStyle = '' } = Astro.props;
+---
+
+<article class={`card ${size}`} onclick={`window.location.href='${href}'`} style="cursor: pointer;">
+    <div class="card-visual" style={visualStyle}>
+        <slot name="visual" />
+    </div>
+    <div>
+        <span class="card-meta">{meta || year}</span>
+        <h3 class="card-title">{title}</h3>
+        <p class="dim">{desc}</p>
+        <div class="card-tags">
+            {tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+    </div>
+</article>

@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavProject from '../components/NavProject.astro';
+import FooterProject from '../components/FooterProject.astro';
+import MetaGrid from '../components/MetaGrid.astro';
+import TechSpecs from '../components/TechSpecs.astro';
+
+const metaItems = [
+    { label: 'TIMELINE', value: '2017 — 2019' },
+    { label: 'ROLE', value: 'SOLO DEV' },
+    { label: 'TITLES', value: '10+ PUBLISHED' }
+];
+
+const specs = [
+    { category: 'Core', items: ['Unity Game Engine', 'C# Scripting', 'HLSL Shaders', 'Physics Engines'] },
+    { category: 'Platforms', items: ['iOS (App Store)', 'Android (Play Store)', 'WebGL / Itch.io'] },
+    { category: 'Monetization', items: ['Unity Ads', 'In-App Purchases', 'User Analytics', 'A/B Testing'] },
+    { category: 'Design', items: ['Blender (3D Modeling)', 'Photoshop (UI/Assets)', 'Level Design', 'Game Loop Systems'] }
+];
+---
+
+<Layout title="Waj | Game Development">
+    <div class="grid-bg"></div>
+    <div class="container">
+        <NavProject caseNumber="002" />
+
+        <span class="mono accent">INDIE DEVELOPMENT</span>
+        <h1>GAME DEV</h1>
+        <p class="dim" style="font-size: 1.4rem;">
+            Where I learned how to code, design, and ship. <br>
+            A 3-year journey of building systems from scratch.
+        </p>
+
+        <MetaGrid items={metaItems} />
+
+        <div class="img-block">[GAME_DEV_SHOWREEL_VIDEO]</div>
+
+        <p>
+            Before I built products for startups, I built worlds for players. <br>
+            Game development was my bootcamp. It taught me object-oriented programming, vector math, performance optimization, and perhaps most importantly—how to finish things.
+        </p>
+
+        <!-- MARQUEE SECTION 1: SCREENSHOTS -->
+        <div class="marquee-section marquee-screenshots" style="transform: rotate(-2deg); margin-top: 4rem;">
+            <div class="marquee-content">
+                <!-- Images would act as sources here -->
+                <div class="screenshot-card"></div>
+                <div class="screenshot-card"></div>
+                <div class="screenshot-card"></div>
+                <div class="screenshot-card"></div>
+                <div class="screenshot-card"></div>
+            </div>
+        </div>
+
+        <!-- MARQUEE SECTION 2: TITLES -->
+        <div class="marquee-section marquee-titles" style="transform: rotate(2deg); background: transparent; border: none;">
+             <div class="marquee-content">
+                <div class="title-card"></div>
+                <div class="title-card"></div>
+                <div class="title-card"></div>
+                <div class="title-card"></div>
+            </div>
+        </div>
+
+        <h2>THE PHYSICS OF CODE</h2>
+        <p>
+            In web development, if a div is 1px off, it looks bad. In game development, if a collider is 1px off, the player falls through the floor and falls forever. The stakes for logic errors are cleaner and more immediate. 
+            This environment forced me to think about state machines, update loops, and memory management long before I knew what "React Lifecycle" meant.
+        </p>
+        
+        <!-- ICONS GRID -->
+        <div class="germs-grid">
+            <img src="/germs/germ_1.png" class="germ-icon" alt="Germ 1">
+            <img src="/germs/germ_2.png" class="germ-icon" alt="Germ 2">
+            <img src="/germs/germ_3.png" class="germ-icon" alt="Germ 3">
+            <img src="/germs/germ_4.png" class="germ-icon" alt="Germ 4">
+            <img src="/germs/germ_5.png" class="germ-icon" alt="Germ 5">
+            <img src="/germs/germ_6.png" class="germ-icon" alt="Germ 6">
+        </div>
+
+        <h2>TECHNICAL ARCHITECTURE</h2>
+        <TechSpecs specs={specs} />
+
+        <div style="margin-top: 4rem;">
+            <a href="https://play.google.com/store/apps/dev?id=7968508490074256678" target="_blank" class="cta-big" style="font-size: 2rem; border-bottom: 2px solid var(--accent);">
+                VIEW PLAY STORE ->
+            </a>
+        </div>
+
+        <FooterProject />
+    </div>
+
+    <!-- SCRIPT FOR ANIMATIONS -->
+    <script is:inline src="/js/games.js"></script>
+</Layout>

@@ -1,0 +1,14 @@
+---
+const { specs } = Astro.props;
+---
+
+<div class="specs-grid">
+    {specs.map(spec => (
+        <div class="spec-category">
+            <h3>{spec.category}</h3>
+            <ul>
+                {spec.items.map(item => <li>{item}</li>)}
+            </ul>
+        </div>
+    ))}
+</div>

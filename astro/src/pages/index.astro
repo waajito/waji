@@ -1,16 +1,182 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import NavHome from '../components/NavHome.astro';
+import FooterHome from '../components/FooterHome.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Waj | Founding Engineer">
+    <NavHome />
+
+    <!-- HERO (Moved OUTSIDE container for full width canvas) -->
+    <section class="hero">
+        <canvas id="bg-canvas"></canvas>
+        <div class="container container-lg hero-text-container" data-gsap="fade-up">
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                AVAILABLE FOR NEW ROLES
+            </div>
+            <h1>Frontend <br><span class="dim">& Product Engineer</span></h1>
+            <p style="max-width: 600px; font-size: 1.25rem; color: var(--text-dim); margin-top: 2rem;">
+                I build and ship production-ready products for startups — fast. <br>
+                Core strengths in rapid delivery, design systems, and real-world execution.
+            </p>
+        </div>
+    </section>
+
+    <div class="container container-lg">
+
+        <!-- WORK BENTO GRID -->
+        <section id="work">
+            <div class="section-header">
+                <span class="section-title">// SELECTED WORK</span>
+                <span class="mono dim">2020 — 2024</span>
+            </div>
+
+            <div class="bento-grid">
+                <!-- 1. MR (Large) -->
+                <ProjectCard 
+                    size="card-lg"
+                    href="/project_mr"
+                    year="2020 — 2022"
+                    title="SelfieStar / Arcrome"
+                    desc="A 55-inch interactive kiosk with hardware payments and live green-screen compositing."
+                    tags={['UNITY', 'HARDWARE', 'C#']}
+                >
+                    <div slot="visual">[KIOSK_HARDWARE_PHOTO]</div>
+                </ProjectCard>
+
+                <!-- 2. THEO (Small) -->
+                <ProjectCard 
+                    size="card-md"
+                    href="/project_theo"
+                    year="2024"
+                    title="Theo"
+                    desc="Founding Engineer for a $160M+ AI/Prediction Market Protocol."
+                    tags={['NEXT.JS', 'WEB3', 'AI']}
+                >
+                    <div slot="visual">[THEO_DASHBOARD_UI]</div>
+                </ProjectCard>
+
+                <!-- 3. RESERVE (Small) -->
+                <ProjectCard 
+                    size="card-md"
+                    href="#"
+                    title="Reserve"
+                    year="2023"
+                    desc="Permissionless Asset Management protocol. Audited & Secured."
+                    tags={['DESIGN', 'PROTOTYPE']}
+                >
+                    <div slot="visual">[RESERVE_PROTOCOL_UI]</div>
+                </ProjectCard>
+
+                <!-- 4. PLEX (Large) -->
+                <ProjectCard 
+                    size="card-lg"
+                    href="/project_plex"
+                    year="2022 — 2024"
+                    title="Plex / Canto"
+                    desc="From Cyberpunk to Windows 95. Consolidated 9 apps into one ecosystem."
+                    tags={['TYPESCRIPT', 'DESIGN SYSTEM', 'WEB3']}
+                >
+                    <div slot="visual">[PLEX_V3_WIN95_UI]</div>
+                </ProjectCard>
+
+                <!-- 5. NUGGETS (Large) - Note: In HTML source this was card-lg, but mapped to mockup B? -->
+                <ProjectCard 
+                    size="card-lg"
+                    href="/project_nuggets"
+                    meta="SIDE QUEST"
+                    title="Nuggets"
+                    desc="A 60 words or less mobile app, built using flutter for cross-platform development."
+                    tags={['FLUTTER', 'MOBILE', 'GETX']}
+                    visualStyle="border: 1px dashed #333;"
+                >
+                    <div slot="visual">[MOCKUP_PROJECT_BETA]</div>
+                </ProjectCard>
+
+                <!-- 6. GAMES (Medium) -->
+                <ProjectCard 
+                    size="card-md"
+                    href="/project_games"
+                    year="2017 — 2019"
+                    title="Game Dev"
+                    desc="Published 10+ mobile titles. Where I learned systems."
+                    tags={['LEGACY', 'UNITY', 'MOBILE']}
+                >
+                    <div slot="visual">[LEGACY_GAMES]</div>
+                </ProjectCard>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about-grid">
+            <div class="info-col">
+                <span class="section-title" style="display:block; margin-bottom: 2rem;">// PHILOSOPHY</span>
+                <h2>I don't over-engineer. I ship.</h2>
+                <p class="dim" style="margin-bottom:1rem; font-size: 1.1rem;">My career hasn't followed a straight
+                    academic path. It's been built by shipping real products, solving real problems, and taking full
+                    ownership.</p>
+                <p class="dim" style="font-size: 1.1rem;">I work best in small teams where speed, ownership, and trust
+                    matter. I prioritize execution over perfection.</p>
+            </div>
+            <div class="info-col">
+                <span class="section-title" style="display:block; margin-bottom: 2rem;">// TOOLKIT</span>
+                <ul class="skill-list">
+                    <li><span>Frontend</span> <span>React, Next.js, Tailwind</span></li>
+                    <li><span>Design</span> <span>Figma, shadcn, Design Systems</span></li>
+                    <li><span>Backend</span> <span>Node, Stripe, Cloudflare</span></li>
+                    <li><span>Game Dev</span> <span>Unity, C#, Blender</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRAJECTORY (Kept GSAP Animation) -->
+        <section class="trajectory" id="trajectory">
+            <div class="section-header">
+                <span class="section-title">// TRAJECTORY</span>
+            </div>
+
+            <div style="position: relative; padding-left: 1rem;">
+                <div class="timeline-line-container">
+                    <div class="timeline-progress"></div>
+                </div>
+
+                <div class="t-item">
+                    <div class="t-dot"></div>
+                    <span class="t-date">2024 — PRESENT</span>
+                    <h3 class="t-role">Founding Engineer @ Theo</h3>
+                    <p class="t-desc">Owning the entire user-facing stack for a $160M+ Protocol. UK/Remote.</p>
+                </div>
+
+                <div class="t-item">
+                    <div class="t-dot"></div>
+                    <span class="t-date">2022 — 2024</span>
+                    <h3 class="t-role">Founding Engineer @ Plex</h3>
+                    <p class="t-desc">Architecting the Canto Ecosystem. 4 major versions. 1,100 commits.</p>
+                </div>
+
+                <div class="t-item">
+                    <div class="t-dot"></div>
+                    <span class="t-date">2020 — 2022</span>
+                    <h3 class="t-role">Full Stack Engineer @ SelfieStar </h3>
+                    <p class="t-desc">Validating hardware-software bridges with Unity and Payment Systems.</p>
+                </div>
+
+                <div class="t-item">
+                    <div class="t-dot"></div>
+                    <span class="t-date">2017 — 2020</span>
+                    <h3 class="t-role">Freelancing & Game Development </h3>
+                    <p class="t-desc">Learning the hard way. Building, shipping, and debugging live games.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <FooterHome />
+
+    </div>
+
+    <!-- SCRIPT FOR ANIMATIONS -->
+    <script is:inline src="/js/index.js"></script>
+</Layout>
