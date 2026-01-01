@@ -1,21 +1,54 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import NavProject from '../components/NavProject.astro';
-import FooterProject from '../components/FooterProject.astro';
-import MetaGrid from '../components/MetaGrid.astro';
-import TechSpecs from '../components/TechSpecs.astro';
+import Layout from "../../layouts/Layout.astro";
+import NavProject from "../../components/NavProject.astro";
+import FooterProject from "../../components/FooterProject.astro";
+import MetaGrid from "../../components/MetaGrid.astro";
+import TechSpecs from "../../components/TechSpecs.astro";
 
 const metaItems = [
-    { label: 'TIMELINE', value: '2022 — 2024' },
-    { label: 'ROLE', value: 'SOLE FRONTEND' },
-    { label: 'STACK', value: 'NEXT.JS / WEB3' }
+    { label: "TIMELINE", value: "2022 — 2024" },
+    { label: "ROLE", value: "SOLE FRONTEND" },
+    { label: "STACK", value: "NEXT.JS / WEB3" },
 ];
 
 const specs = [
-    { category: 'Frontend', items: ['Next.js 13+ (App Router)', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Wagmi / Viem (Web3 Hooks)'] },
-    { category: 'Architecture', items: ['Atomic Design System', 'Feature-Sliced Architecture', 'Server Actions', 'Optimistic UI Updates'] },
-    { category: 'Web3 Integration', items: ['WalletConnect & MetaMask', 'Transaction Lifecycle Management', 'Event Indexing (The Graph)', 'Gas Estimation Logic'] },
-    { category: 'Design', items: ['Figma Prototyping', 'Design System Maintenance', 'Custom Iconography', 'Responsive layouts'] }
+    {
+        category: "Frontend",
+        items: [
+            "Next.js 13+ (App Router)",
+            "TypeScript",
+            "Tailwind CSS",
+            "Framer Motion",
+            "Wagmi / Viem (Web3 Hooks)",
+        ],
+    },
+    {
+        category: "Architecture",
+        items: [
+            "Atomic Design System",
+            "Feature-Sliced Architecture",
+            "Server Actions",
+            "Optimistic UI Updates",
+        ],
+    },
+    {
+        category: "Web3 Integration",
+        items: [
+            "WalletConnect & MetaMask",
+            "Transaction Lifecycle Management",
+            "Event Indexing (The Graph)",
+            "Gas Estimation Logic",
+        ],
+    },
+    {
+        category: "Design",
+        items: [
+            "Figma Prototyping",
+            "Design System Maintenance",
+            "Custom Iconography",
+            "Responsive layouts",
+        ],
+    },
 ];
 ---
 
@@ -27,7 +60,8 @@ const specs = [
         <span class="mono accent">FOUNDING ENGINEER</span>
         <h1>PLEX / CANTO</h1>
         <p class="dim" style="font-size: 1.4rem;">
-            Designing and developing an entire layer-1 blockchain ecosystem. <br>
+            Designing and developing an entire layer-1 blockchain ecosystem. <br
+            />
             From Cyberpunk terminals to a Windows 95 operating system.
         </p>
 
@@ -35,13 +69,18 @@ const specs = [
 
         <div class="img-block">[HERO_IMAGE_PLEX_V3]</div>
 
-        <p class="intro-text" style="font-size: 1.25rem; color: #fff; margin-bottom: 3rem;">
-            A 2.5-year evolution from game developer to building some of the most innovative DeFi interfaces in the
-            blockchain space. A story of evolution, persistence, beautiful failures, and technical achievement.
+        <p
+            class="intro-text"
+            style="font-size: 1.25rem; color: #fff; margin-bottom: 3rem;"
+        >
+            A 2.5-year evolution from game developer to building some of the
+            most innovative DeFi interfaces in the blockchain space. A story of
+            evolution, persistence, beautiful failures, and technical
+            achievement.
         </p>
 
         <TechSpecs specs={specs} />
-        
+
         <FooterProject />
     </div>
 </Layout>
