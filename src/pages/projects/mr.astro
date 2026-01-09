@@ -6,210 +6,204 @@ import MetaGrid from "../../components/MetaGrid.astro";
 import TechSpecs from "../../components/TechSpecs.astro";
 
 const metaItems = [
-    { label: "TIMELINE", value: "2020 — 2022" },
-    { label: "ROLE", value: "LEAD ENGINEER" },
-    { label: "STACK", value: "UNITY / HARDWARE" },
+  { label: "TIMELINE", value: "2020 - 2022" },
+  { label: "ROLE", value: "LEAD ENGINEER" },
+  { label: "STACK", value: "UNITY / HARDWARE" },
 ];
 
 const specs = [
-    {
-        category: "Frontend / App",
-        items: [
-            "Unity (Core Framework)",
-            "DOTween (UI Animations)",
-            "Custom Chroma Key Shaders",
-            "Render Textures (Compositing)",
-        ],
-    },
-    {
-        category: "Hardware",
-        items: [
-            "High-Performance Windows PC",
-            '55" Display + IR Touch Frame',
-            "DSLR Camera Integration",
-            "Card Swipe & Payment Units",
-            "Custom Wooden Enclosure",
-        ],
-    },
-    {
-        category: "Backend",
-        items: [
-            "Strapi (Headless CMS)",
-            "Custom Content Delivery API",
-            "Geo-based Targeting (City/Mall)",
-        ],
-    },
-    {
-        category: "Infrastructure",
-        items: [
-            "AWS (Hosting & Storage)",
-            "Local Caching System",
-            "Maintenance Mode Logic",
-        ],
-    },
-    {
-        category: "Payments",
-        items: [
-            "Stripe (Prepaid)",
-            "Manual Cash Codes",
-            "Worker Accountability Tracking",
-        ],
-    },
-    {
-        category: "Media",
-        items: [
-            "Green Screen Production",
-            "Calibration & Lighting Match",
-            "Real-time Live Compositing",
-        ],
-    },
+  {
+    category: "Frontend / App",
+    items: [
+      "Unity (Core Framework)",
+      "DOTween (UI Animations)",
+      "Custom Chroma Key Shaders",
+      "Render Textures (Compositing)",
+    ],
+  },
+  {
+    category: "Hardware",
+    items: [
+      "High-Performance Windows PC",
+      '55" Display + IR Touch Frame',
+      "DSLR Camera Integration",
+      "Card Swipe & Payment Units",
+      "Custom Wooden Enclosure",
+    ],
+  },
+  {
+    category: "Backend",
+    items: [
+      "Strapi (Headless CMS)",
+      "Custom Content Delivery API",
+      "Geo-based Targeting (City/Mall)",
+    ],
+  },
+  {
+    category: "Infrastructure",
+    items: [
+      "AWS (Hosting & Storage)",
+      "Local Caching System",
+      "Maintenance Mode Logic",
+    ],
+  },
+  {
+    category: "Payments",
+    items: [
+      "Stripe (Prepaid)",
+      "Manual Cash Codes",
+      "Worker Accountability Tracking",
+    ],
+  },
+  {
+    category: "Media",
+    items: [
+      "Green Screen Production",
+      "Calibration & Lighting Match",
+      "Real-time Live Compositing",
+    ],
+  },
 ];
 ---
 
 <Layout title="Waj | MR Case Study">
-    <div class="grid-bg"></div>
-    <div class="container">
-        <NavProject caseNumber="003" />
+  <div class="grid-bg"></div>
+  <div class="container">
+    <NavProject caseNumber="003" />
 
-        <span class="mono accent">HARDWARE STARTUP</span>
-        <h1>SELFIESTAR</h1>
-        <p class="dim" style="font-size: 1.4rem;">
-            Building the bridge between digital content and physical spaces. <br
-            />
-            A story of hardware, software, and the "illusion" of reality.
-        </p>
+    <span class="mono accent">HARDWARE STARTUP</span>
+    <h1>SELFIESTAR</h1>
+    <p class="dim" style="font-size: 1.4rem;">
+      Building the bridge between digital content and physical spaces. <br />
+      A story of hardware, software, and the "illusion" of reality.
+    </p>
 
-        <MetaGrid items={metaItems} />
+    <MetaGrid items={metaItems} />
 
-        <div class="img-block">[KIOSK_HARDWARE_SETUP]</div>
+    <div class="img-block">[KIOSK_HARDWARE_SETUP]</div>
 
-        <p>
-            A few years ago, I worked on a project that still comes back to me
-            every now and then—not because it was wildly successful, but because
-            of how much it demanded from me, both technically and personally.
-        </p>
-        <p>
-            The company was called <strong>Arcrome Technologies</strong>. It was
-            started by three founders from an architecture background. They had
-            spent years designing physical spaces, and now they wanted to build
-            a product for the general public—something interactive, visual, and
-            immersive. Their idea was a kiosk application, the kind you’d place
-            in movie theatres or malls, where people could walk up, touch the
-            screen, and have an experience rather than just complete a task.
-        </p>
+    <p>
+      A few years ago, I worked on a project that still comes back to me every
+      now and then-not because it was wildly successful, but because of how much
+      it demanded from me, both technically and personally.
+    </p>
+    <p>
+      The company was called <strong>Arcrome Technologies</strong>. It was
+      started by three founders from an architecture background. They had spent
+      years designing physical spaces, and now they wanted to build a product
+      for the general public-something interactive, visual, and immersive. Their
+      idea was a kiosk application, the kind you’d place in movie theatres or
+      malls, where people could walk up, touch the screen, and have an
+      experience rather than just complete a task.
+    </p>
 
-        <h2>THE VISION</h2>
-        <p>
-            The core idea was simple on paper. A large touch-screen kiosk. A
-            “Let’s Start” button. A slick animation that pulls you into a
-            movie-selection screen. You swipe left or right, pick a movie,
-            choose how to pay—prepaid or cash—and then take pictures with
-            celebrities from that movie.
-        </p>
-        <p>
-            But simplicity on paper often hides complexity underneath. Once a
-            user selected a movie, the payment flow kicked in. For prepaid
-            users, there was a card-swiping unit attached to the kiosk. For cash
-            payments, a nearby worker would collect the money and enter a unique
-            code into the system. Every worker had their own code, which meant
-            the system could track exactly how much cash each person was
-            responsible for at the end of the day. It was a small detail, but
-            one that mattered a lot in a real-world setup.
-        </p>
-        <p>
-            After payment, the experience shifted gears. A countdown began. An
-            animation played. The screen told users exactly where to stand, with
-            markings on the ground to guide them. Then came the magic: a
-            pre-recorded video of celebrities—shot earlier on a green
-            screen—played on the display. At the same time, the kiosk captured
-            live images of the user and composited them together in real time.
-        </p>
+    <h2>THE VISION</h2>
+    <p>
+      The core idea was simple on paper. A large touch-screen kiosk. A “Let’s
+      Start” button. A slick animation that pulls you into a movie-selection
+      screen. You swipe left or right, pick a movie, choose how to pay-prepaid
+      or cash-and then take pictures with celebrities from that movie.
+    </p>
+    <p>
+      But simplicity on paper often hides complexity underneath. Once a user
+      selected a movie, the payment flow kicked in. For prepaid users, there was
+      a card-swiping unit attached to the kiosk. For cash payments, a nearby
+      worker would collect the money and enter a unique code into the system.
+      Every worker had their own code, which meant the system could track
+      exactly how much cash each person was responsible for at the end of the
+      day. It was a small detail, but one that mattered a lot in a real-world
+      setup.
+    </p>
+    <p>
+      After payment, the experience shifted gears. A countdown began. An
+      animation played. The screen told users exactly where to stand, with
+      markings on the ground to guide them. Then came the magic: a pre-recorded
+      video of celebrities-shot earlier on a green screen-played on the display.
+      At the same time, the kiosk captured live images of the user and
+      composited them together in real time.
+    </p>
 
-        <h2>THE HARDWARE REALITY</h2>
-        <p>
-            To make that illusion believable, everything had to line up. The
-            lighting used when the celebrity video was recorded had to be
-            recreated precisely inside the kiosk. Even small mismatches would
-            break the illusion instantly. This wasn’t just software—it was
-            physics, optics, and user perception all colliding at once.
-        </p>
-        <p>
-            That entire system landed on my plate. The founders weren’t
-            particularly tech-savvy, and they were upfront about it. They relied
-            on me not just to build the software, but to define what was
-            technically possible in the first place. They showed me an early
-            version of the UI and asked a simple question: Is this feasible? I
-            asked for wireframes. They gave me rough sketches. I took those and
-            redesigned the UI from scratch—keeping their vision intact, but
-            grounding it in reality.
-        </p>
+    <h2>THE HARDWARE REALITY</h2>
+    <p>
+      To make that illusion believable, everything had to line up. The lighting
+      used when the celebrity video was recorded had to be recreated precisely
+      inside the kiosk. Even small mismatches would break the illusion
+      instantly. This wasn’t just software-it was physics, optics, and user
+      perception all colliding at once.
+    </p>
+    <p>
+      That entire system landed on my plate. The founders weren’t particularly
+      tech-savvy, and they were upfront about it. They relied on me not just to
+      build the software, but to define what was technically possible in the
+      first place. They showed me an early version of the UI and asked a simple
+      question: Is this feasible? I asked for wireframes. They gave me rough
+      sketches. I took those and redesigned the UI from scratch-keeping their
+      vision intact, but grounding it in reality.
+    </p>
 
-        <h2>THE BUILD</h2>
-        <p>
-            This product needed payment integration, live camera feeds,
-            real-time chroma keying, server-driven content, and smooth
-            animations, all running continuously in public spaces. That
-            immediately meant we needed serious hardware.
-        </p>
-        <p>
-            After evaluating the constraints, I made a call: <strong
-                >Unity</strong
-            > would be the foundation. It gave us real-time rendering, animation control,
-            shader access, and hardware flexibility—all under one roof.
-        </p>
-        <p>
-            To turn the kiosk into a true touch system, we paired a <strong
-                >55-inch TV</strong
-            > with a <strong>55-inch IR touch frame</strong> and connected it to a
-            PC. We added a DSLR camera for image quality. Every piece of hardware
-            had to be selected, tested, and integrated carefully.
-        </p>
+    <h2>THE BUILD</h2>
+    <p>
+      This product needed payment integration, live camera feeds, real-time
+      chroma keying, server-driven content, and smooth animations, all running
+      continuously in public spaces. That immediately meant we needed serious
+      hardware.
+    </p>
+    <p>
+      After evaluating the constraints, I made a call: <strong>Unity</strong> would
+      be the foundation. It gave us real-time rendering, animation control, shader
+      access, and hardware flexibility-all under one roof.
+    </p>
+    <p>
+      To turn the kiosk into a true touch system, we paired a <strong
+        >55-inch TV</strong
+      > with a <strong>55-inch IR touch frame</strong> and connected it to a PC. We
+      added a DSLR camera for image quality. Every piece of hardware had to be selected,
+      tested, and integrated carefully.
+    </p>
 
-        <h2>BACKEND & INFRASTRUCTURE</h2>
-        <p>
-            We built the backend using <strong>Strapi</strong>, a CMS that let
-            us model collections like movies, metadata, and assets cleanly. All
-            of it was hosted on <strong>AWS</strong>, with videos stored
-            separately. One major challenge was video delivery. These were
-            high-quality files—gigabytes in size. Streaming them constantly was
-            unrealistic. So I designed a caching system: videos would download
-            when the kiosk booted up, after every 24 hours, or when a nearby
-            worker manually triggered an update. During this time, the kiosk
-            would enter maintenance mode and show a progress bar.
-        </p>
+    <h2>BACKEND & INFRASTRUCTURE</h2>
+    <p>
+      We built the backend using <strong>Strapi</strong>, a CMS that let us
+      model collections like movies, metadata, and assets cleanly. All of it was
+      hosted on <strong>AWS</strong>, with videos stored separately. One major
+      challenge was video delivery. These were high-quality files-gigabytes in
+      size. Streaming them constantly was unrealistic. So I designed a caching
+      system: videos would download when the kiosk booted up, after every 24
+      hours, or when a nearby worker manually triggered an update. During this
+      time, the kiosk would enter maintenance mode and show a progress bar.
+    </p>
 
-        <h2>THE MAGIC: REAL-TIME COMPOSITING</h2>
-        <p>
-            I wrote a <strong>custom shader</strong> to perform chroma keying in real
-            time, removing the green background from the celebrity footage cleanly.
-            The live camera feed was then layered behind it, creating the illusion
-            of presence. It took countless iterations—tweaking thresholds, lighting,
-            color spill—but eventually, it worked.
-        </p>
-        <div class="img-block">[CHROMA_KEY_COMPOSITING_DEMO]</div>
+    <h2>THE MAGIC: REAL-TIME COMPOSITING</h2>
+    <p>
+      I wrote a <strong>custom shader</strong> to perform chroma keying in real time,
+      removing the green background from the celebrity footage cleanly. The live camera
+      feed was then layered behind it, creating the illusion of presence. It took
+      countless iterations-tweaking thresholds, lighting, color spill-but eventually,
+      it worked.
+    </p>
+    <div class="img-block">[CHROMA_KEY_COMPOSITING_DEMO]</div>
 
-        <h2>TECHNICAL ARCHITECTURE</h2>
-        <TechSpecs specs={specs} />
+    <h2>TECHNICAL ARCHITECTURE</h2>
+    <TechSpecs specs={specs} />
 
-        <h2>THE PITCH & THE PIVOT</h2>
-        <p>
-            The prototype eventually made its way into real conversations with
-            investors. People were interested—but interest came with conditions.
-            "What else can it do?" Some wanted social sharing. Others wanted
-            analytics dashboards. The goalposts kept moving.
-        </p>
+    <h2>THE PITCH & THE PIVOT</h2>
+    <p>
+      The prototype eventually made its way into real conversations with
+      investors. People were interested-but interest came with conditions. "What
+      else can it do?" Some wanted social sharing. Others wanted analytics
+      dashboards. The goalposts kept moving.
+    </p>
 
-        <h2>THE LESSON</h2>
-        <p>
-            Building something real in the physical world requires alignment,
-            timing, and restraint as much as engineering. Sometimes the hardest
-            part isn’t building the thing—it’s deciding when enough is enough.
-            That project taught me more than many “successful” ones ever did. It
-            forced me to think end-to-end—hardware, software, users,
-            constraints, and reality. That doesn’t make it a failure. It just
-            makes it a chapter.
-        </p>
+    <h2>THE LESSON</h2>
+    <p>
+      Building something real in the physical world requires alignment, timing,
+      and restraint as much as engineering. Sometimes the hardest part isn’t
+      building the thing-it’s deciding when enough is enough. That project
+      taught me more than many “successful” ones ever did. It forced me to think
+      end-to-end-hardware, software, users, constraints, and reality. That
+      doesn’t make it a failure. It just makes it a chapter.
+    </p>
 
-        <FooterProject />
-    </div>
+    <FooterProject />
+  </div>
 </Layout>

@@ -5,50 +5,50 @@ import FooterProject from "../../components/FooterProject.astro";
 import MetaGrid from "../../components/MetaGrid.astro";
 
 const metaItems = [
-    { label: "TIMELINE", value: "2024 — PRESENT" },
-    { label: "ROLE", value: "LEAD FRONTEND" },
-    { label: "STACK", value: "NEXT.JS / ANALYTICS" },
+  { label: "TIMELINE", value: "2024 - PRESENT" },
+  { label: "ROLE", value: "LEAD FRONTEND" },
+  { label: "STACK", value: "NEXT.JS / ANALYTICS" },
 ];
 ---
 
 <Layout title="Waj | Theo Case Study">
-    <div class="grid-bg"></div>
-    <div class="container">
-        <NavProject caseNumber="005" />
+  <div class="grid-bg"></div>
+  <div class="container">
+    <NavProject caseNumber="005" />
 
-        <span class="mono accent">CURRENT ROLE</span>
-        <h1>THEO PROTOCOL</h1>
-        <p class="dim" style="font-size: 1.4rem;">
-            Sole frontend engineer for a live DeFi platform with $161M+ TVL.
-        </p>
+    <span class="mono accent">CURRENT ROLE</span>
+    <h1>THEO PROTOCOL</h1>
+    <p class="dim" style="font-size: 1.4rem;">
+      Sole frontend engineer for a live DeFi platform with $161M+ TVL.
+    </p>
 
-        <MetaGrid items={metaItems} />
+    <MetaGrid items={metaItems} />
 
-        <div class="img-block">[THEO_DASHBOARD_PREVIEW]</div>
+    <div class="img-block">[THEO_DASHBOARD_PREVIEW]</div>
 
-        <h2>THE MISSION</h2>
-        <p>
-            I'm currently the only frontend engineer at Theo. I own the frontend
-            architecture, performance optimization, analytics tracking, and
-            user-facing UI. The platform secures over $160 Million in Total
-            Value Locked (TVL), making frontend stability and security critical.
-        </p>
+    <h2>THE MISSION</h2>
+    <p>
+      I'm currently the only frontend engineer at Theo. I own the frontend
+      architecture, performance optimization, analytics tracking, and
+      user-facing UI. The platform secures over $160 Million in Total Value
+      Locked (TVL), making frontend stability and security critical.
+    </p>
 
-        <h2>KEY CONTRIBUTIONS</h2>
-        <p>
-            <strong>> Architecture:</strong> Established a scalable Next.js component
-            system that handles real-time blockchain data updates without UI lag.
-        </p>
-        <p>
-            <strong>> Analytics:</strong> Built custom dashboards to track user behavior
-            and protocol health, directly influencing product decisions.
-        </p>
-        <p>
-            <strong>> Ownership:</strong> I collaborate directly with backend/blockchain
-            engineers who handle data and protocol logic, while I own the entire presentation
-            layer.
-        </p>
+    <h2>KEY CONTRIBUTIONS</h2>
+    <p>
+      <strong>> Architecture:</strong> Established a scalable Next.js component system
+      that handles real-time blockchain data updates without UI lag.
+    </p>
+    <p>
+      <strong>> Analytics:</strong> Built custom dashboards to track user behavior
+      and protocol health, directly influencing product decisions.
+    </p>
+    <p>
+      <strong>> Ownership:</strong> I collaborate directly with backend/blockchain
+      engineers who handle data and protocol logic, while I own the entire presentation
+      layer.
+    </p>
 
-        <FooterProject />
-    </div>
+    <FooterProject />
+  </div>
 </Layout>

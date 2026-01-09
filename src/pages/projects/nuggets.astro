@@ -6,147 +6,144 @@ import MetaGrid from "../../components/MetaGrid.astro";
 import TechSpecs from "../../components/TechSpecs.astro";
 
 const metaItems = [
-    { label: "YEAR", value: "2024" },
-    { label: "ROLE", value: "SOLO DEV" },
-    { label: "STACK", value: "FLUTTER / GETX" },
+  { label: "YEAR", value: "2024" },
+  { label: "ROLE", value: "SOLO DEV" },
+  { label: "STACK", value: "FLUTTER / GETX" },
 ];
 
 const specs = [
-    {
-        category: "Core Stack",
-        items: [
-            "Flutter (UI Framework)",
-            "GetX (State Management & Dependency Injection)",
-            "Dart (Language)",
-        ],
-    },
-    {
-        category: "Data & Storage",
-        items: [
-            "ObjectBox (NoSQL Local Database)",
-            "Offline-First Architecture",
-            "Efficient Pagination Logic",
-        ],
-    },
-    {
-        category: "Performance",
-        items: [
-            "BlurHash (Image Placeholders)",
-            "CachedNetworkImage (Asset Caching)",
-            "Jank-Free Scrolling",
-        ],
-    },
-    {
-        category: "Network & Notifications",
-        items: [
-            "Firebase Cloud Messaging (FCM)",
-            "Foreground/Background Handling",
-            "Retry Logic for Unstable Connections",
-        ],
-    },
-    {
-        category: "UX Details",
-        items: [
-            "Read/Unread Tracking",
-            "Bookmark Persistence",
-            "Theme Switching (Zero Artifacts)",
-        ],
-    },
-    {
-        category: "Architecture Pattern",
-        items: [
-            "Modular Feature Structure",
-            "Controller-View Separation",
-            "Reactive State Management",
-        ],
-    },
+  {
+    category: "Core Stack",
+    items: [
+      "Flutter (UI Framework)",
+      "GetX (State Management & Dependency Injection)",
+      "Dart (Language)",
+    ],
+  },
+  {
+    category: "Data & Storage",
+    items: [
+      "ObjectBox (NoSQL Local Database)",
+      "Offline-First Architecture",
+      "Efficient Pagination Logic",
+    ],
+  },
+  {
+    category: "Performance",
+    items: [
+      "BlurHash (Image Placeholders)",
+      "CachedNetworkImage (Asset Caching)",
+      "Jank-Free Scrolling",
+    ],
+  },
+  {
+    category: "Network & Notifications",
+    items: [
+      "Firebase Cloud Messaging (FCM)",
+      "Foreground/Background Handling",
+      "Retry Logic for Unstable Connections",
+    ],
+  },
+  {
+    category: "UX Details",
+    items: [
+      "Read/Unread Tracking",
+      "Bookmark Persistence",
+      "Theme Switching (Zero Artifacts)",
+    ],
+  },
+  {
+    category: "Architecture Pattern",
+    items: [
+      "Modular Feature Structure",
+      "Controller-View Separation",
+      "Reactive State Management",
+    ],
+  },
 ];
 ---
 
 <Layout title="Waj | Nuggets Case Study">
-    <div class="grid-bg"></div>
-    <div class="container">
-        <NavProject caseNumber="004" />
+  <div class="grid-bg"></div>
+  <div class="container">
+    <NavProject caseNumber="004" />
 
-        <span class="mono accent">MOBILE APP</span>
-        <h1>NUGGETS</h1>
-        <p class="dim" style="font-size: 1.4rem;">
-            A simple news app that took years to finish. <br />
-            A journey of mental models and offline-first architecture.
-        </p>
+    <span class="mono accent">MOBILE APP</span>
+    <h1>NUGGETS</h1>
+    <p class="dim" style="font-size: 1.4rem;">
+      A simple news app that took years to finish. <br />
+      A journey of mental models and offline-first architecture.
+    </p>
 
-        <MetaGrid items={metaItems} />
+    <MetaGrid items={metaItems} />
 
-        <div class="img-block">[APP_SCREENSHOT_MOCKUP]</div>
+    <div class="img-block">[APP_SCREENSHOT_MOCKUP]</div>
 
-        <p>
-            This project didn’t start with a breakthrough moment. It started
-            with hesitation. I first attempted this app in 2019, when Flutter
-            was still finding its footing. I experimented, learned just enough
-            to realize how much I didn’t know—and then I stopped. I repeated
-            that cycle more than once.
-        </p>
-        <p>
-            At the time, I assumed the problem was Flutter. In reality, the
-            problem was my own transition. I was coming from a game development
-            background (OOP, explicit lifecycles) and Android (imperative UI).
-            Flutter asked for something different: a declarative approach where
-            UI is a function of state. That mental shift took years to settle.
-        </p>
+    <p>
+      This project didn’t start with a breakthrough moment. It started with
+      hesitation. I first attempted this app in 2019, when Flutter was still
+      finding its footing. I experimented, learned just enough to realize how
+      much I didn’t know-and then I stopped. I repeated that cycle more than
+      once.
+    </p>
+    <p>
+      At the time, I assumed the problem was Flutter. In reality, the problem
+      was my own transition. I was coming from a game development background
+      (OOP, explicit lifecycles) and Android (imperative UI). Flutter asked for
+      something different: a declarative approach where UI is a function of
+      state. That mental shift took years to settle.
+    </p>
 
-        <h2>WHEN IT CLICKED</h2>
-        <p>
-            When I returned to Flutter later, the declarative approach no longer
-            felt foreign. It felt intentional. Layout, spacing,
-            gestures—everything followed the same compositional rules. That was
-            the moment the original idea resurfaced: build a news app. Not
-            because it was unique, but because it was demanding in the right
-            ways.
-        </p>
+    <h2>WHEN IT CLICKED</h2>
+    <p>
+      When I returned to Flutter later, the declarative approach no longer felt
+      foreign. It felt intentional. Layout, spacing, gestures-everything
+      followed the same compositional rules. That was the moment the original
+      idea resurfaced: build a news app. Not because it was unique, but because
+      it was demanding in the right ways.
+    </p>
 
-        <h2>THE CHALLENGE</h2>
-        <p>
-            A news app appears simple on the surface, but it forces difficult
-            technical decisions immediately. Network reliability, caching,
-            pagination, notifications, read states—features that separate a
-            "demo" from a "product". The result was <strong>Nuggets</strong>: a
-            summarized news application designed to be fast, minimal, and
-            resilient.
-        </p>
+    <h2>THE CHALLENGE</h2>
+    <p>
+      A news app appears simple on the surface, but it forces difficult
+      technical decisions immediately. Network reliability, caching, pagination,
+      notifications, read states-features that separate a "demo" from a
+      "product". The result was <strong>Nuggets</strong>: a summarized news
+      application designed to be fast, minimal, and resilient.
+    </p>
 
-        <h2>OFFLINE FIRST</h2>
-        <p>
-            One of the most important decisions was adopting an <strong
-                >offline-first approach</strong
-            > via
-            <strong>ObjectBox</strong>. On launch, the app checks connectivity.
-            If offline, cached content displays immediately. The network is
-            treated as an enhancement, not a dependency. This single decision
-            significantly improved perceived performance.
-        </p>
+    <h2>OFFLINE FIRST</h2>
+    <p>
+      One of the most important decisions was adopting an <strong
+        >offline-first approach</strong
+      > via
+      <strong>ObjectBox</strong>. On launch, the app checks connectivity. If
+      offline, cached content displays immediately. The network is treated as an
+      enhancement, not a dependency. This single decision significantly improved
+      perceived performance.
+    </p>
 
-        <h2>PERCEIVED RESPONSIVENESS</h2>
-        <p>
-            Images are central to news but are performance liabilities. I
-            combined aggressive caching with <strong>BlurHash</strong> placeholders.
-            While images load, users see a meaningful blurry preview rather than a
-            blank container, reducing visual jank. Users can also toggle between high-quality
-            images and data-saving thumbnails.
-        </p>
+    <h2>PERCEIVED RESPONSIVENESS</h2>
+    <p>
+      Images are central to news but are performance liabilities. I combined
+      aggressive caching with <strong>BlurHash</strong> placeholders. While images
+      load, users see a meaningful blurry preview rather than a blank container, reducing
+      visual jank. Users can also toggle between high-quality images and data-saving
+      thumbnails.
+    </p>
 
-        <h2>TECHNICAL ARCHITECTURE</h2>
-        <TechSpecs specs={specs} />
+    <h2>TECHNICAL ARCHITECTURE</h2>
+    <TechSpecs specs={specs} />
 
-        <h2>THE LESSON</h2>
-        <p>
-            This app wasn’t built to chase metrics. It was built to close a gap
-            in understanding. It reinforced that frameworks are rarely the real
-            obstacle—mental models are. It showed me the value of patience,
-            restraint, and choosing problems that force you to confront
-            fundamentals. Some projects don’t wait for motivation. They wait for
-            readiness.
-        </p>
+    <h2>THE LESSON</h2>
+    <p>
+      This app wasn’t built to chase metrics. It was built to close a gap in
+      understanding. It reinforced that frameworks are rarely the real
+      obstacle-mental models are. It showed me the value of patience, restraint,
+      and choosing problems that force you to confront fundamentals. Some
+      projects don’t wait for motivation. They wait for readiness.
+    </p>
 
-        <FooterProject />
-    </div>
+    <FooterProject />
+  </div>
 </Layout>
