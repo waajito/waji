@@ -4,6 +4,7 @@ import NavProject from "../../components/NavProject.astro";
 import FooterProject from "../../components/FooterProject.astro";
 import MetaGrid from "../../components/MetaGrid.astro";
 import TechSpecs from "../../components/TechSpecs.astro";
+import ImageSwitcher from "../../components/ImageSwitcher.astro";
 
 const metaItems = [
     { label: "TIMELINE", value: "2022 — 2024" },
@@ -78,6 +79,38 @@ const specs = [
             evolution, persistence, beautiful failures, and technical
             achievement.
         </p>
+
+        <div style="margin: 4rem 0;">
+            <h2>INTERFACE EVOLUTION</h2>
+            <p>
+                Hover over the versions below to see the evolution of the Canto
+                ecosystem interfaces.
+            </p>
+            <ImageSwitcher
+                items={[
+                    {
+                        label: "V1: Cyberpunk Terminal",
+                        src: "/images/plex_v1.jpg",
+                        alt: "Plex V1 Terminal Interface",
+                    },
+                    {
+                        label: "V2: Neobrutalism",
+                        src: "/images/plex_v2.jpg",
+                        alt: "Plex V2 Clean Interface",
+                    },
+                    {
+                        label: "V3: Windows 95",
+                        src: "/images/plex_v3.jpg",
+                        alt: "Plex V3 Retro Interface",
+                    },
+                    {
+                        label: "V4: Mobile Native",
+                        src: "/images/plex_v4.jpg",
+                        alt: "Plex V4 Mobile Interface",
+                    },
+                ]}
+            />
+        </div>
 
         <TechSpecs specs={specs} />
 
