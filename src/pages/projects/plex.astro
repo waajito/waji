@@ -7,113 +7,209 @@ import TechSpecs from "../../components/TechSpecs.astro";
 import ImageSwitcher from "../../components/ImageSwitcher.astro";
 
 const metaItems = [
-    { label: "TIMELINE", value: "2022 — 2024" },
-    { label: "ROLE", value: "SOLE FRONTEND" },
-    { label: "STACK", value: "NEXT.JS / WEB3" },
+  { label: "TIMELINE", value: "2022 — 2024" },
+  { label: "ROLE", value: "SOLE FRONTEND" },
+  { label: "STACK", value: "NEXT.JS / WEB3" },
+];
+
+const endMetaItems = [
+  { label: "TOTAL COMMITS", value: "1100+" },
+  { label: "VERSIONS", value: "4 MAJOR RELEASES" },
+  { label: "IMPACT", value: "$160M+ TVL" },
 ];
 
 const specs = [
-    {
-        category: "Frontend",
-        items: [
-            "Next.js 13+ (App Router)",
-            "TypeScript",
-            "Tailwind CSS",
-            "Framer Motion",
-            "Wagmi / Viem (Web3 Hooks)",
-        ],
-    },
-    {
-        category: "Architecture",
-        items: [
-            "Atomic Design System",
-            "Feature-Sliced Architecture",
-            "Server Actions",
-            "Optimistic UI Updates",
-        ],
-    },
-    {
-        category: "Web3 Integration",
-        items: [
-            "WalletConnect & MetaMask",
-            "Transaction Lifecycle Management",
-            "Event Indexing (The Graph)",
-            "Gas Estimation Logic",
-        ],
-    },
-    {
-        category: "Design",
-        items: [
-            "Figma Prototyping",
-            "Design System Maintenance",
-            "Custom Iconography",
-            "Responsive layouts",
-        ],
-    },
+  {
+    category: "Frontend",
+    items: [
+      "Next.js 13+ (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Wagmi / Viem (Web3 Hooks)",
+    ],
+  },
+  {
+    category: "Architecture",
+    items: [
+      "Atomic Design System",
+      "Feature-Sliced Architecture",
+      "Server Actions",
+      "Optimistic UI Updates",
+    ],
+  },
+  {
+    category: "Web3 Integration",
+    items: [
+      "WalletConnect & MetaMask",
+      "Transaction Lifecycle Management",
+      "Event Indexing (The Graph)",
+      "Gas Estimation Logic",
+    ],
+  },
+  {
+    category: "Design",
+    items: [
+      "Figma Prototyping",
+      "Design System Maintenance",
+      "Custom Iconography",
+      "Responsive layouts",
+    ],
+  },
 ];
 ---
 
 <Layout title="Waj | Plex Case Study">
-    <div class="grid-bg"></div>
-    <div class="container">
-        <NavProject caseNumber="001" />
+  <div class="grid-bg"></div>
+  <div class="container">
+    <NavProject caseNumber="001" />
 
-        <span class="mono accent">FOUNDING ENGINEER</span>
-        <h1>PLEX / CANTO</h1>
-        <p class="dim" style="font-size: 1.4rem;">
-            Designing and developing an entire layer-1 blockchain ecosystem. <br
-            />
-            From Cyberpunk terminals to a Windows 95 operating system.
-        </p>
+    <span class="mono accent">FOUNDING ENGINEER</span>
+    <h1>PLEX / CANTO</h1>
+    <p class="dim" style="font-size: 1.4rem;">
+      Designing and developing an entire layer-1 blockchain ecosystem. <br />
+      From Cyberpunk terminals to a Windows 95 operating system.
+    </p>
 
-        <MetaGrid items={metaItems} />
+    <MetaGrid items={metaItems} />
 
-        <div class="img-block">[HERO_IMAGE_PLEX_V3]</div>
-
-        <p
-            class="intro-text"
-            style="font-size: 1.25rem; color: #fff; margin-bottom: 3rem;"
-        >
-            A 2.5-year evolution from game developer to building some of the
-            most innovative DeFi interfaces in the blockchain space. A story of
-            evolution, persistence, beautiful failures, and technical
-            achievement.
-        </p>
-
-        <div style="margin: 4rem 0;">
-            <h2>INTERFACE EVOLUTION</h2>
-            <p>
-                Hover over the versions below to see the evolution of the Canto
-                ecosystem interfaces.
-            </p>
-            <ImageSwitcher
-                items={[
-                    {
-                        label: "V1: Cyberpunk Terminal",
-                        src: "/images/plex_v1.jpg",
-                        alt: "Plex V1 Terminal Interface",
-                    },
-                    {
-                        label: "V2: Neobrutalism",
-                        src: "/images/plex_v2.jpg",
-                        alt: "Plex V2 Clean Interface",
-                    },
-                    {
-                        label: "V3: Windows 95",
-                        src: "/images/plex_v3.jpg",
-                        alt: "Plex V3 Retro Interface",
-                    },
-                    {
-                        label: "V4: Mobile Native",
-                        src: "/images/plex_v4.jpg",
-                        alt: "Plex V4 Mobile Interface",
-                    },
-                ]}
-            />
-        </div>
-
-        <TechSpecs specs={specs} />
-
-        <FooterProject />
+    <div class="img-block">
+      <img
+        src="/canto/header.png"
+        alt="Plex V3 Header"
+        style="width: 100%; height: 100%; object-fit: cover;"
+      />
     </div>
+
+    <p
+      class="intro-text"
+      style="font-size: 1.25rem; color: #fff; margin-bottom: 3rem;"
+    >
+      A 2.5-year evolution from game developer to building some of the most
+      innovative DeFi interfaces in the blockchain space. A story of evolution,
+      persistence, beautiful failures, and technical achievement.
+    </p>
+
+    <h2>The Pre-Plex Foundation</h2>
+    <p>
+      Before Plex, I was a solo game developer crafting mobile games as a hobby.
+      Unity was my playground, and I was determined to create the next big
+      gaming sensation. Game development taught me more than just coding—it
+      forced me to master Photoshop, Illustrator, Figma, Maya, and Blender. When
+      you're a solo dev, you wear every hat. This multi-disciplinary background
+      became my secret weapon in DeFi. By the time Plex found me, I had an
+      unusual combination of technical skills, design sensibility, and product
+      thinking.
+    </p>
+
+    <h2>May 2022: The Beginning</h2>
+    <p>
+      I joined Plex as a frontend engineer to work on Canto—a Layer 1
+      blockchain. The plan was simple: implement designs. But startups expand
+      your role. Within weeks, I wasn't just implementing designs; I was making
+      design decisions, optimizing user experiences, and bridging the gap
+      between technical implementation and user-facing polish.
+    </p>
+
+    <h2 style="margin-top: 6rem;">THE EVOLUTION: FOUR PHASES</h2>
+
+    <div style="margin: 2rem 0;">
+      <ImageSwitcher
+        items={[
+          {
+            label: "Phase 1: The Learning Curve (V1 Era)",
+            src: "/images/plex_v1.jpg",
+            alt: "Plex V1 Terminal Interface",
+          },
+          {
+            label: "Phase 2: The Consolidation Master (V2 Era)",
+            src: "/images/plex_v2.jpg",
+            alt: "Plex V2 Clean Interface",
+          },
+          {
+            label: "Phase 3: The Lost Masterpiece (Carthage Era)",
+            src: "/images/plex_v3.jpg",
+            alt: "Plex V3 Retro Interface",
+          },
+          {
+            label: "Phase 4: The Masterpiece (V3 Era)",
+            src: "/images/plex_v4.jpg",
+            alt: "Plex V4 Mobile Interface",
+          },
+        ]}
+      />
+    </div>
+
+    <h3>Phase 1: The Learning Curve (V1 Era)</h3>
+    <p>
+      <strong>The Challenge:</strong> Build a suite of DeFi applications with a cohesive
+      visual identity.<br />
+      <strong>Key Learning:</strong> Beautiful code doesn't automatically mean beautiful
+      user experience.
+    </p>
+    <p>
+      V1 was where I cut my teeth on blockchain. The terminal aesthetic emerged
+      from my Cyberpunk inspirations. Those neon scanlines weren't just
+      flair—they were an attempt to make blockchain feel futuristic. However,
+      our modular architecture (9 separate subdomains) was a UX nightmare. Users
+      had to reconnect wallets constantly.
+    </p>
+
+    <h3>Phase 2: The Consolidation Master (V2 Era)</h3>
+    <p>
+      <strong>The Challenge:</strong> Fix V1's UX flaws without compromising the vision.<br
+      />
+      <strong>Key Learning:</strong> Sometimes you have to tear everything down to
+      build something better.
+    </p>
+    <p>
+      I rebuilt the platform to solve the wallet connection problem—a
+      product-killing flaw. This phase pushed me beyond frontend; I optimized
+      state management, designed cross-chain flows, and focused on mobile-first
+      design.
+      <strong>Peak Performance:</strong> 157 commits in 90 days.
+    </p>
+
+    <h3>Phase 3: The Lost Masterpiece (Carthage Era)</h3>
+    <p>
+      Calculated component architecture and mature design systems. Although
+      cancelled, Carthage taught me that the value isn't just in shipping, but
+      in becoming the kind of developer who <em>can</em> build something great.
+    </p>
+
+    <h3>Phase 4: The Masterpiece (V3 Era)</h3>
+    <p>
+      <strong>The Challenge:</strong> Create the definitive statement of what DeFi
+      interfaces could be.<br />
+      <strong>Key Learning:</strong> Creative expression and technical excellence
+      aren't mutually exclusive.
+    </p>
+    <p>
+      We adopted a <strong>Windows 95 aesthetic</strong>. It wasn't just
+      nostalgia—it was a philosophy to make complex financial interactions feel
+      approachable and delightful. Technical Evolution: From basic React to
+      Next.js with TypeScript and comprehensive testing.
+      <strong>1100+ commits</strong> across the journey.
+    </p>
+
+    <h2>The Legacy</h2>
+    <p>
+      By August 2024, my journey with Plex was complete. I had proven that a
+      developer with design sensibilities could build world-class user
+      experiences in blockchain. We proved that DeFi interfaces didn't have to
+      be ugly, intimidating, or sterile. They could be beautiful, approachable,
+      and delightful.
+    </p>
+
+    <div style="margin-top: 4rem;">
+      <MetaGrid items={endMetaItems} />
+    </div>
+
+    <div style="margin-top: 4rem;">
+      <h2>TECHNICAL ARCHITECTURE</h2>
+      <TechSpecs specs={specs} />
+    </div>
+
+    <FooterProject />
+  </div>
 </Layout>
