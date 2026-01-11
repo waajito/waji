@@ -1,17 +1,70 @@
 ---
-const { size = 'card-md', href, title, desc, tags = [], year, meta, visualStyle = '' } = Astro.props;
+const {
+  size = "card-md",
+  href,
+  title,
+  desc,
+  tags = [],
+  year,
+  meta,
+  visualStyle = "",
+} = Astro.props;
 ---
 
-<article class={`card ${size}`} onclick={`window.location.href='${href}'`} style="cursor: pointer;">
-    <div class="card-visual" style={visualStyle}>
-        <slot name="visual" />
+<article
+  class={`card ${size}`}
+  onclick={`window.location.href='${href}'`}
+  style="cursor: pointer;"
+>
+  <div class="card-content">
+    <span class="card-meta">{meta || year}</span>
+    <h3 class="card-title">{title}</h3>
+    <p class="dim">{desc}</p>
+    <div class="card-tags">
+      {tags.map((tag) => <span class="tag">{tag}</span>)}
     </div>
-    <div>
-        <span class="card-meta">{meta || year}</span>
-        <h3 class="card-title">{title}</h3>
-        <p class="dim">{desc}</p>
-        <div class="card-tags">
-            {tags.map(tag => <span class="tag">{tag}</span>)}
-        </div>
-    </div>
+  </div>
+
+  <!-- Deciphering Text Effect Element -->
+  <div class="decipher-layer"></div>
 </article>
+
+<script>
+  // Decipher/Scramble Logic
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach((card) => {
+    // Cast to HTMLElement to access properties
+    const element = card;
+    const layer = element.querySelector(".decipher-layer");
+    if (!layer) return;
+
+    // Populate initial text (enough to fill the card)
+    const generateText = () => {
+      let str = "";
+      for (let i = 0; i < 800; i++) {
+        str += chars[Math.floor(Math.random() * chars.length)];
+        if (i % 40 === 0 && i > 0) str += " "; // Add some breaks
+      }
+      return str;
+    };
+
+    layer.textContent = generateText();
+
+    element.addEventListener("mousemove", (e) => {
+      const rect = element.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      element.style.setProperty("--x", `${x}px`);
+      element.style.setProperty("--y", `${y}px`);
+
+      // Scramble text
+      if (Math.random() > 0.5) {
+        layer.textContent = generateText();
+      }
+    });
+  });
+</script>
