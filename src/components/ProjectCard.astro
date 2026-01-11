@@ -44,7 +44,7 @@ const {
     // Populate initial text (enough to fill the card)
     const generateText = () => {
       let str = "";
-      for (let i = 0; i < 800; i++) {
+      for (let i = 0; i < 5000; i++) {
         str += chars[Math.floor(Math.random() * chars.length)];
         if (i % 40 === 0 && i > 0) str += " "; // Add some breaks
       }
