@@ -179,6 +179,8 @@ p {
   grid-template-columns: 1fr;
   gap: 4rem;
   align-items: center;
+    padding: 2rem 1rem;
+
 }
 
 @media (min-width: 900px) {
