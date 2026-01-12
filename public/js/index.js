@@ -96,14 +96,29 @@ if (canvas) {
         return start * (1 - t) + end * t;
     }
 
-    function animateCanvas() {
+    let lastTime = 0;
+
+    function animateCanvas(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+        const deltaTime = (timestamp - lastTime) / 1000; // time in seconds
+        lastTime = timestamp;
+
+        // Cap deltaTime to avoid huge jumps if tab was inactive (e.g. max 0.1s)
+        const dt = Math.min(deltaTime, 0.1);
+
         ctx.clearRect(0, 0, width, height);
-        time += 0.02;
+        
+        // Base speed was 0.02 per frame. At 60fps (16.ms), 0.02 is arbitrary.
+        // Let's assume 0.02 was intended for 60fps.  (0.02 * 60 = 1.2 per second)
+        // So we increment by 1.2 * dt
+        time += 1.2 * dt;
 
         // Smooth Interpolation with Easing
         // Target is 1 if hovering, 0 if not
         const targetHover = isHoveringText ? 1 : 0;
-        hoverVal += (targetHover - hoverVal) * 0.05;
+        // Interpolation speed: was 0.05 per frame. 0.05 * 60 = 3.0 per second.
+        const lerpSpeed = 3.0 * dt;
+        hoverVal += (targetHover - hoverVal) * lerpSpeed;
 
         // 1. Dynamic Radius: 75px (Default) -> 150px (Text Hover)
         const currentMaxDist = lerp(75, 150, hoverVal);
@@ -147,5 +162,6 @@ if (canvas) {
 
         requestAnimationFrame(animateCanvas);
     }
-    animateCanvas();
+    requestAnimationFrame(animateCanvas);
 }
+
