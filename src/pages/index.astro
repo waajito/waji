@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import NavHome from "../components/NavHome.astro";
 import FooterHome from "../components/FooterHome.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import ImageStack from "../components/ImageStack.astro";
 ---
 
 <Layout title="Waj | Founding Engineer">
@@ -11,19 +12,31 @@ import ProjectCard from "../components/ProjectCard.astro";
   <!-- HERO (Moved OUTSIDE container for full width canvas) -->
   <section class="hero">
     <canvas id="bg-canvas"></canvas>
-    <div class="container container-lg hero-text-container" data-gsap="fade-up">
-      <div class="status-badge">
-        <div class="status-dot"></div>
-        AVAILABLE FOR NEW ROLES
+    <div class="container container-lg hero-grid">
+      <!-- LEFT: TEXT -->
+      <div class="hero-text-container" data-gsap="fade-up">
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          AVAILABLE FOR NEW ROLES
+        </div>
+        <h1>Frontend <br /><span class="dim">& Product Engineer</span></h1>
+        <p
+          style="max-width: 600px; font-size: 1.25rem; color: var(--text-dim); margin-top: 2rem;"
+        >
+          I help startups turn ideas into reliable products — quickly and
+          cleanly.<br />
+          Focused on fast execution, solid design systems, and real-world usability.
+        </p>
       </div>
-      <h1>Frontend <br /><span class="dim">& Product Engineer</span></h1>
-      <p
-        style="max-width: 600px; font-size: 1.25rem; color: var(--text-dim); margin-top: 2rem;"
+
+      <!-- RIGHT: 3D STACK -->
+      <div
+        class="hero-stack-container"
+        data-gsap="fade-up"
+        style="animation-delay: 0.2s;"
       >
-        I help startups turn ideas into reliable products — quickly and cleanly.<br
-        />
-        Focused on fast execution, solid design systems, and real-world usability.
-      </p>
+        <ImageStack />
+      </div>
     </div>
   </section>
 

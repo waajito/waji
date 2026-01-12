@@ -1,0 +1,195 @@
+---
+
+---
+
+<div class="image-stack-container">
+  <div class="stack-wrapper">
+    <!-- 3 ITEMS only -->
+    <div class="stack-item item-1 state-0">
+      <div class="placeholder-content p1"></div>
+    </div>
+    <div class="stack-item item-2 state-1">
+      <div class="placeholder-content p2"></div>
+    </div>
+    <div class="stack-item item-3 state-2">
+      <div class="placeholder-content p3"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .image-stack-container {
+    width: 100%;
+    /* wrapper now wider, give it some vertical space */
+    height: 480px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+  }
+
+  .stack-wrapper {
+    position: relative;
+    /* 16:9 Aspect Ratio (approx 480x270 or similar scale) */
+    width: 480px;
+    height: 270px;
+    transform-style: preserve-3d;
+    transform: rotateY(-10deg) rotateX(5deg);
+  }
+
+  .stack-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.8s cubic-bezier(0.35, 1.25, 0.35, 1);
+    transform-origin: center bottom;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5); /* slightly darker shadow since full opacity */
+    background: #111; /* Ensure no see-through if placeholder doesn't cover */
+  }
+
+  /* --- STATES --- */
+
+  /* STATE 0: Front and Active */
+  .stack-item.state-0 {
+    z-index: 10;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateZ(-2deg);
+    box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.8);
+  }
+
+  /* STATE 1: Middle */
+  .stack-item.state-1 {
+    z-index: 9;
+    opacity: 1; /* No transparency */
+    transform: translate3d(40px, -40px, -60px) rotateZ(3deg);
+    filter: brightness(
+      0.7
+    ); /* Use brightness instead of opacity to show depth */
+  }
+
+  /* STATE 2: Back */
+  .stack-item.state-2 {
+    z-index: 8;
+    opacity: 1; /* No transparency */
+    transform: translate3d(80px, -80px, -120px) rotateZ(-1deg);
+    filter: brightness(0.5); /* Darker for depth */
+  }
+
+  /* --- ANIMATION CLASS (The "Moving" state) --- */
+
+  /* When transitioning from State 0 -> State 2 (The "Pick Up" move) */
+  .stack-item.is-moving-to-back {
+    z-index: 100 !important; /* Stay on top during move */
+    transition: all 0.7s ease-in-out;
+    /* The trajectory: Lift UP high, Move slightly RIGHT */
+    transform: translate3d(120px, -300px, 300px) rotateZ(15deg) !important;
+    opacity: 1;
+  }
+
+  /* Placeholder Styling */
+  .placeholder-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Placeholder gradients */
+  .p1 {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  }
+  .p2 {
+    background: linear-gradient(145deg, #2a2a2a, #3a3a3a);
+  }
+  .p3 {
+    background: linear-gradient(145deg, #0f0f0f, #1f1f1f);
+  }
+
+  /* Tech Accents on Placeholders to verify rotation */
+  .placeholder-content::before {
+    content: "PROJECT_0" attr(data-idx);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .item-1 .placeholder-content::before {
+    content: "PROJECT_01";
+  }
+  .item-2 .placeholder-content::before {
+    content: "PROJECT_02";
+  }
+  .item-3 .placeholder-content::before {
+    content: "PROJECT_03";
+  }
+</style>
+
+<script>
+  function initOrganicStack() {
+    const items = Array.from(document.querySelectorAll(".stack-item"));
+    if (!items.length) return;
+
+    // Current logical indices for the 3 slots [Front (0), Middle (1), Back (2)]
+    // We rotate the array representation to map to DOM elements.
+    // Let's keep it simple: We just rotate classes state-0, state-1, state-2.
+
+    // Map of current state for each item (by index)
+    // specific item index -> current state (0, 1, or 2)
+    let itemStates = [0, 1, 2];
+
+    function update() {
+      items.forEach((item, index) => {
+        const currentState = itemStates[index];
+        const nextState = (currentState + 2) % 3; // 0->2 (back), 1->0 (front), 2->1 (middle) logic depends on order
+
+        // Wait, standard rotation:
+        // Front (0) -> Back (2)  (The "Pick Up")
+        // Middle (1) -> Front (0)
+        // Back (2) -> Middle (1)
+
+        let targetState;
+        if (currentState === 0) {
+          targetState = 2; // Move to back
+
+          // SPECIAL ANIMATION FOR FRONT CARD (Picking up)
+          item.classList.add("is-moving-to-back");
+
+          // Wait for the "lift" part before settling into back state
+          setTimeout(() => {
+            item.classList.remove("is-moving-to-back");
+            applyState(item, targetState);
+          }, 600); // 600ms = slightly less than total transition time to snap it back
+        } else if (currentState === 1) {
+          targetState = 0; // Move to front
+          applyState(item, targetState);
+        } else {
+          targetState = 1; // Move to middle
+          applyState(item, targetState);
+        }
+
+        itemStates[index] = targetState;
+      });
+    }
+
+    function applyState(el, state) {
+      el.classList.remove("state-0", "state-1", "state-2");
+      el.classList.add(`state-${state}`);
+    }
+
+    setInterval(update, 3500); // Slower interval for organic feel
+  }
+
+  initOrganicStack();
+  document.addEventListener("astro:page-load", initOrganicStack);
+</script>
