@@ -1,18 +1,32 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 
+// Get images from public/showcase
+const showcaseDir = path.join(process.cwd(), "public", "showcase");
+let images: string[] = [];
+
+try {
+  images = fs
+    .readdirSync(showcaseDir)
+    .filter((file) => /\.(jpg|jpeg|png|webp|gif)$/i.test(file))
+    .map((file) => `/showcase/${file}`);
+} catch (error) {
+  console.error("Error reading showcase directory:", error);
+}
 ---
 
-<div class="image-stack-container">
+<div class="image-stack-container" data-images={JSON.stringify(images)}>
   <div class="stack-wrapper">
-    <!-- 3 ITEMS only -->
+    <!-- 3 Dom Items recycled for infinite scroll -->
     <div class="stack-item item-1 state-0">
-      <div class="placeholder-content p1"></div>
+      <div class="img-content" id="img-slot-0"></div>
     </div>
     <div class="stack-item item-2 state-1">
-      <div class="placeholder-content p2"></div>
+      <div class="img-content" id="img-slot-1"></div>
     </div>
     <div class="stack-item item-3 state-2">
-      <div class="placeholder-content p3"></div>
+      <div class="img-content" id="img-slot-2"></div>
     </div>
   </div>
 </div>
@@ -89,92 +103,226 @@
     opacity: 1;
   }
 
-  /* Placeholder Styling */
-  .placeholder-content {
+  /* Image Content Styling */
+  .img-content {
     width: 100%;
     height: 100%;
-    border-radius: 16px;
+    border-radius: 4px; /* Slight radius */
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
     background-size: cover;
     background-position: center;
-  }
-
-  /* Placeholder gradients */
-  .p1 {
-    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-  }
-  .p2 {
-    background: linear-gradient(145deg, #2a2a2a, #3a3a3a);
-  }
-  .p3 {
-    background: linear-gradient(145deg, #0f0f0f, #1f1f1f);
-  }
-
-  /* Tech Accents on Placeholders to verify rotation */
-  .placeholder-content::before {
-    content: "PROJECT_0" attr(data-idx);
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-family: monospace;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-
-  .item-1 .placeholder-content::before {
-    content: "PROJECT_01";
-  }
-  .item-2 .placeholder-content::before {
-    content: "PROJECT_02";
-  }
-  .item-3 .placeholder-content::before {
-    content: "PROJECT_03";
+    background-color: #222;
   }
 </style>
 
 <script>
-  function initOrganicStack() {
+  function initInfiniteStack() {
+    const container = document.querySelector(".image-stack-container");
+    if (!container) return;
+
+    // Get images from data attribute
+    const rawImages = container.getAttribute("data-images");
+    if (!rawImages) return;
+
+    let allImages = JSON.parse(rawImages);
+
+    // Shuffle images on load
+    // Fisher-Yates Shuffle
+    for (let i = allImages.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [allImages[i], allImages[j]] = [allImages[j], allImages[i]];
+    }
+
     const items = Array.from(document.querySelectorAll(".stack-item"));
-    if (!items.length) return;
+    if (items.length !== 3) return;
 
-    // Current logical indices for the 3 slots [Front (0), Middle (1), Back (2)]
-    // We rotate the array representation to map to DOM elements.
-    // Let's keep it simple: We just rotate classes state-0, state-1, state-2.
+    // State Mapping:
+    // We have 3 DOM items (index 0, 1, 2)
+    // We have N images (0 to N-1)
 
-    // Map of current state for each item (by index)
-    // specific item index -> current state (0, 1, or 2)
+    // Initial Setup
+    // Assign first 3 shuffled images to the 3 slots
+    const slots = [
+      document.getElementById("img-slot-0"),
+      document.getElementById("img-slot-1"),
+      document.getElementById("img-slot-2"),
+    ];
+
+    // Current Image Index pointer in the big array
+    // Since we used 0, 1, 2 for the initial slots, the "next" new image to fetch will be at index 3.
+    let nextImageIndex = 3;
+
+    // Initial Population
+    slots.forEach((slot, i) => {
+      if (slot) {
+        // Loop safe in case < 3 images
+        const imgPath = allImages[i % allImages.length];
+        slot.style.backgroundImage = `url('${imgPath}')`;
+      }
+    });
+
+    // Logical States of the 3 DOM items
+    // itemStates[domIndex] = currentPositionState (0=Front, 1=Middle, 2=Back)
     let itemStates = [0, 1, 2];
 
     function update() {
       items.forEach((item, index) => {
         const currentState = itemStates[index];
-        const nextState = (currentState + 2) % 3; // 0->2 (back), 1->0 (front), 2->1 (middle) logic depends on order
-
-        // Wait, standard rotation:
-        // Front (0) -> Back (2)  (The "Pick Up")
-        // Middle (1) -> Front (0)
-        // Back (2) -> Middle (1)
+        // Rotate states: 0->2 (Back), 1->0 (Front), 2->1 (Middle)
 
         let targetState;
         if (currentState === 0) {
-          targetState = 2; // Move to back
+          targetState = 2; // Moving to Back
 
-          // SPECIAL ANIMATION FOR FRONT CARD (Picking up)
+          // ANIMATION & CONTENT SWAP
+          // 1. Trigger "Pick Up" Animation
           item.classList.add("is-moving-to-back");
 
-          // Wait for the "lift" part before settling into back state
+          // 2. Wait for it to be "behind" visually (halfway through transition) or just swap immediately if obscured?
+          // Actually, for the "Pick Up" move, the card is visible the whole time it flies back.
+          // So we should NOT change the image while it's moving back, because it's the SAME card moving back.
+          // BUT, once it settles in the back (State 2), it is now the "bottom" of the stack.
+          // In an infinite stack illusion:
+          // The card that goes to the back MUST eventually become a NEW card before it comes to the front again.
+          // The Cycle is: Front -> Back -> Middle -> Front
+          // So it spends 2 cycles "behind" before appearing again.
+          // The best time to swap the image is when it is at the very back (State 2) and covered by State 1 and State 0?
+          // Wait, State 2 is the back-most card. It is partially visible.
+          // So we must update the content for "State 2" BEFORE it becomes State 2?
+          // No, the card moving FROM front TO back represents the card that was just viewed.
+          // So it SHOULD keep its image as it flies to the back.
+          // It sits at the back. Then moves to middle. Then moves to front.
+          // If we keep the image, we just cycle the same 3 images.
+          // We need to swap the image to `nextImageIndex` at some point where it's least noticeable.
+          // OR: We treat the "Back" slot (State 2) as the "Feeding" slot?
+          // If Front moves to Back, it joins the bottom of the pile.
+          // If we want new images, effectively the "Back" card should be a NEW image when it appears?
+          // Let's try this:
+          // When a card finishes moving to State 2 (Back), we update its image to the NEXT one in the list.
+          // But State 2 IS visible.
+          // Maybe we update it when it is 'State 2' transitioning to 'State 1'? No.
+
+          // Alternative:
+          // The card moving to the back IS the card we just saw. It goes to the bottom of the pile.
+          // The user expects to see that same image at the bottom.
+          // So we can't change it YET.
+          // The card that is CURRENTLY at State 2 (Back) is about to move to State 1 (Middle).
+          // The card at State 1 (Middle) is about to move to State 0 (Front).
+
+          // So:
+          // Card A (Front) -> moves to Back. (Keeps Image A)
+          // Card B (Middle) -> moves to Front. (Image B)
+          // Card C (Back) -> moves to Middle. (Image C)
+
+          // If we only have 3 cards, we see A, B, C, A, B, C...
+          // We want A, B, C, D, E...
+          // Where do we inject D?
+          // Ideally, the "Back" of the stack should be refilled silently.
+          // But in a 3-card stack, the "Back" is visible.
+
+          // Trick:
+          // When Card A moves to Back, it lands on top of... nothing?
+          // Wait, physically:
+          // Middle moves to Front.
+          // Back moves to Middle.
+          // Front moves to Back (BEHIND Middle).
+
+          // So the card order visually becomes:
+          // Front: Old Middle (B)
+          // Middle: Old Back (C)
+          // Back: Old Front (A)
+
+          // So we see B, C, A.
+          // In the NEXT cycle: C, A, B.
+          // NEXT: A, B, C.
+
+          // To inject D:
+          // We need to change 'A' after it goes to the back, but BEFORE it comes to the front again.
+          // It sits at Back (State 2) for 3 seconds.
+          // Then it moves to Middle (State 1) for 3 seconds.
+          // Then it moves to Front (State 0).
+
+          // If we change it while it is at Back (State 2), it is visible (partially). The user might see it flicker.
+          // However, it is the bottom-most card.
+          // Maybe we can cross-fade it? Or just swap it when it's behind?
+          // Actually, strictly speaking, a card pile logic implies the card you put back stays there.
+          // But if we want to show 28 images, we have to cheat.
+
+          // Cheat:
+          // When "Front" (A) flies to "Back", it lands at position 2.
+          // While it is flying (or right after it lands), we could change the image if we assume the user isn't focused on the bottom card.
+          // BETTER: Change the image of the card that IS LEAVING THE BACK POSITION?
+          // No, the card leaving Back (C) moves to Middle. It's becoming MORE visible.
+
+          // Let's swap the image on the card that MOVES TO BACK, *after* a delay when it's settled?
+          // It will be the "newest" bottom card.
+          // If we swap it then, the user sees "Card A" fly back, land, and then suddenly change to "Card D"? That's jarring.
+
+          // What if we change the image of the card currently at State 2 (Back) *JUST BEFORE* the transition starts?
+          // No, that card is about to move to Middle (State 1). We want that to be a queued image.
+
+          // Let's trace the lifecycle of a slot:
+          // Slot 0 starts with Img 0.
+          // Cycle 1: Slot 0 (Img 0) is Front.
+          // Cycle 2: Slot 0 moves to Back. (Still Img 0). Visibly at back.
+          // Cycle 3: Slot 0 moves to Middle. (Still Img 0). Visibly at middle.
+          // Cycle 4: Slot 0 moves to Front. (Still Img 0).
+
+          // We want Cycle 4 to show Img 3 (the 4th image).
+          // So somewhere between Cycle 2 (landed at back) and Cycle 4 (appearing at front), we must swap Img 0 -> Img 3.
+
+          // If we swap at Cycle 2 (at back): "Img 0" flies back, becomes "Img 0" at bottom. Then 1.5s later, crossfades to "Img 3"?
+          // If we swap at Cycle 3 (at middle): "Img 0" moves from Back to Middle. It is now "Img 3"?
+
+          // THE TRICK:
+          // We need 4 states to hide the swap? No, user asked for 3 containers.
+          // With only 3 visible items, "Infinite" is hard without a hidden swap.
+          // But maybe the "Back" state is obscure enough?
+          // Or maybe the animation makes it hard to see?
+
+          // Let's try swapping the content of the card that JUST MOVED TO THE BACK,
+          // BUT delay the swap until AFTER the animation finishes?
+          // "Card A" files to back. Lands.
+          // (Wait 1s).
+          // Swap "Card A" content to "Card D".
+          // Since it's at the back (darker brightness, bottom of stack), maybe a quick swap is acceptable?
+          // Or we could fade the new image in?
+
+          // Let's try this:
+          // Transition happens.
+          // item moves to back.
+          // `setTimeout` -> change image.
+
           setTimeout(() => {
             item.classList.remove("is-moving-to-back");
             applyState(item, targetState);
-          }, 600); // 600ms = slightly less than total transition time to snap it back
+
+            // UPDATE IMAGE CONTENT HERE
+            // This item is now at "Back" (State 2).
+            // It will sit here for 3s.
+            // We change its image to the NEXT one in the queue.
+            const slot = item.querySelector(".img-content");
+            if (slot) {
+              // Update to next image
+              const nextImg = allImages[nextImageIndex];
+              // Preload/Swap
+              const img = new Image();
+              img.src = nextImg;
+              img.onload = () => {
+                slot.style.backgroundImage = `url('${nextImg}')`;
+              };
+
+              // Increment and wrap index
+              nextImageIndex = (nextImageIndex + 1) % allImages.length;
+            }
+          }, 700);
         } else if (currentState === 1) {
-          targetState = 0; // Move to front
+          targetState = 0; // Front
           applyState(item, targetState);
         } else {
-          targetState = 1; // Move to middle
+          targetState = 1; // Middle
           applyState(item, targetState);
         }
 
@@ -187,9 +335,10 @@
       el.classList.add(`state-${state}`);
     }
 
-    setInterval(update, 3500); // Slower interval for organic feel
+    setInterval(update, 3500);
   }
 
-  initOrganicStack();
-  document.addEventListener("astro:page-load", initOrganicStack);
+  // Init
+  initInfiniteStack();
+  document.addEventListener("astro:page-load", initInfiniteStack);
 </script>
