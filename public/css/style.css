@@ -179,8 +179,10 @@ p {
   grid-template-columns: 1fr;
   gap: 4rem;
   align-items: center;
-    padding: 2rem 1rem;
-
+  width: 100%;
+  padding: 0 5vw;
+  position: relative;
+  z-index: 10;
 }
 
 @media (min-width: 900px) {
