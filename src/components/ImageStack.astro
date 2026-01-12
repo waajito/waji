@@ -16,40 +16,89 @@ try {
 }
 ---
 
-<div class="slideshow-container" data-images={JSON.stringify(images)}>
-  <div class="slides-wrapper">
-    <!-- Two buffers for smooth cross-fading: Current and Next -->
-    <div class="slide current" id="slide-current"></div>
-    <div class="slide next" id="slide-next"></div>
+<div class="browser-frame">
+  <!-- Window Controls -->
+  <div class="frame-header">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="address-bar"></div>
   </div>
 
-  <div class="pagination-lines" id="pagination-container">
-    <!-- Lines will be injected here via JS -->
+  <div class="slideshow-container" data-images={JSON.stringify(images)}>
+    <div class="slides-wrapper">
+      <div class="slide current" id="slide-current"></div>
+      <div class="slide next" id="slide-next"></div>
+    </div>
+
+    <div class="pagination-lines" id="pagination-container"></div>
   </div>
 </div>
 
 <style>
-  .slideshow-container {
-    position: relative;
-    width: 640px; /* Increased size */
-    height: 360px; /* 16:9 */
-    border-radius: 16px;
+  /* BROWSER FRAME WRAPPER */
+  .browser-frame {
+    width: 100%;
+    max-width: 640px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    /* Subtle Border Stroke */
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      0 20px 40px -10px rgba(0, 0, 0, 0.5);
-    background: #111;
+    margin: 0 auto; /* Center it */
   }
 
-  /* Responsive sizing */
-  @media (max-width: 768px) {
-    .slideshow-container {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16/9;
-    }
+  .frame-header {
+    height: 36px;
+    background: #111;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 1rem;
   }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot.red {
+    background: #ff5f56;
+  }
+  .dot.yellow {
+    background: #ffbd2e;
+  }
+  .dot.green {
+    background: #27c93f;
+  }
+
+  .address-bar {
+    flex: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    opacity: 0.5;
+  }
+
+  /* SLIDESHOW INNER */
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* Exact match for images: 1726 x 897 approx 1.92 */
+    aspect-ratio: 1726 / 897;
+    background: #000;
+  }
+  /* Removed redundant media query as widths are now fluid */
 
   .slides-wrapper {
     position: relative;
@@ -65,6 +114,7 @@ try {
     height: 100%;
     background-size: cover;
     background-position: center;
+    background-color: #000;
     transition: opacity 0.8s ease-in-out;
   }
 
@@ -72,13 +122,11 @@ try {
     z-index: 1;
     opacity: 1;
   }
-
   .slide.next {
     z-index: 2;
     opacity: 0;
     pointer-events: none;
   }
-
   .slide.next.active {
     opacity: 1;
   }
@@ -89,20 +137,20 @@ try {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem; /* Increased padding */
+    padding: 1.5rem;
     display: flex;
-    gap: 4px; /* Gap between lines */
-    z-index: 20; /* High Z-index */
-    pointer-events: none; /* Let clicks pass through if needed */
+    gap: 4px;
+    z-index: 20;
+    pointer-events: none;
   }
 
   .p-line {
-    height: 4px; /* Slightly thicker */
-    flex: 1; /* Distribute width equally */
-    background: rgba(255, 255, 255, 0.3); /* Higher contrast */
+    height: 4px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
     transition: background-color 0.3s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Shadow for visibility */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   }
 
   .p-line.active {
@@ -135,8 +183,6 @@ try {
     if (!currentSlide || !nextSlide || !pagContainer) return;
 
     // --- SETUP PAGINATION ---
-    // Inject lines based on image count
-    // If too many images > 30, lines might be too small? 28 is fine.
     pagContainer.innerHTML = "";
     const lines = [];
     allImages.forEach((_, idx) => {
@@ -151,8 +197,6 @@ try {
 
     // Initialize first image
     currentSlide.style.backgroundImage = `url('${allImages[0]}')`;
-    // Preload second image into next slide just in case
-    // (Actually we set next slide bg right before transition)
 
     function nextCycle() {
       const nextIndex = (currentIndex + 1) % allImages.length;
@@ -162,38 +206,20 @@ try {
       nextSlide.style.backgroundImage = `url('${nextImg}')`;
 
       // 2. Fade In Next Slide
-      // Force reflow/wait a tick? Usually not needed if opacity was 0
       requestAnimationFrame(() => {
         nextSlide.classList.add("active");
       });
 
-      // 3. Update Pagination immediately or after transition?
-      // Usually immediately looks more responsive.
+      // 3. Update Pagination
       lines[currentIndex].classList.remove("active");
       lines[nextIndex].classList.add("active");
 
       // 4. After Transition (0.8s), swap and reset
       setTimeout(() => {
-        // "Next" is now fully visible and covering "Current"
-        // Make "Current" show the new image (hidden behind Next)
         currentSlide.style.backgroundImage = `url('${nextImg}')`;
-
-        // Turn off "Next" (it fades out? No, we simply remove active class BUT we need to ensure it doesn't flash)
-        // If we remove .active from .next, it goes back to opacity 0.
-        // Since .current is now the same image effectively behind it, the user sees no change.
-        // However, .next has transition usually. If we remove opacity, it will fade out revealing .current.
-        // Since .current is identical, it's a perfect cross-fade into self? No visually nothing happens.
-
-        // Perfect Swap:
-        // 1. Update current to new image
-        // 2. Remove 'active' from next (it starts fading to 0).
-        // Visually: Top layer fades out, revealing identical Bottom layer. Zero visual difference.
-        // Ready for next sequence.
-
-        nextSlide.classList.remove("active"); // Fades back to 0
-
+        nextSlide.classList.remove("active");
         currentIndex = nextIndex;
-      }, 800); // Wait for CSS transition time
+      }, 800);
     }
 
     setInterval(nextCycle, 3500);
