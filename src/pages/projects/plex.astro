@@ -12,12 +12,6 @@ const metaItems = [
   { label: "STACK", value: "NEXT.JS / WEB3" },
 ];
 
-const endMetaItems = [
-  { label: "TOTAL COMMITS", value: "1100+" },
-  { label: "VERSIONS", value: "4 MAJOR RELEASES" },
-  { label: "IMPACT", value: "$160M+ TVL" },
-];
-
 const specs = [
   {
     category: "Frontend",
@@ -81,32 +75,45 @@ const specs = [
       />
     </div>
 
-    <p
-      class="intro-text"
-      style="font-size: 1.25rem; color: #fff; margin-bottom: 3rem;"
-    >
-      A 2.5-year evolution from game developer to building some of the most
-      innovative DeFi interfaces in the blockchain space. A story of evolution,
-      persistence, beautiful failures, and technical achievement.
-    </p>
-
     <h2>The Pre-Plex Foundation</h2>
     <p>
       Before Plex, I was a solo game developer crafting mobile games as a hobby.
       Unity was my playground, and I was determined to create the next big
-      gaming sensation. Game development taught me more than just coding-it
+      gaming sensation. Game development taught me more than just coding,it
       forced me to master Photoshop, Illustrator, Figma, Maya, and Blender. When
-      you're a solo dev, you wear every hat. This multi-disciplinary background
-      became my secret weapon in DeFi. By the time Plex found me, I had an
-      unusual combination of technical skills, design sensibility, and product
-      thinking.
+      you're a solo dev, you wear every hat.
+    </p>
+    <p>
+      This multi-disciplinary background became my secret weapon in DeFi. By the
+      time Plex found me, I had an unusual combination of technical skills,
+      design sensibility, and product thinking.
     </p>
 
     <h2>May 2022: The Beginning</h2>
     <p>
-      I joined Plex as a frontend engineer to work on Canto-a Layer 1
-      blockchain. The plan was simple: implement designs. But startups expand
-      your role. Within weeks, I wasn't just implementing designs; I was making
+      I joined Plex Labs as a frontend engineer to work on Canto,a Layer-1
+      blockchain with a radical thesis: DeFi's core primitives should be public
+      goods, not rent-seeking platforms.
+    </p>
+    <p>
+      Most blockchains let projects extract fees at every layer. Canto rejected
+      that. The network provided Free Public Infrastructure,a native DEX, a
+      lending market (CLM), and a decentralized stablecoin (NOTE),all without
+      governance tokens skimming value from users. The idea was that if these
+      primitives exist as public utilities, developers can build on top without
+      competing against the base layer.
+    </p>
+    <p>
+      Canto was built using the Cosmos SDK with Tendermint consensus, but ran a
+      full EVM,meaning Ethereum developers could deploy their contracts without
+      rewriting anything. It was grassroots from day one: no VC funding, no
+      token presale, no vested insiders. Just a team of builders with
+      backgrounds in high-frequency trading and mechanism design who believed
+      DeFi could work differently.
+    </p>
+    <p>
+      The plan for me was simple: implement designs. But startups expand your
+      role. Within weeks, I wasn't just implementing designs; I was making
       design decisions, optimizing user experiences, and bridging the gap
       between technical implementation and user-facing polish.
     </p>
@@ -143,30 +150,46 @@ const specs = [
     <h3>Phase 1: The Learning Curve (V1 Era)</h3>
     <p>
       <strong>The Challenge:</strong> Build a suite of DeFi applications with a cohesive
-      visual identity.<br />
+      visual identity.
+    </p>
+    <p>
       <strong>Key Learning:</strong> Beautiful code doesn't automatically mean beautiful
       user experience.
     </p>
     <p>
       V1 was where I cut my teeth on blockchain. The terminal aesthetic emerged
       from my Cyberpunk inspirations. Those neon scanlines weren't just
-      flair-they were an attempt to make blockchain feel futuristic. However,
-      our modular architecture (9 separate subdomains) was a UX nightmare. Users
-      had to reconnect wallets constantly.
+      flair,they were an attempt to make blockchain feel futuristic.
+    </p>
+    <p>
+      However, our modular architecture (9 separate subdomains) was a UX
+      nightmare. Users had to reconnect wallets constantly. For a chain trying
+      to onboard users into DeFi, friction like that was unacceptable.
     </p>
 
     <h3>Phase 2: The Consolidation Master (V2 Era)</h3>
     <p>
-      <strong>The Challenge:</strong> Fix V1's UX flaws without compromising the vision.<br
-      />
+      <strong>The Challenge:</strong> Fix V1's UX flaws without compromising the vision.
+    </p>
+    <p>
       <strong>Key Learning:</strong> Sometimes you have to tear everything down to
       build something better.
     </p>
     <p>
-      I rebuilt the platform to solve the wallet connection problem-a
+      I rebuilt the platform to solve the wallet connection problem,a
       product-killing flaw. This phase pushed me beyond frontend; I optimized
-      state management, designed cross-chain flows, and focused on mobile-first
-      design.
+      state management, designed cross-chain flows with Cosmos IBC bridging, and
+      focused on mobile-first design.
+    </p>
+    <p>
+      This was when Canto started gaining real traction. The TVL climbed past
+      $100 million within the first month of mainnet. By early 2023, it had
+      doubled again, and Canto became one of the top Layer-1s in the Cosmos
+      ecosystem. Watching users interact with interfaces I built,swapping on the
+      DEX, supplying to the lending market, bridging from Ethereum,validated the
+      long hours.
+    </p>
+    <p>
       <strong>Peak Performance:</strong> 157 commits in 90 days.
     </p>
 
@@ -174,36 +197,70 @@ const specs = [
     <p>
       Calculated component architecture and mature design systems. Although
       cancelled, Carthage taught me that the value isn't just in shipping, but
-      in becoming the kind of developer who <em>can</em> build something great.
+      in becoming the kind of developer who can build something great.
     </p>
 
     <h3>Phase 4: The Masterpiece (V3 Era)</h3>
     <p>
       <strong>The Challenge:</strong> Create the definitive statement of what DeFi
-      interfaces could be.<br />
+      interfaces could be.
+    </p>
+    <p>
       <strong>Key Learning:</strong> Creative expression and technical excellence
       aren't mutually exclusive.
     </p>
     <p>
-      We adopted a <strong>Windows 95 aesthetic</strong>. It wasn't just
-      nostalgia-it was a philosophy to make complex financial interactions feel
-      approachable and delightful. Technical Evolution: From basic React to
-      Next.js with TypeScript and comprehensive testing.
-      <strong>1100+ commits</strong> across the journey.
+      We adopted a Windows 95 aesthetic. It wasn't just nostalgia,it was a
+      philosophy to make complex financial interactions feel approachable and
+      delightful. While other DeFi interfaces went for cold, sterile
+      "professional" looks, we leaned into personality. Canto's ethos was about
+      accessibility, and the UI needed to reflect that.
+    </p>
+    <p>
+      By this point, Canto had established itself as a legitimate player. The
+      ecosystem had grown to include NFT projects, on-chain games, additional
+      DeFi protocols building on top of our Free Public Infrastructure. The
+      monthly hackathons brought in dozens of new projects. We weren't just
+      maintaining a blockchain frontend anymore,we were supporting an ecosystem.
+    </p>
+    <p>
+      <strong>Technical Evolution:</strong> From basic React to Next.js with TypeScript
+      and comprehensive testing.
+    </p>
+    <p>
+      <strong>1,100+ commits across the journey.</strong>
     </p>
 
     <h2>The Legacy</h2>
     <p>
-      By August 2024, my journey with Plex was complete. I had proven that a
-      developer with design sensibilities could build world-class user
-      experiences in blockchain. We proved that DeFi interfaces didn't have to
-      be ugly, intimidating, or sterile. They could be beautiful, approachable,
-      and delightful.
+      By August 2024, my journey with Plex was complete,over two years of
+      building, iterating, and shipping.
+    </p>
+    <p>
+      I had proven that a developer with design sensibilities could build
+      world-class user experiences in blockchain. We proved that DeFi interfaces
+      didn't have to be ugly, intimidating, or sterile. They could be beautiful,
+      approachable, and delightful.
+    </p>
+    <p>
+      Canto showed that a different model was possible,public infrastructure
+      over private extraction, community over VCs, usability over complexity.
+      And I got to build the interfaces that brought that vision to life.
     </p>
 
-    <div style="margin-top: 4rem;">
-      <MetaGrid items={endMetaItems} />
-    </div>
+    <h2>By the Numbers</h2>
+    <ul>
+      <li><strong>2+ years</strong> at Plex Labs (May 2022 – August 2024)</li>
+      <li><strong>1,100+ commits</strong> across four major versions</li>
+      <li><strong>$100M+ TVL</strong> within Canto's first month</li>
+      <li>
+        <strong>4 major platform iterations</strong> (V1 → V2 → Carthage → V3)
+      </li>
+      <li>
+        <strong>9 subdomains consolidated</strong> into a unified experience
+      </li>
+      <li><strong>157 commits in 90 days</strong> during V2 crunch</li>
+    </ul>
 
     <div style="margin-top: 4rem;">
       <h2>TECHNICAL ARCHITECTURE</h2>

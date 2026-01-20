@@ -19,34 +19,178 @@ const metaItems = [
     <span class="mono accent">CURRENT ROLE</span>
     <h1>THEO PROTOCOL</h1>
     <p class="dim" style="font-size: 1.4rem;">
-      Sole frontend engineer for a live DeFi platform with $161M+ TVL.
+      Sole frontend engineer for a live DeFi platform with $284M+ deployed.
     </p>
 
     <MetaGrid items={metaItems} />
 
     <div class="img-block">[THEO_DASHBOARD_PREVIEW]</div>
 
-    <h2>THE MISSION</h2>
     <p>
-      I'm currently the only frontend engineer at Theo. I own the frontend
-      architecture, performance optimization, analytics tracking, and
-      user-facing UI. The platform secures over $160 Million in Total Value
-      Locked (TVL), making frontend stability and security critical.
+      Before Theo, I was at Plex Labs,the core contributor team behind Canto,
+      the Layer-1 blockchain focused on Free Public Infrastructure. Building
+      open-source DeFi infrastructure taught me what's possible when you
+      prioritize accessibility over extraction. So when the team starting Theo
+      reached out about their new project, I knew I wanted in.
+    </p>
+    <p>
+      Today, we've deployed over $284 million in capital, raised $20M from
+      investors like Hack VC and Anthos Capital, and launched products that
+      compete with the biggest names in DeFi. This is the story of what it's
+      been like building the frontend for all of it.
     </p>
 
-    <h2>KEY CONTRIBUTIONS</h2>
+    <h2>From Canto to Theo</h2>
     <p>
-      <strong>> Architecture:</strong> Established a scalable Next.js component system
-      that handles real-time blockchain data updates without UI lag.
+      Before Theo, I was at Plex Labs,the core engineering team behind Canto, a
+      Layer-1 blockchain built around the idea of Free Public Infrastructure.
+      Canto's thesis was simple: DeFi's core primitives (DEXs, lending markets,
+      stablecoins) should be public goods, not rent-seeking platforms. We built
+      the frontend that made that vision usable,the interfaces for swapping,
+      lending, bridging, and everything else users needed to interact with the
+      network.
     </p>
     <p>
-      <strong>> Analytics:</strong> Built custom dashboards to track user behavior
-      and protocol health, directly influencing product decisions.
+      Canto hit $100M+ TVL within its first month. It was grassroots, no VC
+      funding, no token presale,just a team that believed in building accessible
+      financial infrastructure. That experience shaped how I think about DeFi:
+      complex systems, simple interfaces, ship fast, iterate constantly.
     </p>
     <p>
-      <strong>> Ownership:</strong> I collaborate directly with backend/blockchain
-      engineers who handle data and protocol logic, while I own the entire presentation
-      layer.
+      When Theo came calling, the pitch made sense. Same space, different
+      angle,taking institutional-grade financial products and making them
+      accessible to everyone. My Plex background meant I already knew how to
+      build interfaces for complex DeFi mechanics. Theo needed that, and I was
+      ready for the next challenge.
+    </p>
+
+    <h2>How We Ship: Fast, Clean, Collaborative</h2>
+    <p>
+      If there's one thing that defines my time at Theo, it's the pace. When
+      something needs to get done, it gets done,not in sprints, not in weeks.
+      Days. Sometimes hours.
+    </p>
+    <p>
+      That sounds chaotic, but it only works because we've built the right
+      processes around it.
+    </p>
+
+    <p><strong>Speed Without Sacrificing Quality</strong></p>
+    <p>
+      Early-stage startups often treat speed and quality as a tradeoff. We
+      rejected that. Yes, I've shipped features the same day they were
+      requested. But we also have QA processes that catch issues before they hit
+      production. The secret is keeping the feedback loop tight,small PRs, fast
+      reviews, quick iterations.
+    </p>
+    <p>
+      When thBILL was launching, there were moments where requirements changed
+      by the hour. New compliance considerations, updated copy, last-minute UX
+      tweaks. Being able to turn those around in hours instead of days meant we
+      could actually ship on time without cutting corners.
+    </p>
+
+    <p>
+      <strong>Designer Collaboration (and When to Make Your Own Calls)</strong>
+    </p>
+    <p>
+      I work closely with our designers, but collaboration doesn't mean waiting
+      for a Figma file for every change. Sometimes the best design decisions
+      happen in code,when you're implementing something and realize a different
+      interaction pattern would work better, or the spacing needs adjustment to
+      feel right on actual devices.
+    </p>
+    <p>
+      I've learned when to stick to the spec and when to make my own calls.
+      Small refinements that improve usability? I'll make them and show the
+      designer after. Major UX changes? That's a conversation first. Building
+      that trust takes time, but it speeds everything up once you have it.
+    </p>
+
+    <p><strong>Backend Handoffs That Actually Work</strong></p>
+    <p>
+      Nothing kills velocity like waiting on blocked dependencies or discovering
+      API mismatches late in development. I've built a solid working
+      relationship with our backend team where handoffs are smooth,clear
+      contracts, early communication about what's coming, and enough flexibility
+      on both sides to adjust when things change.
+    </p>
+    <p>
+      We'll often work in parallel: I'll build against a mocked API while
+      backend is still implementing, then connect the real endpoints once
+      they're ready. It means we're not blocked on each other, and integration
+      issues surface early when they're cheap to fix.
+    </p>
+
+    <h2>My Work</h2>
+    <p>Let me break down the actual projects:</p>
+
+    <p><strong>Landing Pages (V1 → V2 → V3)</strong></p>
+    <p>
+      The landing page went through three complete iterations. V1 was about
+      establishing presence,getting something live that communicated what Theo
+      was building. V2 refined the messaging and visual identity as the product
+      took shape. V3 is the current version, built to support thBILL, thGOLD,
+      and whatever comes next.
+    </p>
+    <p>
+      Each version wasn't just a reskin. The architecture evolved,better
+      performance, cleaner animations, more flexible content management. By V3,
+      I had a system that could adapt quickly as marketing needs changed.
+    </p>
+
+    <p><strong>theo-app V1 & V2 (Main Product Interface)</strong></p>
+    <p>
+      This is the core product,where users actually deposit assets, track
+      positions, and interact with Theo's offerings. V1 was the initial build:
+      getting the fundamentals right, connecting to multiple chains, handling
+      wallet flows, displaying real-time data.
+    </p>
+    <p>
+      V2 was a significant rebuild. Multi-chain support across Ethereum,
+      Arbitrum, Base, Solana, and HyperEVM. Better state management. More
+      resilient error handling. Clearer loading states. When thBILL launched and
+      became the third-fastest tokenized Treasury to hit $100M, this was the
+      interface users were interacting with.
+    </p>
+
+    <p><strong>theo-gold-app (thGOLD)</strong></p>
+    <p>
+      This is the current build,a standalone app for Theo's tokenized gold
+      product. Different product, different user expectations, different design
+      language. I'm leading this from the ground up: architecture decisions,
+      component library, the works.
+    </p>
+    <p>
+      thGOLD has been the most design-intensive project. More input on UX
+      decisions, more back-and-forth with designers, more opportunities to make
+      calls directly in code. It's essentially building a new product, not
+      iterating on an existing one.
+    </p>
+
+    <h2>What's Next</h2>
+    <p>
+      thGOLD is launching soon, and I'm genuinely excited to see it in users'
+      hands. After that, who knows? The roadmap keeps expanding.
+    </p>
+    <p>
+      What I do know is that I'll keep building. Theo went from an idea to $284M
+      deployed in under two years. We've partnered with Standard Chartered and
+      Wellington Management. We've proven that crypto can do institutional-grade
+      finance.
+    </p>
+    <p>
+      And I got to build the interfaces for all of it,fast, clean, and
+      collaboratively.
+    </p>
+
+    <p>
+      <em>
+        I'm a Founding Engineer at Theo, focusing on frontend development with
+        Next.js, React, and Tailwind CSS. Previously at Plex Labs, building
+        frontend infrastructure for Canto. If you're building in DeFi and want
+        to chat, feel free to reach out.
+      </em>
     </p>
 
     <FooterProject />
