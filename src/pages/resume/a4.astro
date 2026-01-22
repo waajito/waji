@@ -1,0 +1,496 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const content = {
+  name: "Bharadwaj Palakurthy",
+  role: "Frontend Engineer · Founding Engineer",
+  contact: [
+    {
+      text: "bharadwaj\u200bpalakurthy\u200b@gmail.com",
+      link: "mailto:bharadwajpalakurthy@gmail.com",
+    },
+    { text: "+918309651531", link: "tel:+918309651531" },
+    { text: "Portfolio", link: "https://waj.is-a.dev/" },
+    { text: "Github", link: "https://github.com/waajito" },
+    {
+      text: "Linkedin",
+      link: "https://www.linkedin.com/in/bharadwaj-p-86bb5b8b/",
+    },
+  ],
+  summary:
+    "Frontend engineer with 7+ years building products from zero to launch. Founding engineer at two DeFi startups—shipped interfaces for a $284M protocol and a $100M+ TVL Layer-1 blockchain. Known for rapid execution, strong design sensibility, and owning the entire user-facing stack.",
+  experience: [
+    {
+      role: "Founding Engineer",
+      company: "Theo (theo.xyz)",
+      period: "2024 – Present",
+      meta: "DeFi · Tokenized Real-World Assets",
+      desc: "Sole frontend engineer for a live protocol with $284M+ capital deployed. Recruited from Plex Labs to own the entire user-facing stack from day one.",
+      points: [
+        "Built <strong>3 landing page iterations</strong> and <strong>2 major app versions</strong> (theo-app v1, v2) supporting thBILL—the third-fastest tokenized Treasury to reach $100M",
+        "Currently leading <strong>theo-gold-app</strong>, a standalone application for Theo's upcoming tokenized gold product",
+        "Ship features in <strong>days or hours</strong> from request while maintaining quality through established QA processes",
+        "Collaborate closely with designers, contributing UX refinements directly in code; smooth backend handoffs enabling parallel development",
+        "Multi-chain interfaces across <strong>Ethereum, Arbitrum, Base, Solana, and HyperEVM</strong>",
+      ],
+      stack:
+        "Next.js, React, TypeScript, Tailwind CSS, Wagmi, Viem, Framer Motion",
+      // extra:
+      //   "<strong>Company:</strong> $20M raised (Hack VC, Anthos Capital) · Partnerships with Standard Chartered Bank, Wellington Management",
+    },
+    {
+      role: "Founding Engineer",
+      company: "Plex Labs (Canto Blockchain)",
+      period: "May 2022 – August 2024",
+      meta: "Layer-1 Blockchain · DeFi Infrastructure",
+      desc: "Sole frontend engineer for Canto, a Layer-1 blockchain with $100M+ TVL in its first month. Built every user-facing interface across four major platform versions.",
+      points: [
+        "Shipped <strong>4 major versions</strong> (V1 → V2 → Carthage → V3) with <strong>1,100+ commits</strong> over 2+ years",
+        "Consolidated <strong>9 separate subdomains</strong> into a unified application, eliminating wallet reconnection friction",
+        "Designed cross-chain flows for Cosmos IBC bridging; optimized state management for real-time DeFi interactions",
+        "Evolved from terminal/Cyberpunk aesthetic (V1) to Windows 95 retro design (V3)—proving DeFi interfaces can be beautiful and approachable",
+        "<strong>157 commits in 90 days</strong> during V2 crunch when TVL doubled to $150M+",
+      ],
+      stack:
+        "Next.js 13+, TypeScript, Tailwind CSS, Framer Motion, Wagmi, Viem, The Graph",
+      // extra:
+      //   "<strong>Impact:</strong> Canto reached top-tier L1 status in Cosmos ecosystem; supported growing ecosystem of NFT projects, on-chain games, and DeFi protocols",
+    },
+    {
+      role: "Full Stack Engineer",
+      company: "SelfieStar (Arcrome Technologies)",
+      period: "2020 – 2022",
+      meta: "Hardware Startup · Interactive Kiosks",
+      desc: "Lead engineer for an interactive kiosk product placing users into scenes with celebrities via real-time compositing.",
+      points: [
+        "Built entire software stack in <strong>Unity</strong>: touch UI, payment flows, camera integration, and content delivery",
+        "Wrote <strong>custom HLSL shaders</strong> for real-time chroma keying, compositing live camera feeds with pre-recorded celebrity footage",
+        'Integrated <strong>hardware systems</strong>: 55" IR touch frames, DSLR cameras, card swipe units, cash payment tracking',
+        "Designed <strong>offline-first architecture</strong> with local caching for multi-gigabyte video assets; maintenance mode for updates",
+        "Built backend with <strong>Strapi + AWS</strong> for geo-targeted content delivery across mall/theatre locations",
+      ],
+      stack: "Unity, C#, Strapi, AWS, Stripe",
+    },
+    {
+      role: "Freelance Developer & Game Developer",
+      company: "Self-Employed",
+      period: "2017 – 2020",
+      meta: "Mobile Games · Client Projects",
+      desc: "Solo indie developer who shipped published games to iOS and Android. Learned systems thinking, performance optimization, and end-to-end product ownership.",
+      points: [
+        "Published <strong>Pocket Hopper</strong> and <strong>Exile</strong> to Google Play Store",
+        "Mastered multi-disciplinary skills out of necessity: Unity, C#, Blender (3D), Photoshop, Illustrator",
+        "Built foundation for thinking in terms of <strong>state, responsiveness, and frame-budget constraints</strong>—habits that transfer directly to frontend performance",
+      ],
+      stack: "Unity, C#, Blender, Photoshop, Illustrator",
+    },
+  ],
+  skills: [
+    {
+      label: "Frontend",
+      value:
+        "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, Zustand, CSS-in-JS",
+    },
+    {
+      label: "Web3",
+      value: "Wagmi, Viem, Ethers.js, WalletConnect",
+    },
+    { label: "Mobile", value: "Flutter, GetX, Unity (C#)" },
+    {
+      label: "Design",
+      value: "Figma, Photoshop, Illustrator, Blender",
+    },
+    {
+      label: "Backend",
+      value: "Node.js, Elysia.js, PostgreSQL, GCP, Firebase, Supabase",
+    },
+    {
+      label: "Other",
+      value:
+        "Git, CI/CD, Vercel, Performance optimization, Offline-first architecture",
+    },
+  ],
+  projects: [
+    {
+      name: "Nuggets",
+      desc: "Flutter news app with offline-first architecture (ObjectBox), BlurHash image placeholders, and FCM push notifications. Built to close a gap in understanding declarative UI paradigms.",
+    },
+  ],
+};
+---
+
+<Layout title="Bharadwaj Palakurthy | Resume A4">
+  <div class="resume-a4-wrapper">
+    <div class="resume-a4">
+      <aside class="sidebar">
+        <div class="profile-section">
+          <h1 class="name">
+            {content.name.split(" ")[0]}<br />{content.name.split(" ")[1]}
+          </h1>
+          <p class="role">{content.role}</p>
+
+          <div class="contact">
+            {
+              content.contact.map((c) => (
+                <a href={c.link} class="contact-link">
+                  {c.text}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>Skills</h2>
+          <div class="skills-list">
+            {
+              content.skills.map((skill) => (
+                <div class="skill-item">
+                  <strong>{skill.label}</strong>
+                  <p>{skill.value}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="summary">
+          <h2>Summary</h2>
+          <p>{content.summary}</p>
+        </section>
+
+        <section class="experience">
+          <h2>Experience</h2>
+          {
+            content.experience.map((job) => (
+              <div class="job-card">
+                <div class="job-header">
+                  <h3>{job.role}</h3>
+                  <span class="company">{job.company}</span>
+                </div>
+                <div class="job-subheader">
+                  <span class="date">{job.period}</span>
+                  <span class="meta">{job.meta}</span>
+                </div>
+
+                <p class="desc">{job.desc}</p>
+                <ul>
+                  {job.points.map((point) => (
+                    <li set:html={point} />
+                  ))}
+                </ul>
+                <div class="stack-wrap">
+                  <p class="stack">
+                    <span>Stack:</span> {job.stack}
+                  </p>
+                </div>
+
+                {/* {job.extra && <p class="impact" set:html={job.extra} />} */}
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="projects">
+          <h2>Projects</h2>
+          {
+            content.projects.map((p) => (
+              <div class="project-item">
+                <h3>{p.name}</h3>
+                <p>{p.desc}</p>
+              </div>
+            ))
+          }
+        </section>
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* A4 Wrapper for previewing on screen */
+  .resume-a4-wrapper {
+    width: 100%;
+    background: #525659;
+    padding: 2rem 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .resume-a4 {
+    width: 210mm;
+    min-height: 297mm; /* A4 Height */
+    background: #fff;
+    display: grid;
+    grid-template-columns: 75mm 1fr; /* Fixed sidebar width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    color: #333;
+    overflow: hidden; /* Ensure no bleed */
+  }
+
+  /* Global Reset inside Resume */
+  .resume-a4 * {
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    background: #f8f9fa;
+    padding: 10mm 6mm;
+    border-right: 1px solid #eaeaea;
+  }
+
+  .main-content {
+    padding: 10mm 10mm;
+  }
+
+  /* Sidebar Styles */
+  .name {
+    font-size: 20pt;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 5mm;
+    color: #111;
+  }
+
+  .role {
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 8mm;
+    line-height: 1.4;
+    font-size: 10pt;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+    font-size: 8.5pt;
+    margin-bottom: 12mm;
+  }
+
+  .contact-link {
+    color: #111;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .sidebar-block {
+    margin-bottom: 12mm;
+  }
+
+  .sidebar-block h2 {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #222;
+    border-bottom: 1px solid #999;
+    padding-bottom: 2mm;
+    margin-bottom: 4mm;
+  }
+
+  .traits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .traits-list li {
+    margin-bottom: 4mm;
+  }
+
+  .traits-list strong {
+    display: block;
+    margin-bottom: 1mm;
+    color: #111;
+    font-size: 9pt;
+  }
+
+  .traits-list p {
+    font-size: 8.5pt;
+    color: #222;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .skill-item {
+    margin-bottom: 2mm;
+    font-size: 7.5pt;
+  }
+
+  .skill-item strong {
+    display: block;
+    margin-bottom: 0.5mm;
+    color: #000;
+    font-size: 8pt;
+  }
+
+  .skill-item p {
+    margin: 0;
+    color: #222;
+    line-height: 1.2;
+    font-size: 10pt;
+  }
+
+  /* Main Content Styles */
+  section {
+    margin-bottom: 8mm;
+  }
+
+  section h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 5mm;
+    color: #111;
+    border-bottom: 2px solid #111;
+    padding-bottom: 1mm;
+    display: inline-block;
+  }
+
+  .summary p {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  .job-card {
+    margin-bottom: 7mm;
+    break-inside: avoid; /* Prevent breaking across pages if content overflows */
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1mm;
+  }
+
+  .job-header h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 0;
+    color: #111;
+  }
+
+  .job-header .company {
+    font-size: 10pt;
+    color: #222;
+    font-weight: 600;
+  }
+
+  .job-subheader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+    color: #333;
+    margin-bottom: 2mm;
+  }
+
+  .date {
+    font-weight: 600;
+    color: #000;
+  }
+
+  .meta {
+    font-style: italic;
+  }
+
+  .desc {
+    margin-bottom: 2mm;
+    line-height: 1.4;
+    font-size: 9.5pt;
+    color: #111;
+  }
+
+  .experience ul {
+    margin: 2mm 0 3mm 5mm;
+    color: #111;
+    font-size: 9.5pt;
+  }
+
+  .experience li {
+    margin-bottom: 1mm;
+    line-height: 1.4;
+  }
+
+  .stack-wrap {
+    margin-bottom: 2mm;
+  }
+
+  .stack {
+    font-family: "SF Mono", "Monaco", monospace;
+    font-size: 8pt;
+    background: #f3f4f6;
+    padding: 1mm 2mm;
+    border-radius: 2px;
+    display: inline-block;
+    color: #111;
+  }
+
+  .stack span {
+    font-weight: bold;
+    color: #000;
+  }
+
+  .impact {
+    margin-top: 2mm;
+    font-size: 9pt;
+    font-style: italic;
+    color: #222;
+    background: #fffdf0;
+    padding: 2mm;
+    border-left: 2px solid #f1c40f;
+  }
+
+  .project-item h3 {
+    font-size: 11pt;
+    margin: 0 0 1mm 0;
+    color: #000;
+    font-weight: 700;
+  }
+
+  .project-item p {
+    margin: 0;
+    color: #222;
+    font-size: 9.5pt;
+    line-height: 1.4;
+  }
+
+  /* Print Media Query */
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .resume-a4-wrapper {
+      padding: 0;
+      background: #fff;
+      display: block;
+    }
+    .resume-a4 {
+      width: 100%;
+      min-height: auto;
+      box-shadow: none;
+      margin: 0;
+      border: none;
+    }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+</style>
