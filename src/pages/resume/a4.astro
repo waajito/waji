@@ -72,7 +72,7 @@ const content = {
       stack: "Unity, C#, Strapi, AWS, Stripe",
     },
     {
-      role: "Freelance Developer & Game Developer",
+      role: "Freelance & Game Developer",
       company: "Self-Employed",
       period: "2017 – 2020",
       meta: "Mobile Games · Client Projects",
@@ -112,8 +112,12 @@ const content = {
   ],
   projects: [
     {
+      name: "matchaGo",
+      desc: "Restaurant management platform with custom dashboard and customer app. Backended by Elysia.js, migrated from Supabase to Drizzle (PostgreSQL) + BetterAuth. Features WebSockets for real-time updates; hosted on Cloudflare + GCP.",
+    },
+    {
       name: "Nuggets",
-      desc: "Flutter news app with offline-first architecture (ObjectBox), BlurHash image placeholders, and FCM push notifications. Built to close a gap in understanding declarative UI paradigms.",
+      desc: "Flutter news app with offline-first architecture (ObjectBox), BlurHash image placeholders, and FCM push notifications.",
     },
   ],
 };
@@ -139,7 +143,6 @@ const content = {
             }
           </div>
         </div>
-
         <div class="sidebar-block">
           <h2>Skills</h2>
           <div class="skills-list">
@@ -148,6 +151,20 @@ const content = {
                 <div class="skill-item">
                   <strong>{skill.label}</strong>
                   <p>{skill.value}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>Projects</h2>
+          <div class="projects-list">
+            {
+              content.projects.map((p) => (
+                <div class="project-item">
+                  <h3>{p.name}</h3>
+                  <p>{p.desc}</p>
                 </div>
               ))
             }
@@ -192,305 +209,311 @@ const content = {
             ))
           }
         </section>
-
-        <section class="projects">
-          <h2>Projects</h2>
-          {
-            content.projects.map((p) => (
-              <div class="project-item">
-                <h3>{p.name}</h3>
-                <p>{p.desc}</p>
-              </div>
-            ))
-          }
-        </section>
       </main>
     </div>
-  </div>
-</Layout>
 
-<style>
-  /* A4 Wrapper for previewing on screen */
-  .resume-a4-wrapper {
-    width: 100%;
-    background: #525659;
-    padding: 2rem 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-  }
+    <style>
+      /* A4 Wrapper for previewing on screen */
+      .resume-a4-wrapper {
+        width: 100%;
+        background: #525659;
+        padding: 2rem 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
 
-  .resume-a4 {
-    width: 210mm;
-    min-height: 297mm; /* A4 Height */
-    background: #fff;
-    display: grid;
-    grid-template-columns: 75mm 1fr; /* Fixed sidebar width */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    font-family:
-      "Inter",
-      system-ui,
-      -apple-system,
-      sans-serif;
-    color: #333;
-    overflow: hidden; /* Ensure no bleed */
-  }
+      .resume-a4 {
+        width: 210mm;
+        min-height: 297mm; /* A4 Height */
+        background: #fff;
+        display: grid;
+        grid-template-columns: 75mm 1fr; /* Fixed sidebar width */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: #333;
+        overflow: hidden; /* Ensure no bleed */
+      }
 
-  /* Global Reset inside Resume */
-  .resume-a4 * {
-    box-sizing: border-box;
-  }
+      /* Global Reset inside Resume */
+      .resume-a4 * {
+        box-sizing: border-box;
+      }
 
-  .sidebar {
-    background: #f8f9fa;
-    padding: 10mm 6mm;
-    border-right: 1px solid #eaeaea;
-  }
+      .sidebar {
+        background: #f8f9fa;
+        padding: 10mm 6mm;
+        border-right: 1px solid #eaeaea;
+      }
 
-  .main-content {
-    padding: 10mm 10mm;
-  }
+      .main-content {
+        padding: 10mm 10mm;
+      }
 
-  /* Sidebar Styles */
-  .name {
-    font-size: 20pt;
-    line-height: 1.1;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 5mm;
-    color: #111;
-  }
+      /* Sidebar Styles */
+      .name {
+        font-size: 20pt;
+        line-height: 1.1;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 5mm;
+        color: #111;
+      }
 
-  .role {
-    font-weight: 500;
-    color: #222;
-    margin-bottom: 8mm;
-    line-height: 1.4;
-    font-size: 10pt;
-  }
+      .role {
+        font-weight: 500;
+        color: #222;
+        margin-bottom: 8mm;
+        line-height: 1.4;
+        font-size: 10pt;
+      }
 
-  .contact {
-    display: flex;
-    flex-direction: column;
-    gap: 2mm;
-    font-size: 8.5pt;
-    margin-bottom: 12mm;
-  }
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 2mm;
+        font-size: 8.5pt;
+        margin-bottom: 12mm;
+      }
 
-  .contact-link {
-    color: #111;
-    text-decoration: none;
-    word-break: break-all;
-  }
+      .contact-link {
+        color: #111;
+        text-decoration: none;
+        word-break: break-all;
+      }
 
-  .sidebar-block {
-    margin-bottom: 12mm;
-  }
+      .sidebar-block {
+        margin-bottom: 12mm;
+      }
 
-  .sidebar-block h2 {
-    font-size: 9pt;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #222;
-    border-bottom: 1px solid #999;
-    padding-bottom: 2mm;
-    margin-bottom: 4mm;
-  }
+      .sidebar-block h2 {
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #222;
+        border-bottom: 1px solid #999;
+        padding-bottom: 2mm;
+        margin-bottom: 4mm;
+      }
 
-  .traits-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+      .traits-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-  .traits-list li {
-    margin-bottom: 4mm;
-  }
+      .traits-list li {
+        margin-bottom: 4mm;
+      }
 
-  .traits-list strong {
-    display: block;
-    margin-bottom: 1mm;
-    color: #111;
-    font-size: 9pt;
-  }
+      .traits-list strong {
+        display: block;
+        margin-bottom: 1mm;
+        color: #111;
+        font-size: 9pt;
+      }
 
-  .traits-list p {
-    font-size: 8.5pt;
-    color: #222;
-    line-height: 1.4;
-    margin: 0;
-  }
+      .traits-list p {
+        font-size: 8.5pt;
+        color: #222;
+        line-height: 1.4;
+        margin: 0;
+      }
 
-  .skill-item {
-    margin-bottom: 2mm;
-    font-size: 7.5pt;
-  }
+      .skill-item {
+        margin-bottom: 2mm;
+        font-size: 7.5pt;
+      }
 
-  .skill-item strong {
-    display: block;
-    margin-bottom: 0.5mm;
-    color: #000;
-    font-size: 8pt;
-  }
+      .skill-item strong {
+        display: block;
+        margin-bottom: 0.5mm;
+        color: #000;
+        font-size: 8pt;
+      }
 
-  .skill-item p {
-    margin: 0;
-    color: #222;
-    line-height: 1.2;
-    font-size: 10pt;
-  }
+      .skill-item p {
+        margin: 0;
+        color: #222;
+        line-height: 1.2;
+        font-size: 10pt;
+      }
 
-  /* Main Content Styles */
-  section {
-    margin-bottom: 8mm;
-  }
+      /* Main Content Styles */
+      section {
+        margin-bottom: 8mm;
+      }
 
-  section h2 {
-    font-size: 16pt;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 5mm;
-    color: #111;
-    border-bottom: 2px solid #111;
-    padding-bottom: 1mm;
-    display: inline-block;
-  }
+      section h2 {
+        font-size: 16pt;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 5mm;
+        color: #111;
+        border-bottom: 2px solid #111;
+        padding-bottom: 1mm;
+        display: inline-block;
+      }
 
-  .summary p {
-    font-size: 10pt;
-    line-height: 1.5;
-    color: #111;
-  }
+      .summary p {
+        font-size: 10pt;
+        line-height: 1.5;
+        color: #111;
+      }
 
-  .job-card {
-    margin-bottom: 7mm;
-    break-inside: avoid; /* Prevent breaking across pages if content overflows */
-  }
+      .job-card {
+        margin-bottom: 7mm;
+        break-inside: avoid; /* Prevent breaking across pages if content overflows */
+      }
 
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 1mm;
-  }
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 1mm;
+      }
 
-  .job-header h3 {
-    font-size: 12pt;
-    font-weight: 700;
-    margin: 0;
-    color: #111;
-  }
+      .job-header h3 {
+        font-size: 12pt;
+        font-weight: 700;
+        margin: 0;
+        color: #111;
+      }
 
-  .job-header .company {
-    font-size: 10pt;
-    color: #222;
-    font-weight: 600;
-  }
+      .job-header .company {
+        font-size: 10pt;
+        color: #222;
+        font-weight: 600;
+      }
 
-  .job-subheader {
-    display: flex;
-    justify-content: space-between;
-    font-size: 9pt;
-    color: #333;
-    margin-bottom: 2mm;
-  }
+      .job-subheader {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9pt;
+        color: #333;
+        margin-bottom: 2mm;
+      }
 
-  .date {
-    font-weight: 600;
-    color: #000;
-  }
+      .date {
+        font-weight: 600;
+        color: #000;
+      }
 
-  .meta {
-    font-style: italic;
-  }
+      .meta {
+        font-style: italic;
+      }
 
-  .desc {
-    margin-bottom: 2mm;
-    line-height: 1.4;
-    font-size: 9.5pt;
-    color: #111;
-  }
+      .desc {
+        margin-bottom: 2mm;
+        line-height: 1.4;
+        font-size: 9.5pt;
+        color: #111;
+      }
 
-  .experience ul {
-    margin: 2mm 0 3mm 5mm;
-    color: #111;
-    font-size: 9.5pt;
-  }
+      .experience ul {
+        margin: 2mm 0 3mm 5mm;
+        color: #111;
+        font-size: 9.5pt;
+      }
 
-  .experience li {
-    margin-bottom: 1mm;
-    line-height: 1.4;
-  }
+      .experience li {
+        margin-bottom: 1mm;
+        line-height: 1.4;
+      }
 
-  .stack-wrap {
-    margin-bottom: 2mm;
-  }
+      .stack-wrap {
+        margin-bottom: 2mm;
+      }
 
-  .stack {
-    font-family: "SF Mono", "Monaco", monospace;
-    font-size: 8pt;
-    background: #f3f4f6;
-    padding: 1mm 2mm;
-    border-radius: 2px;
-    display: inline-block;
-    color: #111;
-  }
+      .stack {
+        font-family: "SF Mono", "Monaco", monospace;
+        font-size: 8pt;
+        background: #f3f4f6;
+        padding: 1mm 2mm;
+        border-radius: 2px;
+        display: inline-block;
+        color: #111;
+      }
 
-  .stack span {
-    font-weight: bold;
-    color: #000;
-  }
+      .stack span {
+        font-weight: bold;
+        color: #000;
+      }
 
-  .impact {
-    margin-top: 2mm;
-    font-size: 9pt;
-    font-style: italic;
-    color: #222;
-    background: #fffdf0;
-    padding: 2mm;
-    border-left: 2px solid #f1c40f;
-  }
+      .impact {
+        margin-top: 2mm;
+        font-size: 9pt;
+        font-style: italic;
+        color: #222;
+        background: #fffdf0;
+        padding: 2mm;
+        border-left: 2px solid #f1c40f;
+      }
 
-  .project-item h3 {
-    font-size: 11pt;
-    margin: 0 0 1mm 0;
-    color: #000;
-    font-weight: 700;
-  }
+      .project-item h3 {
+        font-size: 11pt;
+        margin: 0 0 1mm 0;
+        color: #000;
+        font-weight: 700;
+      }
 
-  .project-item p {
-    margin: 0;
-    color: #222;
-    font-size: 9.5pt;
-    line-height: 1.4;
-  }
+      .project-item p {
+        margin: 0;
+        color: #222;
+        font-size: 9.5pt;
+        line-height: 1.4;
+      }
 
-  /* Print Media Query */
-  @media print {
-    body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
-    }
-    .resume-a4-wrapper {
-      padding: 0;
-      background: #fff;
-      display: block;
-    }
-    .resume-a4 {
-      width: 100%;
-      min-height: auto;
-      box-shadow: none;
-      margin: 0;
-      border: none;
-    }
-    @page {
-      size: A4;
-      margin: 0;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-  }
-</style>
+      /* Print Media Query */
+      @media print {
+        body {
+          margin: 0;
+          padding: 0;
+          background: #fff;
+        }
+        .resume-a4-wrapper {
+          padding: 0;
+          background: #fff;
+          display: block;
+        }
+        .resume-a4 {
+          width: 100%;
+          min-height: auto;
+          box-shadow: none;
+          margin: 0;
+          border: none;
+        }
+        @page {
+          size: A4;
+          margin: 0;
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+
+      .projects-list {
+        display: flex;
+        flex-direction: column;
+        gap: 3mm;
+      }
+
+      .projects-list .project-item h3 {
+        font-size: 9pt;
+        margin: 0 0 0.5mm 0;
+        font-weight: 700;
+      }
+
+      .projects-list .project-item p {
+        font-size: 8pt;
+        line-height: 1.3;
+        color: #333;
+      }
+    </style>
+  </div></Layout
+>
