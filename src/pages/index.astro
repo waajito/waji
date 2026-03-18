@@ -45,21 +45,11 @@ import ImageStack from "../components/ImageStack.astro";
     <section id="work">
       <div class="section-header">
         <span class="section-title">// SELECTED WORK</span>
-        <span class="mono dim">2020 - 2024</span>
+        <span class="mono dim">2013 - 2024</span>
       </div>
 
       <div class="bento-grid">
-        <!-- 1. MR (Large) -->
-        <ProjectCard
-          size="card-lg"
-          href="/projects/mr"
-          year="2020 - 2022"
-          title="SelfieStar / Arcrome"
-          desc="A 55-inch interactive kiosk with hardware payments and live green-screen compositing."
-          tags={["UNITY", "HARDWARE", "C#"]}
-        />
-
-        <!-- 2. THEO (Small) -->
+        <!-- 1. THEO (2024) -->
         <ProjectCard
           size="card-md"
           href="/projects/theo"
@@ -69,7 +59,7 @@ import ImageStack from "../components/ImageStack.astro";
           tags={["NEXT.JS", "WEB3", "AI"]}
         />
 
-        <!-- 3. RESERVE (Small) -->
+        <!-- 2. RESERVE (2023) -->
         <ProjectCard
           size="card-md"
           href="#"
@@ -79,7 +69,7 @@ import ImageStack from "../components/ImageStack.astro";
           tags={["DESIGN", "PROTOTYPE"]}
         />
 
-        <!-- 4. PLEX (Large) -->
+        <!-- 3. PLEX / CANTO (2022-2024) -->
         <ProjectCard
           size="card-lg"
           href="/projects/plex"
@@ -89,25 +79,35 @@ import ImageStack from "../components/ImageStack.astro";
           tags={["TYPESCRIPT", "DESIGN SYSTEM", "WEB3"]}
         />
 
-        <!-- 5. NUGGETS (Large) - Note: In HTML source this was card-lg, but mapped to mockup B? -->
+        <!-- 4. SELFIESTAR / ARCROME (2020-2022) -->
         <ProjectCard
           size="card-lg"
+          href="/projects/mr"
+          year="2020 - 2022"
+          title="SelfieStar / Arcrome"
+          desc="A 55-inch interactive kiosk with hardware payments and live green-screen compositing."
+          tags={["UNITY", "HARDWARE", "C#"]}
+        />
+
+        <!-- 5. GAME DEV (2013-2019) -->
+        <ProjectCard
+          size="card-lg"
+          href="/projects/games"
+          year="2013 - 2019"
+          title="Game Dev"
+          desc="Published 10+ mobile titles. Where I learned systems."
+          tags={["LEGACY", "UNITY", "MOBILE"]}
+        />
+
+        <!-- 6. NUGGETS (Side Quest) -->
+        <ProjectCard
+          size="card-md"
           href="/projects/nuggets"
           meta="SIDE QUEST"
           title="Nuggets"
           desc="A 60 words or less mobile app, built using flutter for cross-platform development."
           tags={["FLUTTER", "MOBILE", "GETX"]}
           visualStyle="border: 1px dashed #333;"
-        />
-
-        <!-- 6. GAMES (Medium) -->
-        <ProjectCard
-          size="card-md"
-          href="/projects/games"
-          year="2017 - 2019"
-          title="Game Dev"
-          desc="Published 10+ mobile titles. Where I learned systems."
-          tags={["LEGACY", "UNITY", "MOBILE"]}
         />
       </div>
     </section>
@@ -116,7 +116,7 @@ import ImageStack from "../components/ImageStack.astro";
     <section id="about" class="about-grid">
       <div class="info-col">
         <span class="section-title" style="display:block; margin-bottom: 2rem;"
-          >// PHILOSOPHY</span
+          >// ABOUT</span
         >
         <h2>Fast, practical, production-focused</h2>
         <p class="dim" style="margin-bottom:1rem; font-size: 1.1rem;">

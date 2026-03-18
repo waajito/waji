@@ -99,12 +99,16 @@ nav {
 nav.nav-fixed {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   padding: 1.5rem 2rem;
   background: rgba(5, 5, 5, 0.8);
   backdrop-filter: blur(10px);
   z-index: 100;
   margin-bottom: 0;
+}
+.container:has(> nav.nav-fixed) {
+  padding-top: 5rem;
 }
 
 .logo,
