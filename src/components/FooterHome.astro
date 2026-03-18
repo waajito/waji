@@ -5,15 +5,7 @@
   >
 
   <div class="contact-form-container">
-    <form
-      action="https://formsubmit.co/bharadajpalakurthy+site@gmail.com"
-      method="POST"
-      class="contact-form"
-    >
-      <input type="hidden" name="_subject" value="New message from waj.dev" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://waj.is-a.dev/" />
-      <input type="text" name="_honey" style="display:none" />
+    <form id="contact-form" class="contact-form">
       <div class="form-row">
         <input type="text" name="name" placeholder="NAME" class="form-input" required />
         <input type="email" name="email" placeholder="EMAIL" class="form-input" required />
@@ -27,6 +19,38 @@
         required></textarea>
       <button type="submit" class="submit-btn"> Transmit Message -&gt; </button>
     </form>
+    <script is:inline>
+      document.getElementById('contact-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('.submit-btn');
+        btn.textContent = 'TRANSMITTING...';
+        btn.disabled = true;
+        try {
+          const res = await fetch('https://formsubmit.co/ajax/bharadwajpalakurthy+site@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              name: form.name.value,
+              email: form.email.value,
+              message: form.message.value,
+              _subject: 'New message from waj.dev',
+              _captcha: 'false',
+            }),
+          });
+          if (res.ok) {
+            btn.textContent = 'MESSAGE SENT ✓';
+            form.reset();
+          } else {
+            btn.textContent = 'FAILED — RETRY?';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'FAILED — RETRY?';
+          btn.disabled = false;
+        }
+      });
+    </script>
   </div>
 
   <style>
